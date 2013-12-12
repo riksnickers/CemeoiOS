@@ -7,6 +7,7 @@
 //
 
 #import "LoginViewController.h"
+#import "AFHTTPRequestOperationManager.h"
 
 @interface LoginViewController ()
 
@@ -36,8 +37,20 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)doLogin:(id)sender {
-    //NSURL *loginUrl = [NSURL URLWithString:@"http://localhost:8080/FakeRest/webresources/Token"];
+- (IBAction)doLogin:(id)sender{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
+    
+    NSString *password = [self.txtPassword text];
+    NSString *username = [self.txtUsername text];
+    
+    NSDictionary *parameters = @{@"grant_type": @"password", @"username":username, @"password":password};
+  
+    [manager POST:@"http://192.168.227.128:9992/Token" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error %@", error);
+    }];
     
     
 }

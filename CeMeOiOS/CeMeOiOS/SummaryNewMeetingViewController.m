@@ -9,8 +9,12 @@
 #import "SummaryNewMeetingViewController.h"
 #import "SummaryContactCell.h"
 #import "TokenHolder.h"
+#import "AFHTTPRequestOperationManager.h"
+#import "IPHolder.h"
 
 @interface SummaryNewMeetingViewController ()
+
+-(void)SendData:(NSDictionary *)data;
 
 @end
 
@@ -23,6 +27,8 @@
 @synthesize DateIndex;
 @synthesize beforeDate;
 @synthesize lblTime;
+@synthesize lblBeHeld;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -49,6 +55,8 @@
     if(DateIndex != 5){
         [lblDate setText:[options objectAtIndex:DateIndex]];
     }else{
+        [lblBeHeld setText:@"To be held before"];
+        
         //if the selected option is "Before a date" the date will be displayed and the time label will be displayed
         //the actual date and time will be displayed separately
         NSString *dateString = [NSDateFormatter localizedStringFromDate:beforeDate
@@ -94,7 +102,7 @@
     
     cell.lblName.text = [[NSString alloc] initWithFormat:@"%@ %@", [[Contacts objectAtIndex:[indexPath row]] valueForKey:@"FirstName"], [[Contacts objectAtIndex:[indexPath row]] valueForKey:@"LastName"]];
     
-    if ([[[Contacts objectAtIndex:[indexPath row]] objectForKey:@"required"]  isEqual: @YES]) {
+    if ([[[Contacts objectAtIndex:[indexPath row]] objectForKey:@"Important"]  isEqual: @YES]) {
         [cell.reqImage setHidden:NO];
     }
     
@@ -109,15 +117,30 @@
  */
 - (IBAction)send:(id)sender {
     NSMutableDictionary *toSend = [[NSMutableDictionary alloc] init];
-    [toSend setObject:[[TokenHolder Token] objectForKey:@"userName"] forKey:@"creator"];
-    [toSend setObject:[NSNumber numberWithInt:DateIndex] forKey:@"dateIndex"];
-    [toSend setObject:Contacts forKey:@"members"];
+    [toSend setObject:[[TokenHolder Token] objectForKey:@"userName"] forKey:@"Creator"];
+    [toSend setObject:[NSNumber numberWithInt:DateIndex] forKey:@"Dateindex"];
+    
+    
+    for (NSMutableDictionary *dict in Contacts) {
+        [dict removeObjectsForKeys:@[@"FirstName", @"LastName"]];
+    }
+    
+    [toSend setObject:Contacts forKey:@"InvitedParticipants"];
+
     
     //if the "Before a date" option is selected then the selected date will be send along
     if(DateIndex == 5){
-        [toSend setObject:beforeDate forKey:@"beforeDate"];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZ"];
+        NSString *dateString = [dateFormatter stringFromDate:beforeDate];
+        [toSend setObject:dateString forKey:@"BeforeDate"];
+    }else{
+        [toSend setObject:[NSNumber numberWithInt:0] forKey:@"BeforeDate"];
     }
     
+    [self SendData:toSend];
+    
+    /*
     //the NSMutableDictionary gets serialized to json to show the data in the console
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:toSend
                                                       options:NSJSONWritingPrettyPrinted
@@ -129,7 +152,7 @@
     
     UIAlertView *alert = [[UIAlertView alloc]initWithTitle: @"Send"
                                                    message: @"Your meeting has been send"
-                                                  delegate: self
+                                                  delegate: nil
                                          cancelButtonTitle:@"OK"
                                          otherButtonTitles:nil];
     
@@ -137,6 +160,68 @@
     [alert show];
     
     [self performSegueWithIdentifier:@"toUpcoming" sender:self];
+     */
+    
     
 }
+
+/*!
+ Sends the new meeting data to the server for processing
+ *\param data The new meeting (nsdictionary) that will be converted to json and send
+ */
+-(void)SendData:(NSDictionary *)data{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    UIAlertView *waitAlert = [[UIAlertView alloc] initWithTitle:@"Sending data..."
+                                                        message:nil
+                                                       delegate:nil
+                                              cancelButtonTitle:nil
+                                              otherButtonTitles:nil];
+    UIActivityIndicatorView *loading = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(125, 50, 30, 30)];
+    loading.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
+    [waitAlert addSubview:loading];
+    [loading startAnimating];
+    [waitAlert show];
+
+    
+    [manager POST:[IPHolder IPWithPath:@"/api/Meeting/Schedule"] parameters:data success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if([operation.response statusCode] == 200){
+            //NSLog(@"Return data: %@", responseObject);
+            [waitAlert dismissWithClickedButtonIndex:0 animated:YES];
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle: @"Send"
+                                                           message: @"Your meeting has been send"
+                                                          delegate: nil
+                                                 cancelButtonTitle:@"OK"
+                                                 otherButtonTitles:nil];
+            
+            
+            [alert show];
+            
+            [self performSegueWithIdentifier:@"toUpcoming" sender:self];
+        }else{
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle: @"Something went wrong"
+                                                           message: @"Please try again later"
+                                                          delegate: self
+                                                 cancelButtonTitle:@"Ok"
+                                                 otherButtonTitles:nil];
+            
+            [waitAlert dismissWithClickedButtonIndex:0 animated:YES];
+            [alert show];
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error %@", error);
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle: @"Something went wrong"
+                                                        message: @"Please try again later"
+                                                        delegate: self
+                                                        cancelButtonTitle:@"Ok"
+                                                        otherButtonTitles:nil];
+            
+        [waitAlert dismissWithClickedButtonIndex:0 animated:YES];
+        [alert show];
+        
+    }];
+}
+
+
 @end

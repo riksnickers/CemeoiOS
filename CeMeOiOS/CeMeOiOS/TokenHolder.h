@@ -10,7 +10,6 @@
 
 @interface TokenHolder : NSObject
 
-@property id token;
 +(id) Token;
 +(void) setToken:(id) token;
 

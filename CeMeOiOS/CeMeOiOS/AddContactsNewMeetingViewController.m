@@ -10,6 +10,7 @@
 #import "ContactCell.h"
 #import "AFHTTPRequestOperationManager.h"
 #import "RequiredContactsNewMeetingViewController.h"
+#import "IPHolder.h"
 
 @interface AddContactsNewMeetingViewController ()
 
@@ -17,7 +18,7 @@
 
 @implementation AddContactsNewMeetingViewController{
     NSArray *searchResults;
-    NSArray *Contacts;
+    NSMutableArray *Contacts;
     NSMutableArray *chosenContacts;
 }
 
@@ -116,7 +117,10 @@
     cell.contactSwitch.on = contactSwitch.on;
     
     if (contactSwitch.on) {
-        [chosenContacts addObject:[Contacts objectAtIndex:rowIndex]];
+        NSMutableDictionary *toAdd = [[Contacts objectAtIndex:rowIndex] mutableCopy];
+        [toAdd setObject:@NO forKey:@"Important"];
+        [Contacts replaceObjectAtIndex:rowIndex withObject:toAdd];
+        [chosenContacts addObject:toAdd];
     }else{
         [chosenContacts removeObject:[Contacts objectAtIndex:rowIndex]];
     }
@@ -179,8 +183,8 @@ shouldReloadTableForSearchString:(NSString *)searchString
     [waitAlert show];
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:@"http://192.168.227.137:12429/api/Meeting/Contacts" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        Contacts = responseObject;
+    [manager GET:[IPHolder IPWithPath:@"/api/Meeting/Contacts"] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        Contacts = [responseObject mutableCopy];
         [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);

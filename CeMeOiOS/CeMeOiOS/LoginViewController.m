@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "AFHTTPRequestOperationManager.h"
 #import "TokenHolder.h"
+#import "IPHolder.h"
 #import "UpcomingViewController.h"
 
 @interface LoginViewController ()
@@ -62,7 +63,7 @@
     [loading startAnimating];
     [waitAlert show];
     
-    [manager POST:@"http://192.168.227.137:12429/Token" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:[IPHolder IPWithPath:@"/Token"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         if([operation.response statusCode] == 200 && [[responseObject valueForKey:@"token_type"]  isEqual: @"bearer"]){
             //save Token in TokenHolder
             [TokenHolder setToken:responseObject];

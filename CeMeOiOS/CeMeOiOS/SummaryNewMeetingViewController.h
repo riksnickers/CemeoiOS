@@ -15,6 +15,8 @@
 @property NSDate *beforeDate;
 @property (weak, nonatomic) IBOutlet UILabel *lblDate;
 @property (weak, nonatomic) IBOutlet UILabel *lblTime;
+@property (weak, nonatomic) IBOutlet UILabel *lblBeHeld;
 - (IBAction)send:(id)sender;
+- (void)SendData:(NSDictionary *)data;
 
 @end

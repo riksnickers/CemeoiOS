@@ -134,7 +134,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Upcoming" id="we4-YK-TF4">
-                        <barButtonItem key="leftBarButtonItem" systemItem="camera" id="p5O-af-TiF"/>
+                        <barButtonItem key="leftBarButtonItem" title="Dictate" id="p5O-af-TiF"/>
                         <barButtonItem key="rightBarButtonItem" title="New" id="RpE-Gh-IQn">
                             <connections>
                                 <segue destination="eag-0p-DEF" kind="modal" id="FBb-W6-RBq"/>
@@ -384,7 +384,7 @@
                                     <outlet property="delegate" destination="zvs-IG-8XN" id="ivS-bZ-zlH"/>
                                 </connections>
                             </pickerView>
-                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="scp-Ym-fbG">
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="5" translatesAutoresizingMaskIntoConstraints="NO" id="scp-Ym-fbG">
                                 <rect key="frame" x="0.0" y="364" width="320" height="162"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <date key="date" timeIntervalSinceReferenceDate="409069321.609981">
@@ -451,13 +451,13 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="To be held" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qf3-md-Y4Y">
-                                <rect key="frame" x="20" y="376" width="80" height="21"/>
+                                <rect key="frame" x="20" y="376" width="280" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FiU-Q3-0Xy">
-                                <rect key="frame" x="20" y="405" width="280" height="21"/>
+                                <rect key="frame" x="20" y="414" width="280" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <nil key="highlightedColor"/>
@@ -498,7 +498,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 </connections>
                             </tableView>
                             <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1K5-7q-mQQ">
-                                <rect key="frame" x="20" y="434" width="280" height="21"/>
+                                <rect key="frame" x="20" y="443" width="280" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -515,6 +515,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="lblBeHeld" destination="qf3-md-Y4Y" id="iDt-Ph-RYP"/>
                         <outlet property="lblDate" destination="FiU-Q3-0Xy" id="nmF-pg-23u"/>
                         <outlet property="lblTime" destination="1K5-7q-mQQ" id="TzE-Ay-Z9r"/>
                         <segue destination="9g0-52-etS" kind="unwind" identifier="toUpcoming" unwindAction="unwindToUpcoming:" id="qvZ-oC-xa2"/>

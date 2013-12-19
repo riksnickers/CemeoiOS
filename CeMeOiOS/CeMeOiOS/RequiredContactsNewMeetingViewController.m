@@ -106,10 +106,10 @@
     
     if (contactSwitch.on) {
         [Contacts replaceObjectAtIndex:rowIndex withObject:[[Contacts objectAtIndex:rowIndex] mutableCopy]];
-        [[Contacts objectAtIndex:rowIndex] setObject:@YES forKey:@"required"];
+        [[Contacts objectAtIndex:rowIndex] setObject:@YES forKey:@"Important"];
     }else{
         [Contacts replaceObjectAtIndex:rowIndex withObject:[[Contacts objectAtIndex:rowIndex] mutableCopy]];
-        [[Contacts objectAtIndex:rowIndex] removeObjectForKey:@"required"];
+        [[Contacts objectAtIndex:rowIndex] setObject:@NO forKey:@"Important"];
     }
     
 }

@@ -36,6 +36,7 @@
 		59902AD61861EED40002F960 /* SummaryNewMeetingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59902AD51861EED40002F960 /* SummaryNewMeetingViewController.m */; };
 		59902AD91861F0B30002F960 /* SummaryContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59902AD81861F0B30002F960 /* SummaryContactCell.m */; };
 		59902ADB18622F120002F960 /* req.png in Resources */ = {isa = PBXBuildFile; fileRef = 59902ADA18622F120002F960 /* req.png */; };
+		59E5E6E61862F10C00084856 /* IPHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E5E6E51862F10C00084856 /* IPHolder.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +93,8 @@
 		59902AD71861F0B30002F960 /* SummaryContactCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SummaryContactCell.h; sourceTree = "<group>"; };
 		59902AD81861F0B30002F960 /* SummaryContactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SummaryContactCell.m; sourceTree = "<group>"; };
 		59902ADA18622F120002F960 /* req.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = req.png; sourceTree = "<group>"; };
+		59E5E6E41862F10C00084856 /* IPHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPHolder.h; sourceTree = "<group>"; };
+		59E5E6E51862F10C00084856 /* IPHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPHolder.m; sourceTree = "<group>"; };
 		641FB731DC7744F3915B6B6F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF20E702D4774600A19FAE4E /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -124,8 +127,7 @@
 		594C257B185C9D54009C5390 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				594C257C185C9DAB009C5390 /* TokenHolder.h */,
-				594C257D185C9DAB009C5390 /* TokenHolder.m */,
+				59E5E6E31862F0EF00084856 /* Holders */,
 				59902AC11861B60C0002F960 /* Contact.h */,
 				59902AC21861B60C0002F960 /* Contact.m */,
 			);
@@ -135,12 +137,7 @@
 		594C258E185CE571009C5390 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				594C258F185CE598009C5390 /* meetingCell.h */,
-				594C2590185CE598009C5390 /* meetingCell.m */,
-				592F6045185EFE1E00BBFE38 /* ContactCell.h */,
-				592F6046185EFE1E00BBFE38 /* ContactCell.m */,
-				59902AD71861F0B30002F960 /* SummaryContactCell.h */,
-				59902AD81861F0B30002F960 /* SummaryContactCell.m */,
+				59E5E6E21862F01500084856 /* NewMeeting */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -233,18 +230,11 @@
 		595F00D11858B8ED00E408BC /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				59E5E6E11862F00400084856 /* NewMeeting */,
 				595F00D21858B90C00E408BC /* LoginViewController.h */,
 				595F00D31858B90C00E408BC /* LoginViewController.m */,
 				594C257F185CBB9B009C5390 /* UpcomingViewController.h */,
 				594C2580185CBB9B009C5390 /* UpcomingViewController.m */,
-				592F6042185EFA4000BBFE38 /* AddContactsNewMeetingViewController.h */,
-				592F6043185EFA4000BBFE38 /* AddContactsNewMeetingViewController.m */,
-				59902ACA1861C9D60002F960 /* RequiredContactsNewMeetingViewController.h */,
-				59902ACB1861C9D60002F960 /* RequiredContactsNewMeetingViewController.m */,
-				59902ACD1861DA5A0002F960 /* SelectTimeViewController.h */,
-				59902ACE1861DA5A0002F960 /* SelectTimeViewController.m */,
-				59902AD41861EED40002F960 /* SummaryNewMeetingViewController.h */,
-				59902AD51861EED40002F960 /* SummaryNewMeetingViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -258,6 +248,45 @@
 				595F00DA1859098000E408BC /* loginBackground.png */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		59E5E6E11862F00400084856 /* NewMeeting */ = {
+			isa = PBXGroup;
+			children = (
+				592F6042185EFA4000BBFE38 /* AddContactsNewMeetingViewController.h */,
+				592F6043185EFA4000BBFE38 /* AddContactsNewMeetingViewController.m */,
+				59902ACA1861C9D60002F960 /* RequiredContactsNewMeetingViewController.h */,
+				59902ACB1861C9D60002F960 /* RequiredContactsNewMeetingViewController.m */,
+				59902ACD1861DA5A0002F960 /* SelectTimeViewController.h */,
+				59902ACE1861DA5A0002F960 /* SelectTimeViewController.m */,
+				59902AD41861EED40002F960 /* SummaryNewMeetingViewController.h */,
+				59902AD51861EED40002F960 /* SummaryNewMeetingViewController.m */,
+			);
+			name = NewMeeting;
+			sourceTree = "<group>";
+		};
+		59E5E6E21862F01500084856 /* NewMeeting */ = {
+			isa = PBXGroup;
+			children = (
+				594C258F185CE598009C5390 /* meetingCell.h */,
+				594C2590185CE598009C5390 /* meetingCell.m */,
+				592F6045185EFE1E00BBFE38 /* ContactCell.h */,
+				592F6046185EFE1E00BBFE38 /* ContactCell.m */,
+				59902AD71861F0B30002F960 /* SummaryContactCell.h */,
+				59902AD81861F0B30002F960 /* SummaryContactCell.m */,
+			);
+			name = NewMeeting;
+			sourceTree = "<group>";
+		};
+		59E5E6E31862F0EF00084856 /* Holders */ = {
+			isa = PBXGroup;
+			children = (
+				594C257C185C9DAB009C5390 /* TokenHolder.h */,
+				594C257D185C9DAB009C5390 /* TokenHolder.m */,
+				59E5E6E41862F10C00084856 /* IPHolder.h */,
+				59E5E6E51862F10C00084856 /* IPHolder.m */,
+			);
+			name = Holders;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -309,6 +338,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = Cegeka;
 				TargetAttributes = {
+					595F009B1858B70D00E408BC = {
+						DevelopmentTeam = 853YP5392C;
+					};
 					595F00B61858B70D00E408BC = {
 						TestTargetID = 595F009B1858B70D00E408BC;
 					};
@@ -405,6 +437,7 @@
 				594C257E185C9DAB009C5390 /* TokenHolder.m in Sources */,
 				592F6044185EFA4000BBFE38 /* AddContactsNewMeetingViewController.m in Sources */,
 				59902ACC1861C9D60002F960 /* RequiredContactsNewMeetingViewController.m in Sources */,
+				59E5E6E61862F10C00084856 /* IPHolder.m in Sources */,
 				59902AD91861F0B30002F960 /* SummaryContactCell.m in Sources */,
 				59902AC31861B60C0002F960 /* Contact.m in Sources */,
 				594C2581185CBB9B009C5390 /* UpcomingViewController.m in Sources */,
@@ -529,10 +562,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CeMeOiOS/CeMeOiOS-Prefix.pch";
 				INFOPLIST_FILE = "CeMeOiOS/CeMeOiOS-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = CeMeO;
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -543,10 +581,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CeMeOiOS/CeMeOiOS-Prefix.pch";
 				INFOPLIST_FILE = "CeMeOiOS/CeMeOiOS-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = CeMeO;
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

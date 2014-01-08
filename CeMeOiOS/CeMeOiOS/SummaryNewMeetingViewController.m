@@ -28,6 +28,8 @@
 @synthesize beforeDate;
 @synthesize lblTime;
 @synthesize lblBeHeld;
+@synthesize Duration;
+@synthesize lblDuration;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -69,8 +71,11 @@
                                                               timeStyle:NSDateFormatterShortStyle];
         [lblTime setHidden:NO];
         [lblTime setText:timeString];
+        
     }
     
+    //Displays the meeting duration in the textfield
+    [lblDuration setText:[self stringFromTimeInterval:Duration]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -118,14 +123,14 @@
 - (IBAction)send:(id)sender {
     NSMutableDictionary *toSend = [[NSMutableDictionary alloc] init];
     [toSend setObject:[[TokenHolder Token] objectForKey:@"userName"] forKey:@"Creator"];
-    [toSend setObject:[NSNumber numberWithInt:DateIndex] forKey:@"Dateindex"];
-    
     
     for (NSMutableDictionary *dict in Contacts) {
         [dict removeObjectsForKeys:@[@"FirstName", @"LastName"]];
     }
     
     [toSend setObject:Contacts forKey:@"InvitedParticipants"];
+    
+    [toSend setObject:[NSNumber numberWithInt:DateIndex] forKey:@"Dateindex"];
 
     
     //if the "Before a date" option is selected then the selected date will be send along
@@ -137,6 +142,8 @@
     }else{
         [toSend setObject:[NSNumber numberWithInt:0] forKey:@"BeforeDate"];
     }
+    
+    [toSend setObject:[NSNumber numberWithDouble:Duration] forKey:@"Duration"];
     
     [self SendData:toSend];
     
@@ -187,7 +194,7 @@
     
     [manager POST:[IPHolder IPWithPath:@"/api/Meeting/Schedule"] parameters:data success:^(AFHTTPRequestOperation *operation, id responseObject) {
         if([operation.response statusCode] == 200){
-            //NSLog(@"Return data: %@", responseObject);
+            NSLog(@"Return data: %@", responseObject);
             [waitAlert dismissWithClickedButtonIndex:0 animated:YES];
             UIAlertView *alert = [[UIAlertView alloc]initWithTitle: @"Send"
                                                            message: @"Your meeting has been send"
@@ -221,6 +228,13 @@
         [alert show];
         
     }];
+}
+
+- (NSString *)stringFromTimeInterval:(NSTimeInterval)interval {
+    NSInteger ti = (NSInteger)interval;
+    NSInteger minutes = (ti / 60) % 60;
+    NSInteger hours = (ti / 3600);
+    return [NSString stringWithFormat:@"%i Hours %i Minutes", hours, minutes];
 }
 
 

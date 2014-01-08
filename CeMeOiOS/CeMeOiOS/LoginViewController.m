@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "AFHTTPRequestOperationManager.h"
 #import "TokenHolder.h"
+#import "UserHolder.h"
 #import "IPHolder.h"
 #import "UpcomingViewController.h"
 
@@ -16,7 +17,9 @@
 
 @end
 
-@implementation LoginViewController
+@implementation LoginViewController{
+    UIAlertView *waitAlert;
+}
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -52,7 +55,7 @@
     NSDictionary *parameters = @{@"grant_type": @"password", @"username":username, @"password":password};
   
     //wait dialog
-    UIAlertView *waitAlert = [[UIAlertView alloc] initWithTitle:@"Login in..."
+    waitAlert = [[UIAlertView alloc] initWithTitle:@"Login in..."
                                                        message:nil
                                                       delegate:nil
                                              cancelButtonTitle:nil
@@ -67,9 +70,7 @@
         if([operation.response statusCode] == 200 && [[responseObject valueForKey:@"token_type"]  isEqual: @"bearer"]){
             //save Token in TokenHolder
             [TokenHolder setToken:responseObject];
-            [waitAlert dismissWithClickedButtonIndex:0 animated:YES];
-            [self performSegueWithIdentifier: @"toUpcoming" sender: self];
-            
+            [self getUserData];
         }else{
             UIAlertView *alert = [[UIAlertView alloc]initWithTitle: @"Something went wrong"
                                                            message: @"Please try again later"
@@ -105,4 +106,29 @@
     
     
 }
+
+-(void)getUserData{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    [manager setRequestSerializer:[AFHTTPRequestSerializer serializer]];
+    [manager.requestSerializer setValue:[NSString stringWithFormat:@"bearer %@", [[TokenHolder Token] valueForKey:@"access_token"]] forHTTPHeaderField:@"Authorization"];
+    
+    [manager GET:[IPHolder IPWithPath:@"/api/Account/Profile"] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        //save Userdata un userholder
+        [UserHolder SetUserData:responseObject];
+        [waitAlert dismissWithClickedButtonIndex:0 animated:YES];
+        [self performSegueWithIdentifier: @"toUpcoming" sender: self];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle: @"Something went wrong"
+                                                       message: @"Could not get user data"
+                                                      delegate: self
+                                             cancelButtonTitle:@"Ok"
+                                             otherButtonTitles:nil];
+        
+        [waitAlert dismissWithClickedButtonIndex:0 animated:YES];
+        [alert show];
+    }];
+    
+}
+
 @end

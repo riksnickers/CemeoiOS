@@ -7,6 +7,7 @@
 //
 
 #import "SelectDurationNewMeetingViewController.h"
+#import "SummaryNewMeetingViewController.h"
 
 @interface SelectDurationNewMeetingViewController ()
 
@@ -33,6 +34,22 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+/*!
+ Sends the Contacts, The selected date option and the chosen duration to the next viewcontroller.
+ Sends the selected date if the "Before a date" option is the active option
+ */
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([segue.identifier isEqualToString:@"toSummary"]) {
+        SummaryNewMeetingViewController *dest = segue.destinationViewController;
+        dest.Contacts = self.Contacts;
+        dest.DateIndex = self.DateIndex;
+        dest.Duration = [self.DurationPicker countDownDuration];
+        if (self.DateIndex == 5) {
+            dest.beforeDate = self.beforeDate;
+        }
+    }
 }
 
 @end

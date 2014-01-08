@@ -13,9 +13,13 @@
 @property NSArray *Contacts;
 @property int DateIndex;
 @property NSDate *beforeDate;
+@property NSTimeInterval Duration;
+
 @property (weak, nonatomic) IBOutlet UILabel *lblDate;
 @property (weak, nonatomic) IBOutlet UILabel *lblTime;
 @property (weak, nonatomic) IBOutlet UILabel *lblBeHeld;
+@property (weak, nonatomic) IBOutlet UILabel *lblDuration;
+
 - (IBAction)send:(id)sender;
 - (void)SendData:(NSDictionary *)data;
 

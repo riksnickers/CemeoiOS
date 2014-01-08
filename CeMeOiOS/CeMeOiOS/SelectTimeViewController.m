@@ -7,7 +7,7 @@
 //
 
 #import "SelectTimeViewController.h"
-#import "SummaryNewMeetingViewController.h"
+#import "SelectDurationNewMeetingViewController.h"
 
 @interface SelectTimeViewController ()
 
@@ -85,8 +85,8 @@
  Sends the selected date if the "Before a date" option is the active option
  */
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    if ([segue.identifier isEqualToString:@"toSummary"]) {
-        SummaryNewMeetingViewController *dest = segue.destinationViewController;
+    if ([segue.identifier isEqualToString:@"toDuration"]) {
+        SelectDurationNewMeetingViewController *dest = segue.destinationViewController;
         dest.Contacts = self.Contacts;
         dest.DateIndex = [self.timePicker selectedRowInComponent:0];
         if ([self.timePicker selectedRowInComponent:0] == 5) {

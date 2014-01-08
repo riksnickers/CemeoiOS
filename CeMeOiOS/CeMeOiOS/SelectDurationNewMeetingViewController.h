@@ -10,4 +10,11 @@
 
 @interface SelectDurationNewMeetingViewController : UIViewController
 
+@property NSArray *Contacts;
+@property int DateIndex;
+@property NSDate *beforeDate;
+@property (weak, nonatomic) IBOutlet UIDatePicker *DurationPicker;
+
+
+
 @end

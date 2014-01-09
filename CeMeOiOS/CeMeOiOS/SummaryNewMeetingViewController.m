@@ -179,6 +179,8 @@
 -(void)SendData:(NSDictionary *)data{
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setValue:[NSString stringWithFormat:@"bearer %@", [[TokenHolder Token] valueForKey:@"access_token"]] forHTTPHeaderField:@"Authorization"];
+
     
     UIAlertView *waitAlert = [[UIAlertView alloc] initWithTitle:@"Sending data..."
                                                         message:nil

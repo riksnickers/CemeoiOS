@@ -45,6 +45,7 @@
 		59902ADB18622F120002F960 /* req.png in Resources */ = {isa = PBXBuildFile; fileRef = 59902ADA18622F120002F960 /* req.png */; };
 		59A6851D187AA686003CC111 /* SelectDurationNewMeetingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A6851C187AA686003CC111 /* SelectDurationNewMeetingViewController.m */; };
 		59E5E6E61862F10C00084856 /* IPHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E5E6E51862F10C00084856 /* IPHolder.m */; };
+		59E67305187ED87100ECF188 /* SelectLocationProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E67304187ED87100ECF188 /* SelectLocationProfileTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +118,8 @@
 		59A6851C187AA686003CC111 /* SelectDurationNewMeetingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectDurationNewMeetingViewController.m; sourceTree = "<group>"; };
 		59E5E6E41862F10C00084856 /* IPHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPHolder.h; sourceTree = "<group>"; };
 		59E5E6E51862F10C00084856 /* IPHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPHolder.m; sourceTree = "<group>"; };
+		59E67303187ED87100ECF188 /* SelectLocationProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectLocationProfileTableViewController.h; sourceTree = "<group>"; };
+		59E67304187ED87100ECF188 /* SelectLocationProfileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectLocationProfileTableViewController.m; sourceTree = "<group>"; };
 		641FB731DC7744F3915B6B6F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF20E702D4774600A19FAE4E /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -151,6 +154,8 @@
 			children = (
 				594796A0187D792A008E4E7B /* ProfileOverViewTableViewController.h */,
 				594796A1187D792A008E4E7B /* ProfileOverViewTableViewController.m */,
+				59E67303187ED87100ECF188 /* SelectLocationProfileTableViewController.h */,
+				59E67304187ED87100ECF188 /* SelectLocationProfileTableViewController.m */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -507,6 +512,7 @@
 				594C2591185CE598009C5390 /* meetingCell.m in Sources */,
 				594796A2187D792A008E4E7B /* ProfileOverViewTableViewController.m in Sources */,
 				592F6047185EFE1E00BBFE38 /* ContactCell.m in Sources */,
+				59E67305187ED87100ECF188 /* SelectLocationProfileTableViewController.m in Sources */,
 				594C257E185C9DAB009C5390 /* TokenHolder.m in Sources */,
 				594796A9187D7DA9008E4E7B /* InfoCell.m in Sources */,
 				592F6044185EFA4000BBFE38 /* AddContactsNewMeetingViewController.m in Sources */,

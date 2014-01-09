@@ -1,0 +1,144 @@
+//
+//  SelectLocationProfileTableViewController.m
+//  CeMeOiOS
+//
+//  Created by Jeffrey Smets on 09/01/14.
+//  Copyright (c) 2014 Cegeka. All rights reserved.
+//
+
+#import "SelectLocationProfileTableViewController.h"
+#import "AFHTTPRequestOperationManager.h"
+#import "TokenHolder.h"
+#import "IPHolder.h"
+#import "LocationCell.h"
+
+@interface SelectLocationProfileTableViewController ()
+
+@end
+
+@implementation SelectLocationProfileTableViewController{
+    NSArray *Locations;
+    NSArray *Results;
+}
+
+- (id)initWithStyle:(UITableViewStyle)style
+{
+    self = [super initWithStyle:style];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    [self loadData];
+    
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    // Return the number of sections.
+    return 1;
+}
+
+- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
+{
+    Results = [Locations filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(Name contains[c] %@) OR (Street contains[c] %@) OR (City contains[c] %@) OR (Country contains[c] %@)", searchText, searchText, searchText, searchText]];
+}
+
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller
+shouldReloadTableForSearchString:(NSString *)searchString
+{
+    [self filterContentForSearchText:searchString
+                               scope:[[self.searchDisplayController.searchBar scopeButtonTitles]
+                                      objectAtIndex:[self.searchDisplayController.searchBar
+                                                     selectedScopeButtonIndex]]];
+    
+    return YES;
+}
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    // Return the number of rows in the section.
+    if(tableView == self.searchDisplayController.searchResultsTableView){
+        return [Results count];
+    }else{
+        return [Locations count];
+    }
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellId = @"LocationCell";
+    
+    LocationCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellId];
+    if(cell == nil){
+        cell = [[LocationCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellId];
+    }
+    
+    if(tableView == self.searchDisplayController.searchResultsTableView){
+        [cell.lblLocationName setText:[[Results objectAtIndex:indexPath.row]objectForKey:@"Name"]];
+        [cell.lblAddress setText:[NSString stringWithFormat:@"%@ %@", [[Results objectAtIndex:indexPath.row]objectForKey:@"Street"], [[Locations objectAtIndex:indexPath.row]objectForKey:@"Number"]]];
+        [cell.lblCity setText:[NSString stringWithFormat:@"%@ %@", [[Results objectAtIndex:indexPath.row]objectForKey:@"Zip"], [[Locations objectAtIndex:indexPath.row]objectForKey:@"City"]]];
+        [cell.lblCountry setText:[[Results objectAtIndex:indexPath.row]objectForKey:@"Country"]];
+        cell.tag = (NSInteger)[[Results objectAtIndex:indexPath.row]objectForKey:@"LocationID"];
+
+    }else{
+        [cell.lblLocationName setText:[[Locations objectAtIndex:indexPath.row]objectForKey:@"Name"]];
+        [cell.lblAddress setText:[NSString stringWithFormat:@"%@ %@", [[Locations objectAtIndex:indexPath.row]objectForKey:@"Street"], [[Locations objectAtIndex:indexPath.row]objectForKey:@"Number"]]];
+        [cell.lblCity setText:[NSString stringWithFormat:@"%@ %@", [[Locations objectAtIndex:indexPath.row]objectForKey:@"Zip"], [[Locations objectAtIndex:indexPath.row]objectForKey:@"City"]]];
+        [cell.lblCountry setText:[[Locations objectAtIndex:indexPath.row]objectForKey:@"Country"]];
+        cell.tag = [[Locations objectAtIndex:indexPath.row]objectForKey:@"LocationID"];
+        NSLog(@"%d", cell.tag);
+    }
+
+    
+    return cell;
+}
+
+-(void)loadData{
+    UIAlertView *waitAlert = [[UIAlertView alloc] initWithTitle:@"Getting locations..."
+                                                        message:nil
+                                                       delegate:nil
+                                              cancelButtonTitle:nil
+                                              otherButtonTitles:nil];
+    UIActivityIndicatorView *loading = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(125, 50, 30, 30)];
+    loading.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
+    [waitAlert addSubview:loading];
+    [loading startAnimating];
+    [waitAlert show];
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    [manager setRequestSerializer:[AFHTTPRequestSerializer serializer]];
+    [manager.requestSerializer setValue:[NSString stringWithFormat:@"bearer %@", [[TokenHolder Token] valueForKey:@"access_token"]] forHTTPHeaderField:@"Authorization"];
+    
+    
+    [manager GET:[IPHolder IPWithPath:@"/api/Location"] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        Locations = [responseObject mutableCopy];
+        [self.tableView reloadData];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %d", operation.response.statusCode);
+    }];
+    
+    [waitAlert dismissWithClickedButtonIndex:0 animated:YES];
+    [self.tableView reloadData];
+
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 85;
+}
+
+@end

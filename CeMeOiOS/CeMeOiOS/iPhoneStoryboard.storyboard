@@ -766,22 +766,62 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="2127" y="735"/>
         </scene>
-        <!--Table View Controller - Select location-->
+        <!--Select Location Profile Table View Controller - Select location-->
         <scene sceneID="3lT-lu-wY8">
             <objects>
-                <tableViewController id="xLu-Gt-5xU" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="KNd-F8-jtn">
+                <tableViewController id="xLu-Gt-5xU" customClass="SelectLocationProfileTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="85" sectionHeaderHeight="22" sectionFooterHeight="22" id="KNd-F8-jtn">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="dp2-U5-Sad">
+                            <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="xLu-Gt-5xU" id="zfw-b1-0mt"/>
+                            </connections>
+                        </searchBar>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="26C-gj-Al8">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LocationCell" rowHeight="85" id="jRI-10-7Cl" customClass="LocationCell">
+                                <rect key="frame" x="0.0" y="130" width="320" height="85"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="26C-gj-Al8" id="Dj0-te-rHP">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jRI-10-7Cl" id="Drg-9h-One">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="84"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="lblLocationName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZtA-fS-Wjw">
+                                            <rect key="frame" x="20" y="0.0" width="280" height="27"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="lblAddress" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sc9-dN-J6K">
+                                            <rect key="frame" x="20" y="23" width="267" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="lblCity" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wQy-Bj-yuA">
+                                            <rect key="frame" x="20" y="41" width="267" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="lblCountry" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uPN-r8-lNh">
+                                            <rect key="frame" x="20" y="59" width="267" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="lblAddress" destination="Sc9-dN-J6K" id="Sgm-OJ-j4w"/>
+                                    <outlet property="lblCity" destination="wQy-Bj-yuA" id="Eee-zV-6qM"/>
+                                    <outlet property="lblCountry" destination="uPN-r8-lNh" id="rmE-dC-Hw9"/>
+                                    <outlet property="lblLocationName" destination="ZtA-fS-Wjw" id="64a-NO-3uz"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -790,10 +830,23 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Select location" id="aCO-Oc-0bO"/>
+                    <connections>
+                        <outlet property="searchBar" destination="dp2-U5-Sad" id="vtS-yA-CRJ"/>
+                        <outlet property="searchDisplayController" destination="XHX-Hn-Abe" id="n7T-be-UdZ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O6N-jX-wOM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="XHX-Hn-Abe">
+                    <connections>
+                        <outlet property="delegate" destination="xLu-Gt-5xU" id="n7N-La-XlS"/>
+                        <outlet property="searchBar" destination="dp2-U5-Sad" id="80x-k8-MMn"/>
+                        <outlet property="searchContentsController" destination="xLu-Gt-5xU" id="UcV-zm-I4L"/>
+                        <outlet property="searchResultsDataSource" destination="xLu-Gt-5xU" id="pPU-Hy-L4o"/>
+                        <outlet property="searchResultsDelegate" destination="xLu-Gt-5xU" id="Szz-Fz-FTd"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="2555" y="736"/>
+            <point key="canvasLocation" x="2597" y="735"/>
         </scene>
         <!--Navigation Controller - Profile-->
         <scene sceneID="fWG-xb-9cy">

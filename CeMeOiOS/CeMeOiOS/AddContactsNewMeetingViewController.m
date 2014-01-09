@@ -11,6 +11,7 @@
 #import "AFHTTPRequestOperationManager.h"
 #import "RequiredContactsNewMeetingViewController.h"
 #import "IPHolder.h"
+#import "TokenHolder.h"
 
 @interface AddContactsNewMeetingViewController ()
 
@@ -183,6 +184,11 @@ shouldReloadTableForSearchString:(NSString *)searchString
     [waitAlert show];
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    [manager setRequestSerializer:[AFHTTPRequestSerializer serializer]];
+    [manager.requestSerializer setValue:[NSString stringWithFormat:@"bearer %@", [[TokenHolder Token] valueForKey:@"access_token"]] forHTTPHeaderField:@"Authorization"];
+
+    
     [manager GET:[IPHolder IPWithPath:@"/api/Meeting/Contacts"] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         Contacts = [responseObject mutableCopy];
         [self.tableView reloadData];

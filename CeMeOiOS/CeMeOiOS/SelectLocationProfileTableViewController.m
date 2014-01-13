@@ -19,6 +19,7 @@
 @implementation SelectLocationProfileTableViewController{
     NSArray *Locations;
     NSArray *Results;
+    NSDictionary *selected;
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -92,15 +93,11 @@ shouldReloadTableForSearchString:(NSString *)searchString
         [cell.lblAddress setText:[NSString stringWithFormat:@"%@ %@", [[Results objectAtIndex:indexPath.row]objectForKey:@"Street"], [[Locations objectAtIndex:indexPath.row]objectForKey:@"Number"]]];
         [cell.lblCity setText:[NSString stringWithFormat:@"%@ %@", [[Results objectAtIndex:indexPath.row]objectForKey:@"Zip"], [[Locations objectAtIndex:indexPath.row]objectForKey:@"City"]]];
         [cell.lblCountry setText:[[Results objectAtIndex:indexPath.row]objectForKey:@"Country"]];
-        cell.tag = (NSInteger)[[Results objectAtIndex:indexPath.row]objectForKey:@"LocationID"];
-
     }else{
         [cell.lblLocationName setText:[[Locations objectAtIndex:indexPath.row]objectForKey:@"Name"]];
         [cell.lblAddress setText:[NSString stringWithFormat:@"%@ %@", [[Locations objectAtIndex:indexPath.row]objectForKey:@"Street"], [[Locations objectAtIndex:indexPath.row]objectForKey:@"Number"]]];
         [cell.lblCity setText:[NSString stringWithFormat:@"%@ %@", [[Locations objectAtIndex:indexPath.row]objectForKey:@"Zip"], [[Locations objectAtIndex:indexPath.row]objectForKey:@"City"]]];
         [cell.lblCountry setText:[[Locations objectAtIndex:indexPath.row]objectForKey:@"Country"]];
-        cell.tag = [[Locations objectAtIndex:indexPath.row]objectForKey:@"LocationID"];
-        NSLog(@"%d", cell.tag);
     }
 
     
@@ -129,7 +126,7 @@ shouldReloadTableForSearchString:(NSString *)searchString
         Locations = [responseObject mutableCopy];
         [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error: %d", operation.response.statusCode);
+        NSLog(@"Error: %ld", (long)operation.response.statusCode);
     }];
     
     [waitAlert dismissWithClickedButtonIndex:0 animated:YES];
@@ -140,5 +137,89 @@ shouldReloadTableForSearchString:(NSString *)searchString
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 85;
 }
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if(tableView == self.searchDisplayController.searchResultsTableView){
+        selected = [Results objectAtIndex:indexPath.row];
+    }else{
+        selected = [Locations objectAtIndex:indexPath.row];
+    }
+    
+    UIAlertView *alert = [[UIAlertView alloc]
+                          initWithTitle:[NSString stringWithFormat:@"Do you want to set %@ as your prefered location?", [selected valueForKey:@"Name"]]
+                          message:nil
+                          delegate:self
+                          cancelButtonTitle:@"No"
+                          otherButtonTitles:@"Yes", nil];
+    [alert show];
+    
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if(buttonIndex == 1){
+        [self SendData];
+    }
+}
+
+/*!
+ Sends chozen locationIDto the server for processing
+ *\param data The new meeting (nsdictionary) that will be converted to json and send
+ */
+-(void)SendData{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setValue:[NSString stringWithFormat:@"bearer %@", [[TokenHolder Token] valueForKey:@"access_token"]] forHTTPHeaderField:@"Authorization"];
+    
+    
+    NSDictionary *toSend = [[NSDictionary alloc] initWithObjects:@[[selected valueForKey:@"LocationID"]] forKeys:@[@"LocationID"]];
+    
+    UIAlertView *waitAlert = [[UIAlertView alloc] initWithTitle:@"Sending data..."
+                                                        message:nil
+                                                       delegate:nil
+                                              cancelButtonTitle:nil
+                                              otherButtonTitles:nil];
+    UIActivityIndicatorView *loading = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(125, 50, 30, 30)];
+    loading.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
+    [waitAlert addSubview:loading];
+    [loading startAnimating];
+    [waitAlert show];
+
+    
+    [manager POST:[IPHolder IPWithPath:@"/api/Account/SetLocation"] parameters:toSend success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if([operation.response statusCode] == 200){
+            NSLog(@"Return data: %@", responseObject);
+            [waitAlert dismissWithClickedButtonIndex:0 animated:YES];
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle: @"Send"
+                                                           message: @"Your location has been changed"
+                                                          delegate: nil
+                                                 cancelButtonTitle:@"OK"
+                                                 otherButtonTitles:nil];
+            
+            
+            [alert show];
+        }else{
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle: @"Something went wrong"
+                                                           message: @"Please try again later"
+                                                          delegate: self
+                                                 cancelButtonTitle:@"Ok"
+                                                 otherButtonTitles:nil];
+            
+            [waitAlert dismissWithClickedButtonIndex:0 animated:YES];
+            [alert show];
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error %@", error);
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle: @"Something went wrong"
+                                                       message: @"Please try again later"
+                                                      delegate: self
+                                             cancelButtonTitle:@"Ok"
+                                             otherButtonTitles:nil];
+        
+        [waitAlert dismissWithClickedButtonIndex:0 animated:YES];
+        [alert show];
+        
+    }];
+}
+
 
 @end

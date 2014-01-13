@@ -236,7 +236,7 @@
     NSInteger ti = (NSInteger)interval;
     NSInteger minutes = (ti / 60) % 60;
     NSInteger hours = (ti / 3600);
-    return [NSString stringWithFormat:@"%i Hours %i Minutes", hours, minutes];
+    return [NSString stringWithFormat:@"%li Hours %li Minutes", (long)hours, (long)minutes];
 }
 
 

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SelectLocationProfileTableViewController : UITableViewController <UISearchDisplayDelegate>
+@interface SelectLocationProfileTableViewController : UITableViewController <UISearchDisplayDelegate, UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @end

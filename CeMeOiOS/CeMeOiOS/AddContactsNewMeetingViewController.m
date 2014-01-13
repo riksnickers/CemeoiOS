@@ -113,7 +113,7 @@
  */
 - (IBAction)ContactSwitched:(id)sender {
     UISwitch *contactSwitch = (UISwitch *)sender;
-    int rowIndex = contactSwitch.tag;
+    NSInteger rowIndex = contactSwitch.tag;
     ContactCell *cell = (ContactCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:rowIndex inSection:0]];
     cell.contactSwitch.on = contactSwitch.on;
     
@@ -189,7 +189,7 @@ shouldReloadTableForSearchString:(NSString *)searchString
     [manager.requestSerializer setValue:[NSString stringWithFormat:@"bearer %@", [[TokenHolder Token] valueForKey:@"access_token"]] forHTTPHeaderField:@"Authorization"];
 
     
-    [manager GET:[IPHolder IPWithPath:@"/api/Meeting/Contacts"] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager GET:[IPHolder IPWithPath:@"/api/Contact/Compact"] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         Contacts = [responseObject mutableCopy];
         [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

@@ -830,6 +830,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Select location" id="aCO-Oc-0bO"/>
+                    <keyCommands/>
                     <connections>
                         <outlet property="searchBar" destination="dp2-U5-Sad" id="vtS-yA-CRJ"/>
                         <outlet property="searchDisplayController" destination="XHX-Hn-Abe" id="n7T-be-UdZ"/>

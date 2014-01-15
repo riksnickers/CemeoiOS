@@ -11,6 +11,7 @@
 #import "TokenHolder.h"
 #import "IPHolder.h"
 #import "LocationCell.h"
+#import "UserHolder.h"
 
 @interface SelectLocationProfileTableViewController ()
 
@@ -52,6 +53,10 @@
     return 1;
 }
 
+/*!
+ filters the Location array using the searchText string and saves the results in the Results array
+ *\param searchText the text to be searched in the Locations array (via Name, Street, City and Country)
+ */
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
 {
     Results = [Locations filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(Name contains[c] %@) OR (Street contains[c] %@) OR (City contains[c] %@) OR (Country contains[c] %@)", searchText, searchText, searchText, searchText]];
@@ -79,6 +84,10 @@ shouldReloadTableForSearchString:(NSString *)searchString
     }
 }
 
+/*! Uses a custom cell to display table data,
+ checks for the table source (main table of search table) and populates it with the data
+ fetched from the external service
+ */
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellId = @"LocationCell";
@@ -104,6 +113,9 @@ shouldReloadTableForSearchString:(NSString *)searchString
     return cell;
 }
 
+/*!
+ Gets all locations from the server
+ */
 -(void)loadData{
     UIAlertView *waitAlert = [[UIAlertView alloc] initWithTitle:@"Getting locations..."
                                                         message:nil
@@ -162,8 +174,9 @@ shouldReloadTableForSearchString:(NSString *)searchString
 }
 
 /*!
- Sends chozen locationIDto the server for processing
- *\param data The new meeting (nsdictionary) that will be converted to json and send
+ Sends chozen locationID to the server for processing.
+ Updates the location in the UserHolder.
+ *\param data The new location (nsdictionary) that will be converted to json and send
  */
 -(void)SendData{
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -187,7 +200,7 @@ shouldReloadTableForSearchString:(NSString *)searchString
     
     [manager POST:[IPHolder IPWithPath:@"/api/Account/SetLocation"] parameters:toSend success:^(AFHTTPRequestOperation *operation, id responseObject) {
         if([operation.response statusCode] == 200){
-            NSLog(@"Return data: %@", responseObject);
+            [[UserHolder UserData] setObject:selected forKey:@"PreferedLocation"];
             [waitAlert dismissWithClickedButtonIndex:0 animated:YES];
             UIAlertView *alert = [[UIAlertView alloc]initWithTitle: @"Send"
                                                            message: @"Your location has been changed"
@@ -197,6 +210,7 @@ shouldReloadTableForSearchString:(NSString *)searchString
             
             
             [alert show];
+            [self.navigationController popViewControllerAnimated:YES];
         }else{
             UIAlertView *alert = [[UIAlertView alloc]initWithTitle: @"Something went wrong"
                                                            message: @"Please try again later"

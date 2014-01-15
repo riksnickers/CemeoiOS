@@ -40,6 +40,9 @@
      //preserve selection between presentations.
      self.clearsSelectionOnViewWillAppear = NO;
     
+    [self.refreshControl addTarget:self action:@selector(refresh)
+             forControlEvents:UIControlEventValueChanged];
+    
     //array that saves the chosen contacts
     chosenContacts = [[NSMutableArray alloc] init];
     [self loadContacts];
@@ -192,8 +195,17 @@ shouldReloadTableForSearchString:(NSString *)searchString
     [manager GET:[IPHolder IPWithPath:@"/api/Contact/Compact"] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         Contacts = [responseObject mutableCopy];
         [self.tableView reloadData];
+        [self.refreshControl endRefreshing];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle: @"Something went wrong"
+                                                       message: @"Please try again later"
+                                                      delegate: self
+                                             cancelButtonTitle:@"Ok"
+                                             otherButtonTitles:nil];
+        
+        [waitAlert dismissWithClickedButtonIndex:0 animated:YES];
+        [alert show];
+        [self.refreshControl endRefreshing];
     }];
     
     [waitAlert dismissWithClickedButtonIndex:0 animated:YES];
@@ -209,5 +221,8 @@ shouldReloadTableForSearchString:(NSString *)searchString
     }
 }
 
+-(void)refresh{
+    [self loadContacts];
+}
 
 @end

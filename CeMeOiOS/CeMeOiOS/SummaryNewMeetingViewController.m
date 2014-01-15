@@ -11,6 +11,7 @@
 #import "TokenHolder.h"
 #import "AFHTTPRequestOperationManager.h"
 #import "IPHolder.h"
+#import "UserHolder.h"
 
 @interface SummaryNewMeetingViewController ()
 
@@ -122,7 +123,7 @@
  */
 - (IBAction)send:(id)sender {
     NSMutableDictionary *toSend = [[NSMutableDictionary alloc] init];
-    [toSend setObject:[[TokenHolder Token] objectForKey:@"userName"] forKey:@"Creator"];
+    [toSend setObject:[[UserHolder UserData] objectForKey:@"UserId"] forKey:@"Creator"];
     
     for (NSMutableDictionary *dict in Contacts) {
         [dict removeObjectsForKeys:@[@"FirstName", @"LastName"]];
@@ -196,7 +197,6 @@
     
     [manager POST:[IPHolder IPWithPath:@"/api/Meeting/Schedule"] parameters:data success:^(AFHTTPRequestOperation *operation, id responseObject) {
         if([operation.response statusCode] == 200){
-            NSLog(@"Return data: %@", responseObject);
             [waitAlert dismissWithClickedButtonIndex:0 animated:YES];
             UIAlertView *alert = [[UIAlertView alloc]initWithTitle: @"Send"
                                                            message: @"Your meeting has been send"

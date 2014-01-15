@@ -13,10 +13,17 @@
 
 static id cUserData;
 
+/*!
+Sets the user data
+ *\param UserData the user data that needs to be stored
+ */
 +(void)SetUserData:(id)UserData{
     cUserData = UserData;
 }
 
+/*!
+ returns the user data
+ */
 +(id)UserData{
     return cUserData;
 }

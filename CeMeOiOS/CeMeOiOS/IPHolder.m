@@ -10,12 +10,16 @@
 
 @implementation IPHolder
 
-static NSString* IP = @"http://192.168.227.143:12429";
+static NSString* IP = @"http://192.168.227.146:12429";
 
 +(NSString *) IP{
     return IP;
 }
 
+/*!
+ Returns the server IP with the path (8.8.8.8/Api/Meeting/Schedule)
+ *\param path The path that needs to be appended to the IP
+ */
 +(NSString *) IPWithPath:(NSString *)path{
     return [[NSString alloc] initWithFormat:@"%@%@", IP, path];
 }

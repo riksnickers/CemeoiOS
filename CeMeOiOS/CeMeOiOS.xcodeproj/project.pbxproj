@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1C78D3A439C4450887FDACF6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 641FB731DC7744F3915B6B6F /* libPods.a */; };
+		592AFC941886D34E0079D6FC /* UpcomingMeetingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 592AFC931886D34E0079D6FC /* UpcomingMeetingsTableViewController.m */; };
 		592F603E185EF74400BBFE38 /* 24.png in Resources */ = {isa = PBXBuildFile; fileRef = 592F603D185EF74400BBFE38 /* 24.png */; };
 		592F6044185EFA4000BBFE38 /* AddContactsNewMeetingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 592F6043185EFA4000BBFE38 /* AddContactsNewMeetingViewController.m */; };
 		592F6047185EFE1E00BBFE38 /* ContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 592F6046185EFE1E00BBFE38 /* ContactCell.m */; };
@@ -20,7 +21,6 @@
 		594796B4187D9593008E4E7B /* user_male3-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 594796B3187D9593008E4E7B /* user_male3-32.png */; };
 		594796BC187D96A5008E4E7B /* micro-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 594796BB187D96A5008E4E7B /* micro-32.png */; };
 		594C257E185C9DAB009C5390 /* TokenHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 594C257D185C9DAB009C5390 /* TokenHolder.m */; };
-		594C2581185CBB9B009C5390 /* UpcomingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 594C2580185CBB9B009C5390 /* UpcomingViewController.m */; };
 		594C2591185CE598009C5390 /* meetingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 594C2590185CE598009C5390 /* meetingCell.m */; };
 		595F00A01858B70D00E408BC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 595F009F1858B70D00E408BC /* Foundation.framework */; };
 		595F00A21858B70D00E408BC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 595F00A11858B70D00E408BC /* CoreGraphics.framework */; };
@@ -59,6 +59,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		592AFC921886D34E0079D6FC /* UpcomingMeetingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpcomingMeetingsTableViewController.h; sourceTree = "<group>"; };
+		592AFC931886D34E0079D6FC /* UpcomingMeetingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpcomingMeetingsTableViewController.m; sourceTree = "<group>"; };
 		592F603D185EF74400BBFE38 /* 24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 24.png; sourceTree = "<group>"; };
 		592F6042185EFA4000BBFE38 /* AddContactsNewMeetingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddContactsNewMeetingViewController.h; sourceTree = "<group>"; };
 		592F6043185EFA4000BBFE38 /* AddContactsNewMeetingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddContactsNewMeetingViewController.m; sourceTree = "<group>"; };
@@ -79,8 +81,6 @@
 		594796BB187D96A5008E4E7B /* micro-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "micro-32.png"; sourceTree = "<group>"; };
 		594C257C185C9DAB009C5390 /* TokenHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenHolder.h; sourceTree = "<group>"; };
 		594C257D185C9DAB009C5390 /* TokenHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenHolder.m; sourceTree = "<group>"; };
-		594C257F185CBB9B009C5390 /* UpcomingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpcomingViewController.h; sourceTree = "<group>"; };
-		594C2580185CBB9B009C5390 /* UpcomingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpcomingViewController.m; sourceTree = "<group>"; };
 		594C258F185CE598009C5390 /* meetingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = meetingCell.h; sourceTree = "<group>"; };
 		594C2590185CE598009C5390 /* meetingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = meetingCell.m; sourceTree = "<group>"; };
 		595F009C1858B70D00E408BC /* CeMeO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CeMeO.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -149,6 +149,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		592AFC951886D53F0079D6FC /* Upcoming */ = {
+			isa = PBXGroup;
+			children = (
+				594C258F185CE598009C5390 /* meetingCell.h */,
+				594C2590185CE598009C5390 /* meetingCell.m */,
+			);
+			name = Upcoming;
+			sourceTree = "<group>";
+		};
 		5947969F187D78E3008E4E7B /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -186,6 +195,7 @@
 		594C258E185CE571009C5390 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				592AFC951886D53F0079D6FC /* Upcoming */,
 				594796A6187D7ADA008E4E7B /* Profile */,
 				59E5E6E21862F01500084856 /* NewMeeting */,
 			);
@@ -313,8 +323,8 @@
 		598E4F93187AE0080072074A /* Upcoming */ = {
 			isa = PBXGroup;
 			children = (
-				594C257F185CBB9B009C5390 /* UpcomingViewController.h */,
-				594C2580185CBB9B009C5390 /* UpcomingViewController.m */,
+				592AFC921886D34E0079D6FC /* UpcomingMeetingsTableViewController.h */,
+				592AFC931886D34E0079D6FC /* UpcomingMeetingsTableViewController.m */,
 			);
 			name = Upcoming;
 			sourceTree = "<group>";
@@ -339,8 +349,6 @@
 		59E5E6E21862F01500084856 /* NewMeeting */ = {
 			isa = PBXGroup;
 			children = (
-				594C258F185CE598009C5390 /* meetingCell.h */,
-				594C2590185CE598009C5390 /* meetingCell.m */,
 				592F6045185EFE1E00BBFE38 /* ContactCell.h */,
 				592F6046185EFE1E00BBFE38 /* ContactCell.m */,
 				59902AD71861F0B30002F960 /* SummaryContactCell.h */,
@@ -521,8 +529,8 @@
 				59A6851D187AA686003CC111 /* SelectDurationNewMeetingViewController.m in Sources */,
 				594796A5187D7AD6008E4E7B /* NameCell.m in Sources */,
 				59902AD91861F0B30002F960 /* SummaryContactCell.m in Sources */,
+				592AFC941886D34E0079D6FC /* UpcomingMeetingsTableViewController.m in Sources */,
 				59902AC31861B60C0002F960 /* Contact.m in Sources */,
-				594C2581185CBB9B009C5390 /* UpcomingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

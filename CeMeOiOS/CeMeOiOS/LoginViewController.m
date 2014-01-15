@@ -115,7 +115,7 @@
     
     [manager GET:[IPHolder IPWithPath:@"/api/Account/Profile"] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //save Userdata un userholder
-        [UserHolder SetUserData:responseObject];
+        [UserHolder SetUserData:[responseObject mutableCopy]];
         [waitAlert dismissWithClickedButtonIndex:0 animated:YES];
         [self performSegueWithIdentifier: @"toUpcoming" sender: self];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

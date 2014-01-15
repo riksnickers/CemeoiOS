@@ -11,10 +11,17 @@
 @implementation TokenHolder
 static id cToken;
 
+/*!
+ Sets the token
+ *\param token the token data that needs to be stored
+ */
 +(void)setToken:(id)token{
     cToken = token;
 }
 
+/*!
+ Returns the token
+ */
 +(id)Token{
     return cToken;
 }

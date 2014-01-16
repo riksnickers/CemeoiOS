@@ -138,7 +138,15 @@ shouldReloadTableForSearchString:(NSString *)searchString
         Locations = [responseObject mutableCopy];
         [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error: %ld", (long)operation.response.statusCode);
+        NSLog(@"Error: %@", error);
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle: @"Something went wrong"
+                                                       message: @"Please try again later"
+                                                      delegate: self
+                                             cancelButtonTitle:@"Ok"
+                                             otherButtonTitles:nil];
+        
+        [waitAlert dismissWithClickedButtonIndex:0 animated:YES];
+        [alert show];
     }];
     
     [waitAlert dismissWithClickedButtonIndex:0 animated:YES];

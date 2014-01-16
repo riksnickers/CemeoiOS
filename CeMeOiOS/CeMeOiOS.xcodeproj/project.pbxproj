@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1C78D3A439C4450887FDACF6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 641FB731DC7744F3915B6B6F /* libPods.a */; };
+		590C5B5F18882637009A1AE5 /* help_filled-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 590C5B5E18882637009A1AE5 /* help_filled-32.png */; };
 		592AFC941886D34E0079D6FC /* UpcomingMeetingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 592AFC931886D34E0079D6FC /* UpcomingMeetingsTableViewController.m */; };
 		592F603E185EF74400BBFE38 /* 24.png in Resources */ = {isa = PBXBuildFile; fileRef = 592F603D185EF74400BBFE38 /* 24.png */; };
 		592F6044185EFA4000BBFE38 /* AddContactsNewMeetingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 592F6043185EFA4000BBFE38 /* AddContactsNewMeetingViewController.m */; };
@@ -37,7 +38,6 @@
 		595F00D01858B89E00E408BC /* iPhoneStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 595F00CF1858B89E00E408BC /* iPhoneStoryboard.storyboard */; };
 		595F00D41858B90C00E408BC /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 595F00D31858B90C00E408BC /* LoginViewController.m */; };
 		595F00DB1859098000E408BC /* loginBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 595F00DA1859098000E408BC /* loginBackground.png */; };
-		59902AC31861B60C0002F960 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 59902AC21861B60C0002F960 /* Contact.m */; };
 		59902ACC1861C9D60002F960 /* RequiredContactsNewMeetingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59902ACB1861C9D60002F960 /* RequiredContactsNewMeetingViewController.m */; };
 		59902ACF1861DA5A0002F960 /* SelectTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59902ACE1861DA5A0002F960 /* SelectTimeViewController.m */; };
 		59902AD61861EED40002F960 /* SummaryNewMeetingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59902AD51861EED40002F960 /* SummaryNewMeetingViewController.m */; };
@@ -59,6 +59,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		590C5B5E18882637009A1AE5 /* help_filled-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "help_filled-32.png"; sourceTree = "<group>"; };
 		592AFC921886D34E0079D6FC /* UpcomingMeetingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpcomingMeetingsTableViewController.h; sourceTree = "<group>"; };
 		592AFC931886D34E0079D6FC /* UpcomingMeetingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpcomingMeetingsTableViewController.m; sourceTree = "<group>"; };
 		592F603D185EF74400BBFE38 /* 24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 24.png; sourceTree = "<group>"; };
@@ -103,8 +104,6 @@
 		595F00D21858B90C00E408BC /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		595F00D31858B90C00E408BC /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		595F00DA1859098000E408BC /* loginBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginBackground.png; sourceTree = "<group>"; };
-		59902AC11861B60C0002F960 /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
-		59902AC21861B60C0002F960 /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
 		59902ACA1861C9D60002F960 /* RequiredContactsNewMeetingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequiredContactsNewMeetingViewController.h; sourceTree = "<group>"; };
 		59902ACB1861C9D60002F960 /* RequiredContactsNewMeetingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequiredContactsNewMeetingViewController.m; sourceTree = "<group>"; };
 		59902ACD1861DA5A0002F960 /* SelectTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectTimeViewController.h; sourceTree = "<group>"; };
@@ -186,8 +185,6 @@
 			isa = PBXGroup;
 			children = (
 				59E5E6E31862F0EF00084856 /* Holders */,
-				59902AC11861B60C0002F960 /* Contact.h */,
-				59902AC21861B60C0002F960 /* Contact.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -301,6 +298,7 @@
 		595F00D7185905EB00E408BC /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				590C5B5E18882637009A1AE5 /* help_filled-32.png */,
 				594796BB187D96A5008E4E7B /* micro-32.png */,
 				594796B1187D953A008E4E7B /* calendar-32.png */,
 				594796B3187D9593008E4E7B /* user_male3-32.png */,
@@ -455,6 +453,7 @@
 				595F00B21858B70D00E408BC /* Images.xcassets in Resources */,
 				595F00D01858B89E00E408BC /* iPhoneStoryboard.storyboard in Resources */,
 				595F00DB1859098000E408BC /* loginBackground.png in Resources */,
+				590C5B5F18882637009A1AE5 /* help_filled-32.png in Resources */,
 				594796B2187D953A008E4E7B /* calendar-32.png in Resources */,
 				594796BC187D96A5008E4E7B /* micro-32.png in Resources */,
 				59902ADB18622F120002F960 /* req.png in Resources */,
@@ -530,7 +529,6 @@
 				594796A5187D7AD6008E4E7B /* NameCell.m in Sources */,
 				59902AD91861F0B30002F960 /* SummaryContactCell.m in Sources */,
 				592AFC941886D34E0079D6FC /* UpcomingMeetingsTableViewController.m in Sources */,
-				59902AC31861B60C0002F960 /* Contact.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

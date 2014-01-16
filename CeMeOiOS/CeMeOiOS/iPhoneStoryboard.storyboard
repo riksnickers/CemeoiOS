@@ -73,7 +73,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EPe-Qi-6yz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="376" y="355"/>
+            <point key="canvasLocation" x="378" y="735"/>
         </scene>
         <!--Upcoming Meetings Table View Controller - Upcoming-->
         <scene sceneID="x0c-Rw-cdg">
@@ -231,12 +231,13 @@
                     </tabBar>
                     <connections>
                         <segue destination="WzH-Mf-n4x" kind="relationship" relationship="viewControllers" id="5qm-VD-dxT"/>
+                        <segue destination="rxL-5o-9vE" kind="relationship" relationship="viewControllers" id="3EB-Ko-UqT"/>
                         <segue destination="t7i-Gt-wyC" kind="relationship" relationship="viewControllers" id="2f5-k2-lvg"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NVG-WN-djV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="929" y="355"/>
+            <point key="canvasLocation" x="931" y="735"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="M7B-0V-atZ">
@@ -817,6 +818,35 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="2597" y="735"/>
         </scene>
+        <!--Table View Controller - Unconfirmed-->
+        <scene sceneID="txg-2W-may">
+            <objects>
+                <tableViewController id="qWc-5J-Nr0" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="uqj-dg-twe">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="j5Q-yc-GYG">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="j5Q-yc-GYG" id="HAV-Vg-12V">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="qWc-5J-Nr0" id="Jbm-HA-n0e"/>
+                            <outlet property="delegate" destination="qWc-5J-Nr0" id="4f8-JS-mLr"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Unconfirmed" id="2GM-1r-qBO"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tro-Yw-QnX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2085" y="1522"/>
+        </scene>
         <!--Navigation Controller - Profile-->
         <scene sceneID="fWG-xb-9cy">
             <objects>
@@ -856,10 +886,30 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="1559" y="-43"/>
         </scene>
+        <!--Navigation Controller - Unconfirmed-->
+        <scene sceneID="pHx-uh-PiV">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rxL-5o-9vE" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Unconfirmed" image="help_filled-32.png" id="0i9-9x-oQF"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="EGD-bg-kdG">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="qWc-5J-Nr0" kind="relationship" relationship="rootViewController" id="zWZ-cg-6Pn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FYo-zu-buW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1559" y="1522"/>
+        </scene>
     </scenes>
     <resources>
         <image name="24.png" width="200" height="200"/>
         <image name="calendar-32.png" width="32" height="32"/>
+        <image name="help_filled-32.png" width="32" height="32"/>
         <image name="loginBackground.png" width="280" height="330"/>
         <image name="req.png" width="200" height="200"/>
         <image name="user_male3-32.png" width="32" height="32"/>

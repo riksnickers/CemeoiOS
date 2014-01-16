@@ -11,7 +11,6 @@
 #import "TokenHolder.h"
 #import "UserHolder.h"
 #import "IPHolder.h"
-#import "UpcomingViewController.h"
 
 @interface LoginViewController ()
 

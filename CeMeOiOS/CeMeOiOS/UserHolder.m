@@ -11,7 +11,7 @@
 
 @implementation UserHolder
 
-static id cUserData;
+static id cUserData, cPropositions;
 
 /*!
 Sets the user data
@@ -26,6 +26,21 @@ Sets the user data
  */
 +(id)UserData{
     return cUserData;
+}
+
+/*!
+ sets the propositions
+ */
++(id)Propositions{
+    return cPropositions;
+}
+
+/*!
+ Sets the propositions data
+ *\param Propositions the propositions that needs to be stored
+ */
++(void)setPropositions:(id) Propositions{
+    cPropositions = Propositions;
 }
 
 @end

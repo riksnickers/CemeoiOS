@@ -137,6 +137,7 @@ shouldReloadTableForSearchString:(NSString *)searchString
     [manager GET:[IPHolder IPWithPath:@"/api/Location"] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         Locations = [responseObject mutableCopy];
         [self.tableView reloadData];
+        [waitAlert dismissWithClickedButtonIndex:0 animated:YES];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle: @"Something went wrong"
@@ -148,9 +149,6 @@ shouldReloadTableForSearchString:(NSString *)searchString
         [waitAlert dismissWithClickedButtonIndex:0 animated:YES];
         [alert show];
     }];
-    
-    [waitAlert dismissWithClickedButtonIndex:0 animated:YES];
-    [self.tableView reloadData];
 
 }
 

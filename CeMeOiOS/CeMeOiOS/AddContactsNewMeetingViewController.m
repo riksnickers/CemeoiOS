@@ -196,6 +196,8 @@ shouldReloadTableForSearchString:(NSString *)searchString
         Contacts = [responseObject mutableCopy];
         [self.tableView reloadData];
         [self.refreshControl endRefreshing];
+        
+        [waitAlert dismissWithClickedButtonIndex:0 animated:YES];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle: @"Something went wrong"
                                                        message: @"Please try again later"
@@ -207,8 +209,6 @@ shouldReloadTableForSearchString:(NSString *)searchString
         [alert show];
         [self.refreshControl endRefreshing];
     }];
-    
-    [waitAlert dismissWithClickedButtonIndex:0 animated:YES];
 }
 
 /*!

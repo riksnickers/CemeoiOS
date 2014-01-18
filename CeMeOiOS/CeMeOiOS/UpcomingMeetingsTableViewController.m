@@ -8,6 +8,7 @@
 
 #import "UpcomingMeetingsTableViewController.h"
 #import "meetingCell.h"
+#import "UserHolder.h"
 
 @interface UpcomingMeetingsTableViewController ()
 
@@ -42,6 +43,9 @@
              @"22/08/2014 - 15:00",
              @"01/09/2014 - 13:45",
              nil];
+    
+    [[[[[self tabBarController] tabBar] items]
+      objectAtIndex:1] setBadgeValue:[NSString stringWithFormat:@"%ld", [[UserHolder Propositions]count]]];
 }
 
 - (void)didReceiveMemoryWarning

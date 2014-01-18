@@ -13,4 +13,7 @@
 +(id) UserData;
 +(void) SetUserData:(id) UserData;
 
++(id)Propositions;
++(void)setPropositions:(id) Propositions;
+
 @end

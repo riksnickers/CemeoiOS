@@ -115,8 +115,7 @@
     [manager GET:[IPHolder IPWithPath:@"/api/Account/Profile"] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //save Userdata un userholder
         [UserHolder SetUserData:[responseObject mutableCopy]];
-        [waitAlert dismissWithClickedButtonIndex:0 animated:YES];
-        [self performSegueWithIdentifier: @"toUpcoming" sender: self];
+        [self getPropos];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle: @"Something went wrong"
                                                        message: @"Could not get user data"
@@ -128,6 +127,30 @@
         [alert show];
     }];
     
+}
+
+-(void)getPropos{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    [manager setRequestSerializer:[AFHTTPRequestSerializer serializer]];
+    [manager.requestSerializer setValue:[NSString stringWithFormat:@"bearer %@", [[TokenHolder Token] valueForKey:@"access_token"]] forHTTPHeaderField:@"Authorization"];
+    
+    [manager GET:[IPHolder IPWithPath:@"/api/Proposition/Propositions"] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        //save propositions un userholder
+        [UserHolder setPropositions:[responseObject mutableCopy]];
+        [waitAlert dismissWithClickedButtonIndex:0 animated:YES];
+        [self performSegueWithIdentifier: @"toUpcoming" sender: self];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle: @"Something went wrong"
+                                                       message: @"Could not get meeting propositions"
+                                                      delegate: self
+                                             cancelButtonTitle:@"Ok"
+                                             otherButtonTitles:nil];
+        
+        [waitAlert dismissWithClickedButtonIndex:0 animated:YES];
+        [alert show];
+    }];
+
 }
 
 @end

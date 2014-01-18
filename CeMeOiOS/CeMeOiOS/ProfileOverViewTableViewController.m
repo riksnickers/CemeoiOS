@@ -80,10 +80,17 @@
     }else if([indexPath row] == 4){
         static NSString *CellIdentifier = @"LocationCell";
         LocationCell *cell = (LocationCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-        [cell.lblLocationName setText:[[[UserHolder UserData] objectForKey:@"PreferedLocation"] valueForKey:@"Name"]];
-        [cell.lblAddress setText:[NSString stringWithFormat:@"%@ %@",[[[UserHolder UserData] objectForKey:@"PreferedLocation"] valueForKey:@"Street"], [[[UserHolder UserData] objectForKey:@"PreferedLocation"] valueForKey:@"Number"]]];
-        [cell.lblCity setText:[NSString stringWithFormat:@"%@ %@",[[[UserHolder UserData] objectForKey:@"PreferedLocation"] valueForKey:@"Zip"], [[[UserHolder UserData] objectForKey:@"PreferedLocation"] valueForKey:@"City"]]];
-        [cell.lblCountry setText:[[[UserHolder UserData] objectForKey:@"PreferedLocation"] valueForKey:@"Country"]];
+        if(![[[UserHolder UserData] objectForKey:@"PreferedLocation"] isKindOfClass:[NSNull class]]){
+            [cell.lblLocationName setText:[[[UserHolder UserData] objectForKey:@"PreferedLocation"] valueForKey:@"Name"]];
+            [cell.lblAddress setText:[NSString stringWithFormat:@"%@ %@",[[[UserHolder UserData] objectForKey:@"PreferedLocation"] valueForKey:@"Street"], [[[UserHolder UserData] objectForKey:@"PreferedLocation"] valueForKey:@"Number"]]];
+            [cell.lblCity setText:[NSString stringWithFormat:@"%@ %@",[[[UserHolder UserData] objectForKey:@"PreferedLocation"] valueForKey:@"Zip"], [[[UserHolder UserData] objectForKey:@"PreferedLocation"] valueForKey:@"City"]]];
+            [cell.lblCountry setText:[[[UserHolder UserData] objectForKey:@"PreferedLocation"] valueForKey:@"Country"]];
+        }else{
+            [cell.lblLocationName setText:@"Not set"];
+            [cell.lblCity setText:@""];
+            [cell.lblAddress setText:@""];
+            [cell.lblCountry setText:@""];
+        }
         return cell;
     }
     

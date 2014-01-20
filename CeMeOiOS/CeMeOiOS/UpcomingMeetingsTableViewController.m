@@ -45,7 +45,7 @@
              nil];
     
     [[[[[self tabBarController] tabBar] items]
-      objectAtIndex:1] setBadgeValue:[NSString stringWithFormat:@"%ld", [[UserHolder Propositions]count]]];
+      objectAtIndex:1] setBadgeValue:[NSString stringWithFormat:@"%ld", (unsigned long)[[UserHolder Propositions]count]]];
 }
 
 - (void)didReceiveMemoryWarning

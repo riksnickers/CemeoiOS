@@ -7,6 +7,8 @@
 //
 
 #import "UnconfirmedTableViewController.h"
+#import "UnconfirmedSummaryViewController.h"
+#import "AFHTTPRequestOperationManager.h"
 #import "meetingCell.h"
 #import "UserHolder.h"
 #import "TokenHolder.h"
@@ -17,7 +19,9 @@
 
 @end
 
-@implementation UnconfirmedTableViewController
+@implementation UnconfirmedTableViewController{
+    NSDictionary *proposition;
+}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -31,6 +35,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.refreshControl addTarget:self action:@selector(refresh)
+                  forControlEvents:UIControlEventValueChanged];
 
 }
 
@@ -55,25 +61,23 @@
     static NSString *CellIdentifier = @"meetingCell";
     meetingCell *cell = (meetingCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
+    proposition = [[[UserHolder Propositions]objectAtIndex:indexPath.row]objectForKey:@"Proposition"];
+    
     NSString *location = [NSString stringWithFormat:@"%@ - %@",
-                          [[[[UserHolder Propositions]objectAtIndex:indexPath.row]objectForKey:@"ProposedRoom"]valueForKey:@"Name"],
-                          [[[[[UserHolder Propositions]objectAtIndex:indexPath.row]objectForKey:@"ProposedRoom"]objectForKey:@"LocationID"] valueForKey:@"Name"]];
+                          [[proposition objectForKey:@"ProposedRoom"]valueForKey:@"Name"],
+                          [[[proposition objectForKey:@"ProposedRoom"]objectForKey:@"LocationID"]valueForKey:@"Name"]];
     [cell.lblLocation setText:location];
     
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
     [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SS"];
-    [formatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"nl_BE"]];
     
 
-    NSDate *date = [formatter dateFromString:[[[UserHolder Propositions]objectAtIndex:indexPath.row]valueForKey:@"BeginTime"]];
+    NSDate *date = [formatter dateFromString:[proposition valueForKey:@"BeginTime"]];
     
     NSString *dateString = [NSDateFormatter localizedStringFromDate:date
                                                           dateStyle:NSDateFormatterShortStyle
                                                           timeStyle:NSDateFormatterShortStyle];
-     
-    
-    
     
     [cell.lblTime setText:dateString];
 
@@ -83,6 +87,61 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 90;
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([[segue identifier] isEqualToString:@"toUnconfirmedSummary"])
+    {
+        UnconfirmedSummaryViewController *vc = [segue destinationViewController];
+        
+        NSIndexPath *myIndexPath = [self.tableView
+                                    indexPathForSelectedRow];
+        
+        vc.PropositionIndex = [myIndexPath row];
+    }
+}
+
+-(void)getPropos{
+    UIAlertView *waitAlert = [[UIAlertView alloc] initWithTitle:@"Getting propositions"
+                                           message:nil
+                                          delegate:nil
+                                 cancelButtonTitle:nil
+                                 otherButtonTitles:nil];
+    UIActivityIndicatorView *loading = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(125, 50, 30, 30)];
+    loading.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
+    [waitAlert addSubview:loading];
+    [loading startAnimating];
+    [waitAlert show];
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    [manager setRequestSerializer:[AFHTTPRequestSerializer serializer]];
+    [manager.requestSerializer setValue:[NSString stringWithFormat:@"bearer %@", [[TokenHolder Token] valueForKey:@"access_token"]] forHTTPHeaderField:@"Authorization"];
+    
+    [manager GET:[IPHolder IPWithPath:@"/api/Proposition/All"] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        //save propositions un userholder
+        [UserHolder setPropositions:[responseObject mutableCopy]];
+        [waitAlert dismissWithClickedButtonIndex:0 animated:YES];
+        [self.tableView reloadData];
+        [[[[[self tabBarController] tabBar] items]
+          objectAtIndex:1] setBadgeValue:[NSString stringWithFormat:@"%ld", (unsigned long)[[UserHolder Propositions]count]]];
+        [self.refreshControl endRefreshing];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.refreshControl endRefreshing];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle: @"Something went wrong"
+                                                       message: @"Could not get meeting propositions"
+                                                      delegate: self
+                                             cancelButtonTitle:@"Ok"
+                                             otherButtonTitles:nil];
+        
+        [waitAlert dismissWithClickedButtonIndex:0 animated:YES];
+        [alert show];
+    }];
+    
+}
+
+-(void)refresh{
+    [self getPropos];
 }
 
 

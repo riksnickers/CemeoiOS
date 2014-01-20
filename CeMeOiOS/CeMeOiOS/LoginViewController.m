@@ -135,7 +135,7 @@
     [manager setRequestSerializer:[AFHTTPRequestSerializer serializer]];
     [manager.requestSerializer setValue:[NSString stringWithFormat:@"bearer %@", [[TokenHolder Token] valueForKey:@"access_token"]] forHTTPHeaderField:@"Authorization"];
     
-    [manager GET:[IPHolder IPWithPath:@"/api/Proposition/Propositions"] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager GET:[IPHolder IPWithPath:@"/api/Proposition/All"] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //save propositions un userholder
         [UserHolder setPropositions:[responseObject mutableCopy]];
         [waitAlert dismissWithClickedButtonIndex:0 animated:YES];

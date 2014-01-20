@@ -148,29 +148,6 @@
     
     [self SendData:toSend];
     
-    /*
-    //the NSMutableDictionary gets serialized to json to show the data in the console
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:toSend
-                                                      options:NSJSONWritingPrettyPrinted
-                                                        error:nil];
-    
-    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    
-    NSLog(@"json data: %@", jsonString);
-    
-    UIAlertView *alert = [[UIAlertView alloc]initWithTitle: @"Send"
-                                                   message: @"Your meeting has been send"
-                                                  delegate: nil
-                                         cancelButtonTitle:@"OK"
-                                         otherButtonTitles:nil];
-    
-    
-    [alert show];
-    
-    [self performSegueWithIdentifier:@"toUpcoming" sender:self];
-     */
-    
-    
 }
 
 /*!

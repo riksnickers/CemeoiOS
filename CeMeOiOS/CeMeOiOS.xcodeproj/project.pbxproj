@@ -21,6 +21,7 @@
 		594796B2187D953A008E4E7B /* calendar-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 594796B1187D953A008E4E7B /* calendar-32.png */; };
 		594796B4187D9593008E4E7B /* user_male3-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 594796B3187D9593008E4E7B /* user_male3-32.png */; };
 		594796BC187D96A5008E4E7B /* micro-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 594796BB187D96A5008E4E7B /* micro-32.png */; };
+		594C1C6D188D2560000F26C1 /* UnconfirmedSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 594C1C6C188D2560000F26C1 /* UnconfirmedSummaryViewController.m */; };
 		594C257E185C9DAB009C5390 /* TokenHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 594C257D185C9DAB009C5390 /* TokenHolder.m */; };
 		594C2591185CE598009C5390 /* meetingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 594C2590185CE598009C5390 /* meetingCell.m */; };
 		595F00A01858B70D00E408BC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 595F009F1858B70D00E408BC /* Foundation.framework */; };
@@ -81,6 +82,8 @@
 		594796B1187D953A008E4E7B /* calendar-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar-32.png"; sourceTree = "<group>"; };
 		594796B3187D9593008E4E7B /* user_male3-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user_male3-32.png"; sourceTree = "<group>"; };
 		594796BB187D96A5008E4E7B /* micro-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "micro-32.png"; sourceTree = "<group>"; };
+		594C1C6B188D2560000F26C1 /* UnconfirmedSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnconfirmedSummaryViewController.h; sourceTree = "<group>"; };
+		594C1C6C188D2560000F26C1 /* UnconfirmedSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnconfirmedSummaryViewController.m; sourceTree = "<group>"; };
 		594C257C185C9DAB009C5390 /* TokenHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenHolder.h; sourceTree = "<group>"; };
 		594C257D185C9DAB009C5390 /* TokenHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenHolder.m; sourceTree = "<group>"; };
 		594C258F185CE598009C5390 /* meetingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = meetingCell.h; sourceTree = "<group>"; };
@@ -323,6 +326,8 @@
 			children = (
 				598AD053188AD1E70088F3E8 /* UnconfirmedTableViewController.h */,
 				598AD054188AD1E70088F3E8 /* UnconfirmedTableViewController.m */,
+				594C1C6B188D2560000F26C1 /* UnconfirmedSummaryViewController.h */,
+				594C1C6C188D2560000F26C1 /* UnconfirmedSummaryViewController.m */,
 			);
 			name = Unconfirmed;
 			sourceTree = "<group>";
@@ -530,6 +535,7 @@
 				594796A9187D7DA9008E4E7B /* InfoCell.m in Sources */,
 				592F6044185EFA4000BBFE38 /* AddContactsNewMeetingViewController.m in Sources */,
 				59902ACC1861C9D60002F960 /* RequiredContactsNewMeetingViewController.m in Sources */,
+				594C1C6D188D2560000F26C1 /* UnconfirmedSummaryViewController.m in Sources */,
 				59E5E6E61862F10C00084856 /* IPHolder.m in Sources */,
 				59A6851D187AA686003CC111 /* SelectDurationNewMeetingViewController.m in Sources */,
 				594796A5187D7AD6008E4E7B /* NameCell.m in Sources */,

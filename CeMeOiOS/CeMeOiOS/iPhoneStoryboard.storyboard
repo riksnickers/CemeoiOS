@@ -846,7 +846,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="2597" y="735"/>
         </scene>
-        <!--Unconfirmed Table View Controller - Unconfirmed-->
+        <!--Unconfirmed Table View Controller - Propositions-->
         <scene sceneID="txg-2W-may">
             <objects>
                 <tableViewController id="qWc-5J-Nr0" customClass="UnconfirmedTableViewController" sceneMemberID="viewController">
@@ -893,7 +893,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             <outlet property="delegate" destination="qWc-5J-Nr0" id="4f8-JS-mLr"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Unconfirmed" id="2GM-1r-qBO"/>
+                    <navigationItem key="navigationItem" title="Propositions" id="2GM-1r-qBO"/>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="Mrs-aC-LGo">
                         <autoresizingMask key="autoresizingMask"/>
                     </refreshControl>
@@ -1089,11 +1089,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="1559" y="-43"/>
         </scene>
-        <!--Navigation Controller - Unconfirmed-->
+        <!--Navigation Controller - Propositions-->
         <scene sceneID="pHx-uh-PiV">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rxL-5o-9vE" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Unconfirmed" image="help_filled-32.png" id="0i9-9x-oQF"/>
+                    <tabBarItem key="tabBarItem" title="Propositions" image="help_filled-32.png" id="0i9-9x-oQF"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="EGD-bg-kdG">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

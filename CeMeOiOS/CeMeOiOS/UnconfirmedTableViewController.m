@@ -21,6 +21,8 @@
 
 @implementation UnconfirmedTableViewController{
     NSDictionary *proposition;
+    NSArray *confirmed;
+    NSArray *unconfirmed;
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -35,9 +37,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    //set refresh action
     [self.refreshControl addTarget:self action:@selector(refresh)
                   forControlEvents:UIControlEventValueChanged];
-
 }
 
 - (void)didReceiveMemoryWarning
@@ -48,12 +51,24 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return 2;
+}
+
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    if(section == 0){
+        return @"Unconfirmed by you";
+    }else{
+        return @"Confirmed by you";
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[UserHolder Propositions]count];
+    if(section == 0){
+        return [unconfirmed count];
+    }else{
+        return [confirmed count];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -61,18 +76,22 @@
     static NSString *CellIdentifier = @"meetingCell";
     meetingCell *cell = (meetingCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    proposition = [[[UserHolder Propositions]objectAtIndex:indexPath.row]objectForKey:@"Proposition"];
+    //if unconfirmed proposition needs to be in first table section
+    if(indexPath.section == 0){
+        proposition = [[unconfirmed objectAtIndex:indexPath.row]objectForKey:@"Proposition"];
+    }else{
+        proposition = [[confirmed objectAtIndex:indexPath.row]objectForKey:@"Proposition"];
+    }
     
     NSString *location = [NSString stringWithFormat:@"%@ - %@",
                           [[proposition objectForKey:@"ProposedRoom"]valueForKey:@"Name"],
                           [[[proposition objectForKey:@"ProposedRoom"]objectForKey:@"LocationID"]valueForKey:@"Name"]];
     [cell.lblLocation setText:location];
     
-    
+    //filter convert the timestring to nsdate
     NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
     [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SS"];
     
-
     NSDate *date = [formatter dateFromString:[proposition valueForKey:@"BeginTime"]];
     
     NSString *dateString = [NSDateFormatter localizedStringFromDate:date
@@ -84,6 +103,7 @@
     
     return cell;
 }
+
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 90;
@@ -121,11 +141,19 @@
     [manager GET:[IPHolder IPWithPath:@"/api/Proposition/All"] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //save propositions un userholder
         [UserHolder setPropositions:[responseObject mutableCopy]];
-        [waitAlert dismissWithClickedButtonIndex:0 animated:YES];
+        
+        //filter confirmed and unconfirmed propositions
+        confirmed = [[UserHolder Propositions] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(not Answer = 0)"]];
+        unconfirmed = [[UserHolder Propositions] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(Answer = 0)"]];
+        
         [self.tableView reloadData];
+        
+        //set the badge count
         [[[[[self tabBarController] tabBar] items]
-          objectAtIndex:1] setBadgeValue:[NSString stringWithFormat:@"%ld", (unsigned long)[[UserHolder Propositions]count]]];
+          objectAtIndex:1] setBadgeValue:[NSString stringWithFormat:@"%ld", (unsigned long)[unconfirmed count]]];
+        
         [self.refreshControl endRefreshing];
+        [waitAlert dismissWithClickedButtonIndex:0 animated:YES];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [self.refreshControl endRefreshing];
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle: @"Something went wrong"
@@ -142,6 +170,15 @@
 
 -(void)refresh{
     [self getPropos];
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    //filter confirmed and unconfirmed propositions
+    confirmed = [[UserHolder Propositions] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(not Answer = 0)"]];
+    unconfirmed = [[UserHolder Propositions] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(Answer = 0)"]];
+    
+    [self.tableView reloadData];
 }
 
 

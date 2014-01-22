@@ -7,8 +7,11 @@
 //
 
 #import "UpcomingMeetingsTableViewController.h"
+#import "AFHTTPRequestOperationManager.h"
 #import "meetingCell.h"
 #import "UserHolder.h"
+#import "TokenHolder.h"
+#import "IPHolder.h"
 
 @interface UpcomingMeetingsTableViewController ()
 
@@ -45,7 +48,7 @@
              nil];
     
     [[[[[self tabBarController] tabBar] items]
-      objectAtIndex:1] setBadgeValue:[NSString stringWithFormat:@"%ld", (unsigned long)[[UserHolder Propositions]count]]];
+      objectAtIndex:1] setBadgeValue:[NSString stringWithFormat:@"%ld", (unsigned long)[[[UserHolder Propositions] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(Answer = 0)"]]count]]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -83,6 +86,50 @@
 
 - (IBAction)unwindToUpcoming:(UIStoryboardSegue *)unwindSegue
 {
+    [self getPropos];
+}
+
+-(void)getPropos{
+    UIAlertView *waitAlert = [[UIAlertView alloc] initWithTitle:@"Getting propositions"
+                                                        message:nil
+                                                       delegate:nil
+                                              cancelButtonTitle:nil
+                                              otherButtonTitles:nil];
+    UIActivityIndicatorView *loading = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(125, 50, 30, 30)];
+    loading.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
+    [waitAlert addSubview:loading];
+    [loading startAnimating];
+    [waitAlert show];
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    [manager setRequestSerializer:[AFHTTPRequestSerializer serializer]];
+    [manager.requestSerializer setValue:[NSString stringWithFormat:@"bearer %@", [[TokenHolder Token] valueForKey:@"access_token"]] forHTTPHeaderField:@"Authorization"];
+    
+    [manager GET:[IPHolder IPWithPath:@"/api/Proposition/All"] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        //save propositions un userholder
+        [UserHolder setPropositions:[responseObject mutableCopy]];
+        
+        [self.tableView reloadData];
+        
+        //set the badge count
+        [[[[[self tabBarController] tabBar] items]
+          objectAtIndex:1] setBadgeValue:[NSString stringWithFormat:@"%ld", (unsigned long)[[[UserHolder Propositions] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(Answer = 0)"]]count]]];
+        
+        [self.refreshControl endRefreshing];
+        [waitAlert dismissWithClickedButtonIndex:0 animated:YES];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.refreshControl endRefreshing];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle: @"Something went wrong"
+                                                       message: @"Could not get meeting propositions"
+                                                      delegate: self
+                                             cancelButtonTitle:@"Ok"
+                                             otherButtonTitles:nil];
+        
+        [waitAlert dismissWithClickedButtonIndex:0 animated:YES];
+        [alert show];
+    }];
+    
 }
 
 @end

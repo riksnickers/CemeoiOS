@@ -106,6 +106,9 @@
     
 }
 
+/*! fetch the user information,
+ save it in userholder
+ */
 -(void)getUserData{
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
@@ -129,6 +132,9 @@
     
 }
 
+/*! fetch the propositions,
+ save it in userholder
+ */
 -(void)getPropos{
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     

@@ -116,7 +116,7 @@
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if(alertView == selectStatus){
         NSString *status;
-        statusIndex = buttonIndex;
+        statusIndex = (int)buttonIndex;
     
         switch (buttonIndex) {
             case 1:

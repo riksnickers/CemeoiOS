@@ -159,4 +159,10 @@
 
 }
 
+- (IBAction)unwindToLogin:(UIStoryboardSegue *)unwindSegue
+{
+    [self.txtUsername setText:nil];
+    [self.txtPassword setText:nil];
+}
+
 @end

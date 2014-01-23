@@ -47,8 +47,14 @@
              @"01/09/2014 - 13:45",
              nil];
     
-    [[[[[self tabBarController] tabBar] items]
-      objectAtIndex:1] setBadgeValue:[NSString stringWithFormat:@"%ld", (unsigned long)[[[UserHolder Propositions] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(Answer = 0)"]]count]]];
+    //set the badge count
+    int badgeCount = [[[UserHolder Propositions] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(Answer = 0)"]]count];
+    
+    if(badgeCount != 0){
+        [[[[[self tabBarController] tabBar] items] objectAtIndex:1] setBadgeValue:[NSString stringWithFormat:@"%d", badgeCount]];
+    }else{
+        [[[[[self tabBarController] tabBar] items] objectAtIndex:1] setBadgeValue:nil];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -113,8 +119,13 @@
         [self.tableView reloadData];
         
         //set the badge count
-        [[[[[self tabBarController] tabBar] items]
-          objectAtIndex:1] setBadgeValue:[NSString stringWithFormat:@"%ld", (unsigned long)[[[UserHolder Propositions] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(Answer = 0)"]]count]]];
+        int badgeCount = [[[UserHolder Propositions] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(Answer = 0)"]]count];
+        
+        if(badgeCount != 0){
+            [[[[[self tabBarController] tabBar] items] objectAtIndex:1] setBadgeValue:[NSString stringWithFormat:@"%d", badgeCount]];
+        }else{
+            [[[[[self tabBarController] tabBar] items] objectAtIndex:1] setBadgeValue:nil];
+        }
         
         [self.refreshControl endRefreshing];
         [waitAlert dismissWithClickedButtonIndex:0 animated:YES];
@@ -132,4 +143,9 @@
     
 }
 
+- (IBAction)Logout:(id)sender {
+    [UserHolder SetUserData:nil];
+    [TokenHolder setToken:nil];
+    [self performSegueWithIdentifier:@"ToLogin" sender:self];
+}
 @end

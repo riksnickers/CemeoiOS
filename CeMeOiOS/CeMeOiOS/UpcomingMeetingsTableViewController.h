@@ -10,4 +10,6 @@
 
 @interface UpcomingMeetingsTableViewController : UITableViewController
 
+- (IBAction)Logout:(id)sender;
+
 @end

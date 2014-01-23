@@ -176,7 +176,7 @@
     [waitAlert show];
     
     
-    [manager POST:[IPHolder IPWithPath:@"/api/Proposition/PropositionAnswer"] parameters:toSend success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:[IPHolder IPWithPath:@"/api/Proposition/Answer"] parameters:toSend success:^(AFHTTPRequestOperation *operation, id responseObject) {
         if([operation.response statusCode] == 200){
             [self getPropos];
         }else{
@@ -215,8 +215,13 @@
         [UserHolder setPropositions:[responseObject mutableCopy]];
         
         //set the badge count
-        [[[[[self tabBarController] tabBar] items]
-          objectAtIndex:1] setBadgeValue:[NSString stringWithFormat:@"%ld", (unsigned long)[[[UserHolder Propositions] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(Answer = 0)"]]count]]];
+        int badgeCount = [[[UserHolder Propositions] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(Answer = 0)"]]count];
+        
+        if(badgeCount != 0){
+            [[[[[self tabBarController] tabBar] items] objectAtIndex:1] setBadgeValue:[NSString stringWithFormat:@"%d", badgeCount]];
+        }else{
+            [[[[[self tabBarController] tabBar] items] objectAtIndex:1] setBadgeValue:nil];
+        }
         
         [waitAlert dismissWithClickedButtonIndex:0 animated:YES];
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle: @"Send"

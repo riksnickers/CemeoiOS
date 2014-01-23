@@ -10,7 +10,7 @@
 
 @implementation IPHolder
 
-static NSString* IP = @"http://192.168.227.156:12429";
+static NSString* IP = @"http://10.65.134.30:12429";
 
 +(NSString *) IP{
     return IP;

@@ -114,10 +114,14 @@
     {
         UnconfirmedSummaryViewController *vc = [segue destinationViewController];
         
-        NSIndexPath *myIndexPath = [self.tableView
+       NSIndexPath *myIndexPath = [self.tableView
                                     indexPathForSelectedRow];
         
-        vc.PropositionIndex = [myIndexPath row];
+        if(myIndexPath.section == 0){
+            vc.ChosenProposition = [unconfirmed objectAtIndex:myIndexPath.row];
+        }else{
+            vc.ChosenProposition = [confirmed objectAtIndex:myIndexPath.row];
+        }
     }
 }
 

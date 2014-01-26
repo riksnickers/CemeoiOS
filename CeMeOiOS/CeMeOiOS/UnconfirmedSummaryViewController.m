@@ -22,10 +22,11 @@
     UIAlertView *selectStatus, *confirmStatus, *waitAlert;
     NSString *InviteeID;
     int statusIndex, answer;
+    NSArray *statusText;
 }
 
-@synthesize PropositionIndex;
-@synthesize lblDate,lblDuration,lblRoom,lblAddress,lblCity,ContactsTable;
+@synthesize PropositionIndex, ChosenProposition;
+@synthesize lblDate,lblDuration,lblRoom,lblAddress,lblCity,ContactsTable,lblStatus;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -39,10 +40,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    proposition = [[[UserHolder Propositions]objectAtIndex:PropositionIndex]objectForKey:@"Proposition"];
-    contacts = [[[UserHolder Propositions]objectAtIndex:PropositionIndex]objectForKey:@"Others"];
-    answer = [[[[UserHolder Propositions]objectAtIndex:PropositionIndex]valueForKey:@"Answer"]intValue];
-    InviteeID = [[[UserHolder Propositions]objectAtIndex:PropositionIndex]valueForKey:@"InviteeID"];
+    proposition = [ChosenProposition objectForKey:@"Proposition"];
+    contacts = [ChosenProposition objectForKey:@"Others"];
+    answer = [[ChosenProposition valueForKey:@"Answer"]intValue];
+    InviteeID = [ChosenProposition valueForKey:@"InviteeID"];
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
     [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SS"];
@@ -67,6 +68,12 @@
     
     NSString *city = [NSString stringWithFormat:@"%@ %@", [location valueForKey:@"Zip"], [location valueForKey:@"City"]];
     [lblCity setText:city];
+    
+    statusText = @[@"unconfirmed", @"attending", @"absent", @"online"];
+    
+
+    [lblStatus setText:[statusText objectAtIndex:answer]];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -121,25 +128,12 @@
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if(alertView == selectStatus){
-        NSString *status;
+//        NSString *status;
         statusIndex = (int)buttonIndex;
     
         if(buttonIndex != 0){
-            switch (buttonIndex) {
-                case 1:
-                    status = @"attending";
-                    break;
-                case 2:
-                    status = @"absent";
-                    break;
-                case 3:
-                    status = @"online";
-                default:
-                    break;
-            }
-            
             confirmStatus = [[UIAlertView alloc]
-                             initWithTitle:[NSString stringWithFormat:@"You want to set your status as %@ ?", status]
+                             initWithTitle:[NSString stringWithFormat:@"You want to set your status as %@ ?", [statusText objectAtIndex:statusIndex]]
                              message:nil
                              delegate:self
                              cancelButtonTitle:@"No"

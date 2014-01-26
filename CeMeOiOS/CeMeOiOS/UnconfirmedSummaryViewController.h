@@ -16,9 +16,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblRoom;
 @property (weak, nonatomic) IBOutlet UILabel *lblAddress;
 @property (weak, nonatomic) IBOutlet UILabel *lblCity;
+@property (weak, nonatomic) IBOutlet UILabel *lblStatus;
 
 - (IBAction)sendAnswer:(id)sender;
 
 @property int PropositionIndex;
+@property NSDictionary *ChosenProposition;
 
 @end

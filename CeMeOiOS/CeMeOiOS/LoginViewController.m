@@ -54,7 +54,7 @@
     NSDictionary *parameters = @{@"grant_type": @"password", @"username":username, @"password":password};
   
     //wait dialog
-    waitAlert = [[UIAlertView alloc] initWithTitle:@"Login in..."
+    waitAlert = [[UIAlertView alloc] initWithTitle:@"Loging in..."
                                                        message:nil
                                                       delegate:nil
                                              cancelButtonTitle:nil
@@ -144,8 +144,12 @@
     [manager GET:[IPHolder IPWithPath:@"/api/Proposition/All"] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //save propositions un userholder
         [UserHolder setPropositions:[responseObject mutableCopy]];
-        [waitAlert dismissWithClickedButtonIndex:0 animated:YES];
-        [self performSegueWithIdentifier: @"toUpcoming" sender: self];
+        if([UserHolder DeviceToken] == nil){
+            [waitAlert dismissWithClickedButtonIndex:0 animated:YES];
+            [self performSegueWithIdentifier: @"toUpcoming" sender: self];
+        }else{
+            [self setDeviceToken];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle: @"Something went wrong"
                                                        message: @"Could not get meeting propositions"
@@ -157,6 +161,29 @@
         [alert show];
     }];
 
+}
+
+-(void)setDeviceToken{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setValue:[NSString stringWithFormat:@"bearer %@", [[TokenHolder Token] valueForKey:@"access_token"]] forHTTPHeaderField:@"Authorization"];
+    
+    NSDictionary *toSend = @{@"Platform": @0, @"DeviceID": [UserHolder DeviceToken]};
+    
+    [manager POST:[IPHolder IPWithPath:@"/api/Account/RegisterDevice"] parameters:toSend success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [waitAlert dismissWithClickedButtonIndex:0 animated:YES];
+        [self performSegueWithIdentifier: @"toUpcoming" sender: self];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle: @"Something went wrong"
+                                                       message: @"Please try again later"
+                                                      delegate: self
+                                             cancelButtonTitle:@"Ok"
+                                             otherButtonTitles:nil];
+        
+        [waitAlert dismissWithClickedButtonIndex:0 animated:YES];
+        [alert show];
+    }];
+    
 }
 
 - (IBAction)unwindToLogin:(UIStoryboardSegue *)unwindSegue

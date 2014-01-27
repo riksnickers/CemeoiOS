@@ -19,4 +19,7 @@
 +(id)Meetings;
 +(void)setMeetings:(id)Meetings;
 
++(id)DeviceToken;
++(void)setDevice:(id)Device;
+
 @end

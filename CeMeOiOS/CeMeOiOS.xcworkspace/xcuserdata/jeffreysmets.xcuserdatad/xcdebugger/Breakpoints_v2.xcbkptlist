@@ -9,44 +9,76 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "CeMeOiOS/UpcomingMeetingsTableViewController.m"
-            timestampString = "412521358.076032"
+            filePath = "CeMeOiOS/LoginViewController.m"
+            timestampString = "412528791.956097"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
-            landmarkName = "-getMeetings"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
+            landmarkName = "-setDeviceToken"
             landmarkType = "5">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "-[UpcomingMeetingsTableViewController getMeetings]"
+                  symbolName = "-[LoginViewController setDeviceToken]"
                   moduleName = "CeMeO"
-                  urlString = "file:///Users/jeffreysmets/Desktop/PXL/Project/CeMeOiOS/CeMeOiOS/CeMeOiOS/UpcomingMeetingsTableViewController.m"
-                  timestampString = "412511358.054262"
+                  urlString = "file:///Users/jeffreysmets/Desktop/PXL/Project/CeMeOiOS/CeMeOiOS/CeMeOiOS/LoginViewController.m"
+                  timestampString = "412528800.328216"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "153"
-                  endingLineNumber = "153"
-                  offsetFromSymbolStart = "980">
+                  startingLineNumber = "173"
+                  endingLineNumber = "173"
+                  offsetFromSymbolStart = "794">
                </Location>
                <Location
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__50-[UpcomingMeetingsTableViewController getMeetings]_block_invoke"
+                  symbolName = "__37-[LoginViewController setDeviceToken]_block_invoke"
                   moduleName = "CeMeO"
-                  urlString = "file:///Users/jeffreysmets/Desktop/PXL/Project/CeMeOiOS/CeMeOiOS/CeMeOiOS/UpcomingMeetingsTableViewController.m"
-                  timestampString = "412511358.055149"
+                  urlString = "file:///Users/jeffreysmets/Desktop/PXL/Project/CeMeOiOS/CeMeOiOS/CeMeOiOS/LoginViewController.m"
+                  timestampString = "412528800.328415"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "153"
-                  endingLineNumber = "153"
-                  offsetFromSymbolStart = "83">
+                  startingLineNumber = "173"
+                  endingLineNumber = "173"
+                  offsetFromSymbolStart = "122">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CeMeOiOS/LoginViewController.m"
+            timestampString = "412528989.654417"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
+            landmarkName = "-setDeviceToken"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CeMeOiOS/LoginViewController.m"
+            timestampString = "412529017.184866"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "178"
+            endingLineNumber = "178"
+            landmarkName = "-setDeviceToken"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

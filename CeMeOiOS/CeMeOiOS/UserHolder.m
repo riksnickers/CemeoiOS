@@ -12,7 +12,7 @@
 @implementation UserHolder
 
 //NSDictionarys, but saved as id so they can be called as NSArray
-static id cUserData, cPropositions, cMeetings;
+static id cUserData, cPropositions, cMeetings, cDeviceToken;
 
 /*!
 Sets the user data
@@ -57,6 +57,21 @@ Sets the user data
  */
 +(id)Meetings{
     return cMeetings;
+}
+
+/*!
+ Sets the device token for sending to server after login
+ *\param Device the token that needs to be stored
+ */
++(void)setDevice:(id)Device{
+    cDeviceToken = Device;
+}
+
+/*!
+ returns the device token
+ */
++(id)DeviceToken{
+    return cDeviceToken;
 }
 
 

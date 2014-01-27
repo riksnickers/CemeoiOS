@@ -18,8 +18,8 @@
 @end
 
 @implementation UpcomingMeetingsTableViewController{
-    NSArray *Locations;
-    NSArray *Times;
+    UIAlertView *waitAlert;
+    NSDictionary *mSelf,*room,*meeting;
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -34,18 +34,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    Locations = [[NSArray alloc] initWithObjects:
-                 @"Room 3A - Hasselt",
-                 @"Room 4D - Leuven",
-                 @"Main Meeting Room - Hasselt",
-                 nil];
+    [self getPropos];
     
-    Times = [[NSArray alloc] initWithObjects:
-             @"20/08/2014 - 13:00",
-             @"22/08/2014 - 15:00",
-             @"01/09/2014 - 13:45",
-             nil];
+    [self.refreshControl addTarget:self action:@selector(getPropos) forControlEvents:UIControlEventValueChanged];
     
     //set the badge count
     int badgeCount = [[[UserHolder Propositions] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(Answer = 0)"]]count];
@@ -72,7 +63,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [Locations count];
+    return [[UserHolder Meetings] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -80,8 +71,30 @@
     static NSString *CellIdentifier = @"meetingCell";
     meetingCell *cell = (meetingCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    [cell.lblLocation setText:[Locations objectAtIndex:indexPath.row]];
-    [cell.lblTime setText:[Times objectAtIndex:indexPath.row]];
+    meeting = [[[UserHolder Meetings] objectAtIndex:indexPath.row]objectForKey:@"Meeting"];
+    mSelf = [[[UserHolder Meetings] objectAtIndex:indexPath.row]objectForKey:@"Self"];
+    room = [mSelf objectForKey:@"Room"];
+    
+    NSString *location = [NSString stringWithFormat:@"%@ - %@",
+                          [room valueForKey:@"Name"],
+                          [[room objectForKey:@"LocationID"]objectForKey:@"Name"]];
+    [cell.lblLocation setText:location];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SS"];
+    
+    NSDate *date = [formatter dateFromString:[meeting valueForKey:@"BeginTime"]];
+    
+    NSString *dateString = [NSDateFormatter localizedStringFromDate:date
+                                                          dateStyle:NSDateFormatterShortStyle
+                                                          timeStyle:NSDateFormatterShortStyle];
+    
+    NSTimeInterval check = [date timeIntervalSinceNow];
+    if(check < 86400){
+        [cell setBackgroundColor:[UIColor redColor]];
+    }
+    
+    [cell.lblTime setText:dateString];
     
     return cell;
 }
@@ -96,7 +109,7 @@
 }
 
 -(void)getPropos{
-    UIAlertView *waitAlert = [[UIAlertView alloc] initWithTitle:@"Getting propositions"
+    waitAlert = [[UIAlertView alloc] initWithTitle:@"Refreshing data"
                                                         message:nil
                                                        delegate:nil
                                               cancelButtonTitle:nil
@@ -116,8 +129,6 @@
         //save propositions un userholder
         [UserHolder setPropositions:[responseObject mutableCopy]];
         
-        [self.tableView reloadData];
-        
         //set the badge count
         int badgeCount = [[[UserHolder Propositions] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(Answer = 0)"]]count];
         
@@ -127,8 +138,8 @@
             [[[[[self tabBarController] tabBar] items] objectAtIndex:1] setBadgeValue:nil];
         }
         
-        [self.refreshControl endRefreshing];
-        [waitAlert dismissWithClickedButtonIndex:0 animated:YES];
+        [self getMeetings];
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [self.refreshControl endRefreshing];
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle: @"Something went wrong"
@@ -143,9 +154,48 @@
     
 }
 
+-(void)getMeetings{
+    if(waitAlert == nil){
+        waitAlert = [[UIAlertView alloc] initWithTitle:@"Refreshing data"
+                                               message:nil
+                                              delegate:nil
+                                     cancelButtonTitle:nil
+                                     otherButtonTitles:nil];
+        UIActivityIndicatorView *loading = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(125, 50, 30, 30)];
+        loading.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
+        [waitAlert addSubview:loading];
+        [loading startAnimating];
+        [waitAlert show];
+    }
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    [manager setRequestSerializer:[AFHTTPRequestSerializer serializer]];
+    [manager.requestSerializer setValue:[NSString stringWithFormat:@"bearer %@", [[TokenHolder Token] valueForKey:@"access_token"]] forHTTPHeaderField:@"Authorization"];
+    
+    [manager GET:[IPHolder IPWithPath:@"/api/Meeting/All"] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        //save propositions un userholder
+        [UserHolder setMeetings:[responseObject mutableCopy]];
+        
+        [self.tableView reloadData];
+        [self.refreshControl endRefreshing];
+        [waitAlert dismissWithClickedButtonIndex:0 animated:YES];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.refreshControl endRefreshing];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle: @"Something went wrong"
+                                                       message: @"Could not get meetings"
+                                                      delegate: self
+                                             cancelButtonTitle:@"Ok"
+                                             otherButtonTitles:nil];
+        
+        [waitAlert dismissWithClickedButtonIndex:0 animated:YES];
+        [alert show];
+    }];
+    
+
+}
+
 - (IBAction)Logout:(id)sender {
-    [UserHolder SetUserData:nil];
-    [TokenHolder setToken:nil];
     [self performSegueWithIdentifier:@"ToLogin" sender:self];
 }
 @end

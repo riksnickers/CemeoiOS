@@ -163,6 +163,10 @@
 {
     [self.txtUsername setText:nil];
     [self.txtPassword setText:nil];
+    [UserHolder SetUserData:nil];
+    [UserHolder setPropositions:nil];
+    [UserHolder setMeetings:nil];
+    [TokenHolder setToken:nil];
 }
 
 @end

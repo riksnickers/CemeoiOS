@@ -10,6 +10,7 @@
 
 @implementation IPHolder
 
+//static NSString* IP = @"http://10.65.134.30:12429";
 static NSString* IP = @"http://cemeo.azurewebsites.net";
 
 +(NSString *) IP{

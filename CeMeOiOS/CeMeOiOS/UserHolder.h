@@ -10,10 +10,13 @@
 
 @interface UserHolder : NSObject
 
-+(id) UserData;
-+(void) SetUserData:(id) UserData;
++(id)UserData;
++(void)SetUserData:(id)UserData;
 
 +(id)Propositions;
-+(void)setPropositions:(id) Propositions;
++(void)setPropositions:(id)Propositions;
+
++(id)Meetings;
++(void)setMeetings:(id)Meetings;
 
 @end

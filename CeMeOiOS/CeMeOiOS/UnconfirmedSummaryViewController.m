@@ -218,7 +218,7 @@
         }
         
         [waitAlert dismissWithClickedButtonIndex:0 animated:YES];
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle: @"Send"
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle: @"Sent"
                                                        message: @"Your status has been saved"
                                                       delegate: nil
                                              cancelButtonTitle:@"OK"

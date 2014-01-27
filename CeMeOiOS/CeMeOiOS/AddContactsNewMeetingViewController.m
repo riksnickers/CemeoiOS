@@ -129,7 +129,7 @@
         [chosenContacts removeObject:[Contacts objectAtIndex:rowIndex]];
     }
     
-    if([chosenContacts count] > 0){
+    if([chosenContacts count] > 1){
         [self.btnNext setEnabled:YES];
     }else{
         [self.btnNext setEnabled:NO];

@@ -175,8 +175,8 @@
     [manager POST:[IPHolder IPWithPath:@"/api/Meeting/Schedule"] parameters:data success:^(AFHTTPRequestOperation *operation, id responseObject) {
         if([operation.response statusCode] == 200){
             [waitAlert dismissWithClickedButtonIndex:0 animated:YES];
-            UIAlertView *alert = [[UIAlertView alloc]initWithTitle: @"Send"
-                                                           message: @"Your meeting has been send"
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle: @"Sent"
+                                                           message: @"Your meeting has been sent"
                                                           delegate: nil
                                                  cancelButtonTitle:@"OK"
                                                  otherButtonTitles:nil];

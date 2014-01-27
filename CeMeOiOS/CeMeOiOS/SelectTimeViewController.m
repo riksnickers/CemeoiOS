@@ -40,7 +40,7 @@
                nil];
     
     [datePicker setAlpha:0.0];
-
+    [datePicker setMinimumDate:[[NSDate date]dateByAddingTimeInterval:600]];
 }
 
 - (void)didReceiveMemoryWarning

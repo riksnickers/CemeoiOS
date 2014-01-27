@@ -208,7 +208,7 @@ shouldReloadTableForSearchString:(NSString *)searchString
         if([operation.response statusCode] == 200){
             [[UserHolder UserData] setObject:selected forKey:@"PreferedLocation"];
             [waitAlert dismissWithClickedButtonIndex:0 animated:YES];
-            UIAlertView *alert = [[UIAlertView alloc]initWithTitle: @"Send"
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle: @"Sent"
                                                            message: @"Your location has been changed"
                                                           delegate: nil
                                                  cancelButtonTitle:@"OK"

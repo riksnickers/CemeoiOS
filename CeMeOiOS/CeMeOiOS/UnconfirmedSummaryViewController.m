@@ -25,7 +25,7 @@
     NSArray *statusText;
 }
 
-@synthesize PropositionIndex, ChosenProposition;
+@synthesize ChosenProposition;
 @synthesize lblDate,lblDuration,lblRoom,lblAddress,lblCity,ContactsTable,lblStatus;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -209,14 +209,38 @@
         [UserHolder setPropositions:[responseObject mutableCopy]];
         
         //set the badge count
-        int badgeCount = [[[UserHolder Propositions] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(Answer = 0)"]]count];
+        NSUInteger badgeCount = [[[UserHolder Propositions] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(Answer = 0)"]]count];
         
         if(badgeCount != 0){
-            [[[[[self tabBarController] tabBar] items] objectAtIndex:1] setBadgeValue:[NSString stringWithFormat:@"%d", badgeCount]];
+            [[[[[self tabBarController] tabBar] items] objectAtIndex:1] setBadgeValue:[NSString stringWithFormat:@"%lu", badgeCount]];
         }else{
             [[[[[self tabBarController] tabBar] items] objectAtIndex:1] setBadgeValue:nil];
         }
         
+        [self getMeetings];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle: @"Something went wrong"
+                                                       message: @"Could not get meeting propositions"
+                                                      delegate: nil
+                                             cancelButtonTitle:@"Ok"
+                                             otherButtonTitles:nil];
+        
+        [waitAlert dismissWithClickedButtonIndex:0 animated:YES];
+        [alert show];
+    }];
+}
+
+
+-(void)getMeetings{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    [manager setRequestSerializer:[AFHTTPRequestSerializer serializer]];
+    [manager.requestSerializer setValue:[NSString stringWithFormat:@"bearer %@", [[TokenHolder Token] valueForKey:@"access_token"]] forHTTPHeaderField:@"Authorization"];
+    
+    [manager GET:[IPHolder IPWithPath:@"/api/Meeting/All"] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        //save propositions un userholder
+        [UserHolder setMeetings:[responseObject mutableCopy]];
+
         [waitAlert dismissWithClickedButtonIndex:0 animated:YES];
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle: @"Sent"
                                                        message: @"Your status has been saved"
@@ -228,15 +252,18 @@
         [alert show];
         [self.navigationController popViewControllerAnimated:YES];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle: @"Something went wrong"
-                                                       message: @"Could not get meeting propositions"
-                                                      delegate: nil
+                                                       message: @"Could not get meetings"
+                                                      delegate: self
                                              cancelButtonTitle:@"Ok"
                                              otherButtonTitles:nil];
         
         [waitAlert dismissWithClickedButtonIndex:0 animated:YES];
         [alert show];
     }];
+    
+    
 }
 
 

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1C78D3A439C4450887FDACF6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 641FB731DC7744F3915B6B6F /* libPods.a */; };
+		5905FB7118980C3300E21D66 /* MeetingSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5905FB7018980C3300E21D66 /* MeetingSummaryViewController.m */; };
 		590C5B5F18882637009A1AE5 /* help_filled-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 590C5B5E18882637009A1AE5 /* help_filled-32.png */; };
 		592AFC941886D34E0079D6FC /* UpcomingMeetingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 592AFC931886D34E0079D6FC /* UpcomingMeetingsTableViewController.m */; };
 		592F603E185EF74400BBFE38 /* 24.png in Resources */ = {isa = PBXBuildFile; fileRef = 592F603D185EF74400BBFE38 /* 24.png */; };
@@ -63,6 +64,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5905FB6F18980C3300E21D66 /* MeetingSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeetingSummaryViewController.h; sourceTree = "<group>"; };
+		5905FB7018980C3300E21D66 /* MeetingSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeetingSummaryViewController.m; sourceTree = "<group>"; };
 		590C5B5E18882637009A1AE5 /* help_filled-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "help_filled-32.png"; sourceTree = "<group>"; };
 		592AFC921886D34E0079D6FC /* UpcomingMeetingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpcomingMeetingsTableViewController.h; sourceTree = "<group>"; };
 		592AFC931886D34E0079D6FC /* UpcomingMeetingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpcomingMeetingsTableViewController.m; sourceTree = "<group>"; };
@@ -352,6 +355,8 @@
 			children = (
 				592AFC921886D34E0079D6FC /* UpcomingMeetingsTableViewController.h */,
 				592AFC931886D34E0079D6FC /* UpcomingMeetingsTableViewController.m */,
+				5905FB6F18980C3300E21D66 /* MeetingSummaryViewController.h */,
+				5905FB7018980C3300E21D66 /* MeetingSummaryViewController.m */,
 			);
 			name = Upcoming;
 			sourceTree = "<group>";
@@ -542,6 +547,7 @@
 				594C257E185C9DAB009C5390 /* TokenHolder.m in Sources */,
 				594796A9187D7DA9008E4E7B /* InfoCell.m in Sources */,
 				592F6044185EFA4000BBFE38 /* AddContactsNewMeetingViewController.m in Sources */,
+				5905FB7118980C3300E21D66 /* MeetingSummaryViewController.m in Sources */,
 				59902ACC1861C9D60002F960 /* RequiredContactsNewMeetingViewController.m in Sources */,
 				594C1C6D188D2560000F26C1 /* UnconfirmedSummaryViewController.m in Sources */,
 				59E5E6E61862F10C00084856 /* IPHolder.m in Sources */,

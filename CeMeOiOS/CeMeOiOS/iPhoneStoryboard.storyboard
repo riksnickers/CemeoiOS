@@ -140,6 +140,7 @@
                                 <connections>
                                     <outlet property="lblLocation" destination="B7M-uO-K8r" id="IZG-bU-9tR"/>
                                     <outlet property="lblTime" destination="O9X-rC-Qku" id="fL3-nK-jgX"/>
+                                    <segue destination="UoF-Ff-lGq" kind="push" identifier="toFullMeeting" id="yfN-Oq-6Xk"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -253,7 +254,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="3087" y="-39"/>
+            <point key="canvasLocation" x="3161" y="-772"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="gTM-P2-nRd">
@@ -292,7 +293,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GPR-OD-Udf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2597" y="-39"/>
+            <point key="canvasLocation" x="2671" y="-772"/>
         </scene>
         <!--Required Contacts New Meeting View Controller - Required Attendees-->
         <scene sceneID="z9C-mS-AAG">
@@ -366,7 +367,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="3559" y="-39"/>
+            <point key="canvasLocation" x="3633" y="-772"/>
         </scene>
         <!--Select Time View Controller - Select Time-->
         <scene sceneID="LIr-IX-22d">
@@ -441,7 +442,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hDc-N2-ttw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4007" y="-36"/>
+            <point key="canvasLocation" x="4081" y="-769"/>
         </scene>
         <!--Summary New Meeting View Controller - Meeting Summary-->
         <scene sceneID="4B1-Cl-YJ6">
@@ -581,7 +582,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CIf-bf-TJJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="9g0-52-etS" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4961" y="-43"/>
+            <point key="canvasLocation" x="5019" y="-769"/>
         </scene>
         <!--Select Duration New Meeting View Controller - Select Duration-->
         <scene sceneID="xV3-St-2K0">
@@ -644,7 +645,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iXI-wu-UbY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4495" y="-39"/>
+            <point key="canvasLocation" x="4564" y="-769"/>
         </scene>
         <!--Profile Over View Table View Controller - Profile-->
         <scene sceneID="npe-8i-XeN">
@@ -859,7 +860,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="2597" y="735"/>
+            <point key="canvasLocation" x="2671" y="735"/>
         </scene>
         <!--Unconfirmed Table View Controller - Propositions-->
         <scene sceneID="txg-2W-may">
@@ -1080,7 +1081,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nb9-05-wMu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2597" y="1522"/>
+            <point key="canvasLocation" x="2671" y="1522"/>
         </scene>
         <!--Navigation Controller - Profile-->
         <scene sceneID="fWG-xb-9cy">
@@ -1138,25 +1139,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bz2-lS-ULS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2085" y="2220"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="Mwx-vV-qIj">
-            <objects>
-                <viewController id="FTV-FX-FUk" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="JXH-Fl-sdV"/>
-                        <viewControllerLayoutGuide type="bottom" id="fKK-MX-11h"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="oZ3-Rp-uH1">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="N9Q-eH-K01" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2085" y="2967"/>
+            <point key="canvasLocation" x="2127" y="2220"/>
         </scene>
         <!--Navigation Controller - Propositions-->
         <scene sceneID="pHx-uh-PiV">
@@ -1195,6 +1178,147 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t4F-5z-WSr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1559" y="2220"/>
+        </scene>
+        <!--Meeting Summary View Controller - Meeting-->
+        <scene sceneID="kbl-8V-WXe">
+            <objects>
+                <viewController id="UoF-Ff-lGq" customClass="MeetingSummaryViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Opj-fg-rB0"/>
+                        <viewControllerLayoutGuide type="bottom" id="ol2-P1-VEh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="AbU-Oo-Qie">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have a meeting with" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MOZ-ko-cU5">
+                                <rect key="frame" x="14" y="80" width="187" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="SIS-3j-7dw">
+                                <rect key="frame" x="0.0" y="109" width="320" height="192"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <sections>
+                                    <tableViewSection id="dhy-nX-FZy">
+                                        <cells>
+                                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ContactCell" id="ife-p9-8fr">
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ife-p9-8fr" id="7by-hZ-z8r">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                        </cells>
+                                    </tableViewSection>
+                                </sections>
+                                <connections>
+                                    <outlet property="dataSource" destination="UoF-Ff-lGq" id="8Fy-fM-HJf"/>
+                                    <outlet property="delegate" destination="UoF-Ff-lGq" id="FdJ-5D-JiD"/>
+                                </connections>
+                            </tableView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="at" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aO2-wC-EWZ">
+                                <rect key="frame" x="14" y="309" width="15" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Zjp-3J-W2e"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="duration" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ib0-Vv-Yck">
+                                <rect key="frame" x="14" y="353" width="64" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="in" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="41j-TJ-Cu4">
+                                <rect key="frame" x="14" y="395" width="14" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A4h-hE-OJy">
+                                <rect key="frame" x="42" y="330" width="258" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RYq-9X-Fnw">
+                                <rect key="frame" x="42" y="376" width="258" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Room" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vyO-oa-tFo">
+                                <rect key="frame" x="42" y="414" width="258" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address 1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LyF-go-xAm">
+                                <rect key="frame" x="42" y="445" width="258" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address 2" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RFw-UK-OK6">
+                                <rect key="frame" x="42" y="476" width="258" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="vyO-oa-tFo" firstAttribute="leading" secondItem="41j-TJ-Cu4" secondAttribute="trailing" constant="14" id="2X0-n4-VbA"/>
+                            <constraint firstItem="vyO-oa-tFo" firstAttribute="top" secondItem="RYq-9X-Fnw" secondAttribute="bottom" constant="15" id="4nm-IL-WiB"/>
+                            <constraint firstItem="vyO-oa-tFo" firstAttribute="trailing" secondItem="RYq-9X-Fnw" secondAttribute="trailing" id="54s-LK-epI"/>
+                            <constraint firstItem="RYq-9X-Fnw" firstAttribute="top" secondItem="ib0-Vv-Yck" secondAttribute="bottom" constant="2" id="85z-Gt-0eK"/>
+                            <constraint firstItem="41j-TJ-Cu4" firstAttribute="top" secondItem="ib0-Vv-Yck" secondAttribute="bottom" constant="21" id="8G9-mU-MNa"/>
+                            <constraint firstItem="vyO-oa-tFo" firstAttribute="trailing" secondItem="LyF-go-xAm" secondAttribute="trailing" id="ADt-uV-f2P"/>
+                            <constraint firstAttribute="trailing" secondItem="A4h-hE-OJy" secondAttribute="trailing" constant="20" symbolic="YES" id="BKr-e6-mu0"/>
+                            <constraint firstItem="ol2-P1-VEh" firstAttribute="top" secondItem="RFw-UK-OK6" secondAttribute="bottom" constant="20" id="DzP-f2-bff"/>
+                            <constraint firstItem="ib0-Vv-Yck" firstAttribute="top" secondItem="aO2-wC-EWZ" secondAttribute="bottom" constant="23" id="IFf-me-nzl"/>
+                            <constraint firstItem="A4h-hE-OJy" firstAttribute="trailing" secondItem="RYq-9X-Fnw" secondAttribute="trailing" id="Il4-QL-XVV"/>
+                            <constraint firstItem="MOZ-ko-cU5" firstAttribute="top" secondItem="Opj-fg-rB0" secondAttribute="bottom" constant="16" id="J28-Ev-gjB"/>
+                            <constraint firstItem="ib0-Vv-Yck" firstAttribute="leading" secondItem="aO2-wC-EWZ" secondAttribute="leading" id="MEm-aV-Xhf"/>
+                            <constraint firstItem="SIS-3j-7dw" firstAttribute="leading" secondItem="AbU-Oo-Qie" secondAttribute="leading" id="Mcg-7d-oxg"/>
+                            <constraint firstItem="aO2-wC-EWZ" firstAttribute="top" secondItem="SIS-3j-7dw" secondAttribute="bottom" constant="8" symbolic="YES" id="NpP-HM-ojT"/>
+                            <constraint firstItem="RFw-UK-OK6" firstAttribute="trailing" secondItem="LyF-go-xAm" secondAttribute="trailing" id="Pnu-Mz-w0r"/>
+                            <constraint firstItem="ib0-Vv-Yck" firstAttribute="top" secondItem="A4h-hE-OJy" secondAttribute="bottom" constant="2" id="Rse-TS-Jlm"/>
+                            <constraint firstItem="LyF-go-xAm" firstAttribute="leading" secondItem="vyO-oa-tFo" secondAttribute="leading" id="UvL-7z-LeR"/>
+                            <constraint firstItem="41j-TJ-Cu4" firstAttribute="leading" secondItem="ib0-Vv-Yck" secondAttribute="leading" id="VAR-x5-6Fu"/>
+                            <constraint firstItem="LyF-go-xAm" firstAttribute="top" secondItem="vyO-oa-tFo" secondAttribute="bottom" constant="8" symbolic="YES" id="VFG-zV-9Ho"/>
+                            <constraint firstItem="A4h-hE-OJy" firstAttribute="leading" secondItem="RYq-9X-Fnw" secondAttribute="leading" id="XXm-JB-rF6"/>
+                            <constraint firstItem="A4h-hE-OJy" firstAttribute="leading" secondItem="AbU-Oo-Qie" secondAttribute="leading" constant="42" id="afk-bx-unA"/>
+                            <constraint firstItem="MOZ-ko-cU5" firstAttribute="leading" secondItem="aO2-wC-EWZ" secondAttribute="leading" id="b2W-cg-3o0"/>
+                            <constraint firstItem="RYq-9X-Fnw" firstAttribute="leading" secondItem="vyO-oa-tFo" secondAttribute="leading" id="bQy-2c-KFg"/>
+                            <constraint firstItem="RFw-UK-OK6" firstAttribute="top" secondItem="LyF-go-xAm" secondAttribute="bottom" constant="8" symbolic="YES" id="hVn-Sb-Ong"/>
+                            <constraint firstAttribute="trailing" secondItem="SIS-3j-7dw" secondAttribute="trailing" id="m2L-eW-TNw"/>
+                            <constraint firstItem="SIS-3j-7dw" firstAttribute="top" secondItem="MOZ-ko-cU5" secondAttribute="bottom" constant="8" symbolic="YES" id="oYs-Qp-QKb"/>
+                            <constraint firstItem="A4h-hE-OJy" firstAttribute="top" secondItem="SIS-3j-7dw" secondAttribute="bottom" constant="29" id="rZG-U1-3HA"/>
+                            <constraint firstItem="RFw-UK-OK6" firstAttribute="leading" secondItem="LyF-go-xAm" secondAttribute="leading" id="v7v-io-sQo"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Meeting" id="gHl-AA-EqX"/>
+                    <connections>
+                        <outlet property="ContactsTable" destination="SIS-3j-7dw" id="Vjy-RO-vel"/>
+                        <outlet property="lblAddress1" destination="LyF-go-xAm" id="r51-eJ-62w"/>
+                        <outlet property="lblAddress2" destination="RFw-UK-OK6" id="sw6-Pj-AEN"/>
+                        <outlet property="lblDate" destination="A4h-hE-OJy" id="EhZ-aw-88W"/>
+                        <outlet property="lblDuration" destination="RYq-9X-Fnw" id="zAU-ty-hkC"/>
+                        <outlet property="lblRoom" destination="vyO-oa-tFo" id="sn3-M8-gVV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lPt-W5-GCe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2671" y="-39"/>
         </scene>
     </scenes>
     <resources>

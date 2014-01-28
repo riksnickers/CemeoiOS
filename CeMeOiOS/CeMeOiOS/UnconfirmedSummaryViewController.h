@@ -20,7 +20,6 @@
 
 - (IBAction)sendAnswer:(id)sender;
 
-@property int PropositionIndex;
 @property NSDictionary *ChosenProposition;
 
 @end

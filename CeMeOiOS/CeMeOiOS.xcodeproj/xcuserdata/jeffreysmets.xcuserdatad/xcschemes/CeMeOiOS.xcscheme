@@ -28,16 +28,6 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "595F00B61858B70D00E408BC"
-               BuildableName = "CeMeOiOSTests.xctest"
-               BlueprintName = "CeMeOiOSTests"
-               ReferencedContainer = "container:CeMeOiOS.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

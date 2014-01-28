@@ -209,10 +209,10 @@
         [UserHolder setPropositions:[responseObject mutableCopy]];
         
         //set the badge count
-        NSUInteger badgeCount = [[[UserHolder Propositions] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(Answer = 0)"]]count];
+        int badgeCount = [[[UserHolder Propositions] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(Answer = 0)"]]count];
         
         if(badgeCount != 0){
-            [[[[[self tabBarController] tabBar] items] objectAtIndex:1] setBadgeValue:[NSString stringWithFormat:@"%lu", badgeCount]];
+            [[[[[self tabBarController] tabBar] items] objectAtIndex:1] setBadgeValue:[NSString stringWithFormat:@"%d", badgeCount]];
         }else{
             [[[[[self tabBarController] tabBar] items] objectAtIndex:1] setBadgeValue:nil];
         }

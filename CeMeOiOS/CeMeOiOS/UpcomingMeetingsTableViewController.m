@@ -40,10 +40,10 @@
     [self.refreshControl addTarget:self action:@selector(getPropos) forControlEvents:UIControlEventValueChanged];
     
     //set the badge count
-    NSUInteger badgeCount = [[[UserHolder Propositions] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(Answer = 0)"]]count];
+    int badgeCount = [[[UserHolder Propositions] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(Answer = 0)"]]count];
     
     if(badgeCount != 0){
-        [[[[[self tabBarController] tabBar] items] objectAtIndex:1] setBadgeValue:[NSString stringWithFormat:@"%lu", badgeCount]];
+        [[[[[self tabBarController] tabBar] items] objectAtIndex:1] setBadgeValue:[NSString stringWithFormat:@"%d", badgeCount]];
     }else{
         [[[[[self tabBarController] tabBar] items] objectAtIndex:1] setBadgeValue:nil];
     }
@@ -94,7 +94,6 @@
     if(check < 86400){
         [cell setBackgroundColor:[UIColor colorWithRed:255/255.0f green:200/255.0f blue:198/255.0f alpha:1.0f]];
     }
-    [self scheduleNotificationWithDate:date];
     
     [cell.lblTime setText:dateString];
     
@@ -132,13 +131,14 @@
         [UserHolder setPropositions:[responseObject mutableCopy]];
         
         //set the badge count
-        NSUInteger badgeCount = [[[UserHolder Propositions] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(Answer = 0)"]]count];
+        int badgeCount = [[[UserHolder Propositions] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(Answer = 0)"]]count];
         
         if(badgeCount != 0){
-            [[[[[self tabBarController] tabBar] items] objectAtIndex:1] setBadgeValue:[NSString stringWithFormat:@"%lu", badgeCount]];
+            [[[[[self tabBarController] tabBar] items] objectAtIndex:1] setBadgeValue:[NSString stringWithFormat:@"%d", badgeCount]];
         }else{
             [[[[[self tabBarController] tabBar] items] objectAtIndex:1] setBadgeValue:nil];
         }
+
         
         [self getMeetings];
         
@@ -214,14 +214,18 @@
     }
 }
 
--(void)scheduleNotificationWithDate:(NSDate *)date{
+-(void)scheduleNotificationWithDate:(NSDate *)meetingDate{
     UILocalNotification *localNotif = [[UILocalNotification alloc]init];
     
-    localNotif.fireDate = [date dateByAddingTimeInterval:-3600];
-    localNotif.alertBody = @"You have a meeting in one hour";
-    localNotif.soundName = UILocalNotificationDefaultSoundName;
+    NSTimeInterval diff = [meetingDate timeIntervalSinceNow];
     
-    [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
+    if(diff > 3600){
+        localNotif.fireDate = [meetingDate dateByAddingTimeInterval:-3600];
+        localNotif.alertBody = @"You have a meeting in one hour";
+        localNotif.soundName = UILocalNotificationDefaultSoundName;
+        
+        [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
+    }
     
 }
 

@@ -269,6 +269,7 @@
                     <connections>
                         <segue destination="WzH-Mf-n4x" kind="relationship" relationship="viewControllers" id="5qm-VD-dxT"/>
                         <segue destination="rxL-5o-9vE" kind="relationship" relationship="viewControllers" id="3EB-Ko-UqT"/>
+                        <segue destination="VEJ-R9-2mw" kind="relationship" relationship="viewControllers" id="AvL-65-dCx"/>
                         <segue destination="t7i-Gt-wyC" kind="relationship" relationship="viewControllers" id="2f5-k2-lvg"/>
                         <segue destination="fBJ-qV-ctT" kind="relationship" relationship="viewControllers" id="yVT-DW-2A2"/>
                     </connections>
@@ -1139,7 +1140,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bz2-lS-ULS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2127" y="2220"/>
+            <point key="canvasLocation" x="2127" y="3032"/>
         </scene>
         <!--Navigation Controller - Propositions-->
         <scene sceneID="pHx-uh-PiV">
@@ -1160,6 +1161,35 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="1559" y="1522"/>
         </scene>
+        <!--Drafts Table View Controller - Drafts-->
+        <scene sceneID="8KA-AR-Ks0">
+            <objects>
+                <tableViewController id="uSm-nU-4iL" customClass="DraftsTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="IxP-wR-QXm">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="a7P-Vx-66e" customClass="draftCell">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="a7P-Vx-66e" id="io7-CY-ofg">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="uSm-nU-4iL" id="hYr-C6-x7P"/>
+                            <outlet property="delegate" destination="uSm-nU-4iL" id="1Uy-Zs-DEv"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Drafts" id="UGK-T1-ygR"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kvF-n4-KdJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2127" y="2273"/>
+        </scene>
         <!--Navigation Controller - About-->
         <scene sceneID="hGn-3j-LVh">
             <objects>
@@ -1177,7 +1207,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t4F-5z-WSr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1559" y="2220"/>
+            <point key="canvasLocation" x="1559" y="3032"/>
         </scene>
         <!--Meeting Summary View Controller - Meeting-->
         <scene sceneID="kbl-8V-WXe">
@@ -1320,8 +1350,28 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="2671" y="-39"/>
         </scene>
+        <!--Navigation Controller - Drafts-->
+        <scene sceneID="TwV-gB-qUa">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VEJ-R9-2mw" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Drafts" image="ball_point_pen-32.png" id="LZ6-tn-qVo"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5R5-tQ-XMA">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="uSm-nU-4iL" kind="relationship" relationship="rootViewController" id="TUH-J7-pma"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RjS-y3-99j" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1559" y="2273"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="ball_point_pen-32.png" width="32" height="32"/>
         <image name="calendar-32.png" width="32" height="32"/>
         <image name="cemeo_logo_medium_trans.png" width="612" height="602"/>
         <image name="help_filled-32.png" width="32" height="32"/>

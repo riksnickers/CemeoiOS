@@ -7,23 +7,54 @@
 //
 
 #import "TokenHolder.h"
+#import "KeychainItemWrapper.h"
 
 @implementation TokenHolder
+
 static id cToken;
 
+///*!
+// Sets the token
+// *\param token the token data that needs to be stored
+// */
+//+(void)setToken:(id)token{
+//    cToken = token;
+//}
+
+///*!
+// Returns the token
+// */
+//+(id)Token{
+//    return cToken;
+//}
+
 /*!
- Sets the token
+ Saves the token in the keychain
  *\param token the token data that needs to be stored
  */
 +(void)setToken:(id)token{
-    cToken = token;
+    KeychainItemWrapper *keychainWrapper = [[KeychainItemWrapper alloc] initWithIdentifier:@"UserAuthToken" accessGroup:nil];
+    [keychainWrapper setObject:[token description] forKey:(__bridge id)(kSecValueData)];
 }
 
 /*!
- Returns the token
+ Receives the token from the keychain
  */
 +(id)Token{
-    return cToken;
+    KeychainItemWrapper *keychainWrapper = [[KeychainItemWrapper alloc] initWithIdentifier:@"UserAuthToken" accessGroup:nil];
+    if(![[keychainWrapper objectForKey:(__bridge id)(kSecValueData)]length]){
+        return nil;
+    }else{
+        return [[keychainWrapper objectForKey:(__bridge id)(kSecValueData)] propertyList];
+    }
+}
+
+/*!
+ Clears the token from the keychain
+ */
++(void)ClearToken{
+    KeychainItemWrapper *keychainWrapper = [[KeychainItemWrapper alloc] initWithIdentifier:@"UserAuthToken" accessGroup:nil];
+    [keychainWrapper resetKeychainItem];
 }
 
 @end

@@ -13,6 +13,7 @@
 
 //NSDictionarys, but saved as id so they can be called as NSArray
 static id cUserData, cPropositions, cMeetings, cDeviceToken;
+static NSArray *cDrafts;
 
 /*!
 Sets the user data
@@ -34,7 +35,15 @@ Sets the user data
  *\param Propositions the propositions that needs to be stored
  */
 +(void)setPropositions:(id) Propositions{
-    cPropositions = Propositions;
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SS"];
+    
+    cPropositions = [Propositions sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        NSDate *dateA = [formatter dateFromString:[[obj1 objectForKey:@"Proposition"] objectForKey:@"BeginTime"]];
+        NSDate *dateB = [formatter dateFromString:[[obj2 objectForKey:@"Proposition"] objectForKey:@"BeginTime"]];
+        
+        return [dateA compare:dateB];
+    }];;
 }
 
 /*!
@@ -49,7 +58,16 @@ Sets the user data
  *\param Meetings the neetings that needs to be stored
  */
 +(void)setMeetings:(id)Meetings{
-    cMeetings = Meetings;
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SS"];
+    
+    cMeetings = [Meetings sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        NSDate *dateA = [formatter dateFromString:[[obj1 objectForKey:@"Meeting"] objectForKey:@"BeginTime"]];
+        NSDate *dateB = [formatter dateFromString:[[obj2 objectForKey:@"Meeting"] objectForKey:@"BeginTime"]];
+        
+        return [dateA compare:dateB];
+    }];
+    
 }
 
 /*!
@@ -72,6 +90,14 @@ Sets the user data
  */
 +(id)DeviceToken{
     return cDeviceToken;
+}
+
++(void)setDrafts:(id)Drafts{
+    cDrafts = Drafts;
+}
+
++(id)Drafts{
+    return cDrafts;
 }
 
 

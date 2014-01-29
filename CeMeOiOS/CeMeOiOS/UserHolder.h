@@ -19,6 +19,9 @@
 +(id)Meetings;
 +(void)setMeetings:(id)Meetings;
 
++(id)Drafts;
++(void)setDrafts:(id)Drafts;
+
 +(id)DeviceToken;
 +(void)setDevice:(id)Device;
 

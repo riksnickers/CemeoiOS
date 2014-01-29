@@ -11,6 +11,7 @@
 #import "TokenHolder.h"
 #import "UserHolder.h"
 #import "IPHolder.h"
+#import "KeychainItemWrapper.h"
 
 @interface LoginViewController ()
 
@@ -33,7 +34,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    if([TokenHolder Token] != nil){
+        NSDictionary *token = [TokenHolder Token];
+        
+        NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+        [formatter setDateFormat:@"EEE, dd MMM yyyy HH:mm:ss z"];
+        
+        NSDate *date = [formatter dateFromString:[token valueForKey:@".expires"]];
+        if([[NSDate date]compare:date] == NSOrderedAscending ){
+            [self getUserData];
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -110,6 +121,20 @@
  save it in userholder
  */
 -(void)getUserData{
+    
+    if(waitAlert == nil){
+        waitAlert = [[UIAlertView alloc] initWithTitle:@"Loging in..."
+                                               message:nil
+                                              delegate:nil
+                                     cancelButtonTitle:nil
+                                     otherButtonTitles:nil];
+        UIActivityIndicatorView *loading = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(125, 50, 30, 30)];
+        loading.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
+        [waitAlert addSubview:loading];
+        [loading startAnimating];
+        [waitAlert show];
+    }
+    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
     [manager setRequestSerializer:[AFHTTPRequestSerializer serializer]];
@@ -193,7 +218,7 @@
     [UserHolder SetUserData:nil];
     [UserHolder setPropositions:nil];
     [UserHolder setMeetings:nil];
-    [TokenHolder setToken:nil];
+    [TokenHolder ClearToken];
 }
 
 @end

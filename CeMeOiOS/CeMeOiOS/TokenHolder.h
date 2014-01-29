@@ -12,5 +12,6 @@
 
 +(id) Token;
 +(void) setToken:(id) token;
++(void)ClearToken;
 
 @end

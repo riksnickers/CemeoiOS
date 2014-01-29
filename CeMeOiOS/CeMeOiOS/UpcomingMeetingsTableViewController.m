@@ -13,6 +13,7 @@
 #import "TokenHolder.h"
 #import "IPHolder.h"
 #import "MeetingSummaryViewController.h"
+#import "NotificationManager.h"
 
 @interface UpcomingMeetingsTableViewController ()
 
@@ -21,6 +22,7 @@
 @implementation UpcomingMeetingsTableViewController{
     UIAlertView *waitAlert;
     NSDictionary *mSelf,*room,*meeting;
+    NSArray *sortedMeetings;
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -40,13 +42,14 @@
     [self.refreshControl addTarget:self action:@selector(getPropos) forControlEvents:UIControlEventValueChanged];
     
     //set the badge count
-    int badgeCount = [[[UserHolder Propositions] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(Answer = 0)"]]count];
+    NSUInteger badgeCount = [[[UserHolder Propositions] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(Answer = 0)"]]count];
     
     if(badgeCount != 0){
-        [[[[[self tabBarController] tabBar] items] objectAtIndex:1] setBadgeValue:[NSString stringWithFormat:@"%d", badgeCount]];
+        [[[[[self tabBarController] tabBar] items] objectAtIndex:1] setBadgeValue:[NSString stringWithFormat:@"%lu", (unsigned long)badgeCount]];
     }else{
         [[[[[self tabBarController] tabBar] items] objectAtIndex:1] setBadgeValue:nil];
     }
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -92,7 +95,7 @@
     
     NSTimeInterval check = [date timeIntervalSinceNow];
     if(check < 86400){
-        [cell setBackgroundColor:[UIColor colorWithRed:255/255.0f green:200/255.0f blue:198/255.0f alpha:1.0f]];
+    
     }
     
     [cell.lblTime setText:dateString];
@@ -131,10 +134,10 @@
         [UserHolder setPropositions:[responseObject mutableCopy]];
         
         //set the badge count
-        int badgeCount = [[[UserHolder Propositions] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(Answer = 0)"]]count];
+        NSUInteger badgeCount = [[[UserHolder Propositions] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(Answer = 0)"]]count];
         
         if(badgeCount != 0){
-            [[[[[self tabBarController] tabBar] items] objectAtIndex:1] setBadgeValue:[NSString stringWithFormat:@"%d", badgeCount]];
+            [[[[[self tabBarController] tabBar] items] objectAtIndex:1] setBadgeValue:[NSString stringWithFormat:@"%lu", (unsigned long)badgeCount]];
         }else{
             [[[[[self tabBarController] tabBar] items] objectAtIndex:1] setBadgeValue:nil];
         }
@@ -177,10 +180,10 @@
     
     [manager GET:[IPHolder IPWithPath:@"/api/Meeting/All"] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //save propositions un userholder
-        [UserHolder setMeetings:[responseObject mutableCopy]];
+        [UserHolder setMeetings:responseObject];
+        [NotificationManager ScheduleNotificationsWithMeetings:responseObject];
         
         [self.tableView reloadData];
-        [[UIApplication sharedApplication] cancelAllLocalNotifications];
         [self.refreshControl endRefreshing];
         [waitAlert dismissWithClickedButtonIndex:0 animated:YES];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -212,21 +215,6 @@
         
         ms.meeting = [[UserHolder Meetings] objectAtIndex:myIndexPath.row];
     }
-}
-
--(void)scheduleNotificationWithDate:(NSDate *)meetingDate{
-    UILocalNotification *localNotif = [[UILocalNotification alloc]init];
-    
-    NSTimeInterval diff = [meetingDate timeIntervalSinceNow];
-    
-    if(diff > 3600){
-        localNotif.fireDate = [meetingDate dateByAddingTimeInterval:-3600];
-        localNotif.alertBody = @"You have a meeting in one hour";
-        localNotif.soundName = UILocalNotificationDefaultSoundName;
-        
-        [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
-    }
-    
 }
 
 -(void)viewDidAppear:(BOOL)animated{

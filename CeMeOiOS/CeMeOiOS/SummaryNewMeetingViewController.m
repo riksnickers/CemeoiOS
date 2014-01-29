@@ -20,7 +20,7 @@
 @end
 
 @implementation SummaryNewMeetingViewController{
-    NSArray *options;
+    NSArray *options,*originalContacts;
 }
 
 @synthesize Contacts;
@@ -53,6 +53,8 @@
                @"Within 30 days",
                @"Before a date",
                nil];
+    
+    originalContacts = [[NSMutableArray alloc] initWithArray:Contacts copyItems:YES];
     
     //shows wich option is selected from the options array via the DateIndex (from previous viewcontroller)
     if(DateIndex != 5){
@@ -154,7 +156,7 @@
  Sends the new meeting data to the server for processing
  *\param data The new meeting (nsdictionary) that will be converted to json and send
  */
--(void)SendData:(NSDictionary *)data{
+-(void)SendData:(NSMutableDictionary *)data{
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     [manager.requestSerializer setValue:[NSString stringWithFormat:@"bearer %@", [[TokenHolder Token] valueForKey:@"access_token"]] forHTTPHeaderField:@"Authorization"];
@@ -183,28 +185,31 @@
             
             
             [alert show];
-            
             [self performSegueWithIdentifier:@"toUpcoming" sender:self];
         }else{
+            [self saveMeeting:data];
             UIAlertView *alert = [[UIAlertView alloc]initWithTitle: @"Something went wrong"
-                                                           message: @"Please try again later"
-                                                          delegate: self
+                                                           message: @"Please try again later. Your meeting has been saved as draft"
+                                                          delegate: nil
                                                  cancelButtonTitle:@"Ok"
                                                  otherButtonTitles:nil];
             
             [waitAlert dismissWithClickedButtonIndex:0 animated:YES];
             [alert show];
+            [self performSegueWithIdentifier:@"toUpcoming" sender:self];
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error %@", error);
+        [self saveMeeting:data];
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle: @"Something went wrong"
-                                                        message: @"Please try again later"
-                                                        delegate: self
+                                                        message: @"Please try again later. Your meeting has been saved as draft"
+                                                        delegate: nil
                                                         cancelButtonTitle:@"Ok"
                                                         otherButtonTitles:nil];
             
         [waitAlert dismissWithClickedButtonIndex:0 animated:YES];
         [alert show];
+        [self performSegueWithIdentifier:@"toUpcoming" sender:self];
         
     }];
 }
@@ -214,6 +219,12 @@
     NSInteger minutes = (ti / 60) % 60;
     NSInteger hours = (ti / 3600);
     return [NSString stringWithFormat:@"%li Hours %li Minutes", (long)hours, (long)minutes];
+}
+
+-(void)saveMeeting:(NSMutableDictionary *)data{
+    [data setObject:[NSDate date] forKey:@"failDate"];
+    [data setObject:originalContacts forKey:@"InvitedParticipants"];
+    [[UserHolder Drafts] addObject:data];
 }
 
 

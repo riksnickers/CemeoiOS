@@ -21,6 +21,7 @@
 
 +(id)Drafts;
 +(void)setDrafts:(id)Drafts;
++(void)AddDraft:(NSDictionary *)draft;
 
 +(id)DeviceToken;
 +(void)setDevice:(id)Device;

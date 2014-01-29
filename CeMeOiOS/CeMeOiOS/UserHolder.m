@@ -13,7 +13,7 @@
 
 //NSDictionarys, but saved as id so they can be called as NSArray
 static id cUserData, cPropositions, cMeetings, cDeviceToken;
-static NSArray *cDrafts;
+static NSMutableArray *cDrafts;
 
 /*!
 Sets the user data
@@ -92,12 +92,30 @@ Sets the user data
     return cDeviceToken;
 }
 
+/*!
+ Sets the drafts for retrying later
+ *\param Drafts the drafts that need to be saved
+ */
 +(void)setDrafts:(id)Drafts{
     cDrafts = Drafts;
 }
 
+/*!
+ returns the drafts
+ */
 +(id)Drafts{
     return cDrafts;
+}
+
+/*!
+ Adds a draft to the drafts
+ *\param draft add a draft to the array
+ */
++(void)AddDraft:(NSDictionary *)draft{
+    if(cDrafts == nil){
+        cDrafts = [[NSMutableArray alloc] init];
+    }
+    [cDrafts addObject:draft];
 }
 
 

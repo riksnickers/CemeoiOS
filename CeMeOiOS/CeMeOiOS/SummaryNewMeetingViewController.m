@@ -224,7 +224,7 @@
 -(void)saveMeeting:(NSMutableDictionary *)data{
     [data setObject:[NSDate date] forKey:@"failDate"];
     [data setObject:originalContacts forKey:@"InvitedParticipants"];
-    [[UserHolder Drafts] addObject:data];
+    [UserHolder AddDraft:data];
 }
 
 

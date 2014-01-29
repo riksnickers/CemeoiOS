@@ -43,6 +43,8 @@
         NSDate *date = [formatter dateFromString:[token valueForKey:@".expires"]];
         if([[NSDate date]compare:date] == NSOrderedAscending ){
             [self getUserData];
+        }else{
+            [self Logout];
         }
     }
 }
@@ -213,11 +215,16 @@
 
 - (IBAction)unwindToLogin:(UIStoryboardSegue *)unwindSegue
 {
+    [self Logout];
+}
+
+-(void)Logout{
     [self.txtUsername setText:nil];
     [self.txtPassword setText:nil];
     [UserHolder SetUserData:nil];
     [UserHolder setPropositions:nil];
     [UserHolder setMeetings:nil];
+    [UserHolder setDrafts:nil];
     [TokenHolder ClearToken];
 }
 

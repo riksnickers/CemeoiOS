@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "UserHolder.h"
-#import "TokenHolder.h"
 
 @implementation AppDelegate
 
@@ -17,6 +16,16 @@
     UIRemoteNotificationType notiTypes= UIRemoteNotificationTypeSound | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert;
     [[UIApplication sharedApplication]setApplicationIconBadgeNumber:0];
     [application registerForRemoteNotificationTypes:notiTypes];
+    
+    [[UIApplication sharedApplication]setApplicationIconBadgeNumber:0];
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    
+    NSString *plistPath = [documentsDirectory stringByAppendingPathComponent:@"Drafts.plist"];
+    [UserHolder setDrafts:[[NSArray arrayWithContentsOfFile:plistPath]mutableCopy]];
+
+    
     return YES;
 }
 
@@ -30,12 +39,26 @@
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    
+    NSError *error;
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSFileManager *fileManager;
+    
+    NSString *plistPath = [documentsDirectory stringByAppendingPathComponent:@"Drafts.plist"];
+    if (![fileManager fileExistsAtPath: plistPath])
+    {
+        NSString *bundle = [[NSBundle mainBundle] pathForResource:@"Drafts" ofType:@"plist"];
+        [fileManager copyItemAtPath:bundle toPath:plistPath error:&error];
+    }
+    [[UserHolder Drafts] writeToFile:plistPath atomically: YES];
+    
+    
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-    [[UIApplication sharedApplication]setApplicationIconBadgeNumber:0];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
@@ -49,6 +72,8 @@
 }
 
 -(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
+    NSLog(@"%@", deviceToken);
+    
     NSString *devToken = [[[[deviceToken description]
                             stringByReplacingOccurrencesOfString:@"<"withString:@""]
                            stringByReplacingOccurrencesOfString:@">" withString:@""]

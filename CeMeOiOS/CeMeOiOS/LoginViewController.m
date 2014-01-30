@@ -34,12 +34,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    //checks if token is set in keychain
     if([TokenHolder Token] != nil){
         NSDictionary *token = [TokenHolder Token];
         
         NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
         [formatter setDateFormat:@"EEE, dd MMM yyyy HH:mm:ss z"];
         
+        //if the token is still valid, skip the login step, continue to getting data
+        //else clear all saved data and remove the token
         NSDate *date = [formatter dateFromString:[token valueForKey:@".expires"]];
         if([[NSDate date]compare:date] == NSOrderedAscending ){
             [self getUserData];
@@ -190,11 +194,15 @@
 
 }
 
+/*!
+Send the device token to the server for use in push notifications
+ */
 -(void)setDeviceToken{
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     [manager.requestSerializer setValue:[NSString stringWithFormat:@"bearer %@", [[TokenHolder Token] valueForKey:@"access_token"]] forHTTPHeaderField:@"Authorization"];
     
+    //platform: 0 is Apple iOS, 1 is Android
     NSDictionary *toSend = @{@"Platform": @0, @"DeviceID": [UserHolder DeviceToken]};
     
     [manager POST:[IPHolder IPWithPath:@"/api/Account/RegisterDevice"] parameters:toSend success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -213,11 +221,17 @@
     
 }
 
+
+//allows for quick logout anywhere in the app
 - (IBAction)unwindToLogin:(UIStoryboardSegue *)unwindSegue
 {
     [self Logout];
 }
 
+
+/*!
+ Clears all user information stored in the userholder and tokenholder
+*/
 -(void)Logout{
     [self.txtUsername setText:nil];
     [self.txtPassword setText:nil];

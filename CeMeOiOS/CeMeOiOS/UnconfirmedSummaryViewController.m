@@ -82,7 +82,7 @@
     [super didReceiveMemoryWarning];
 }
 
-/*! convert NSTimeInterval to formatter NSString,
+/*! convert NSTimeInterval to NSString,
  */
 - (NSString *)stringFromTimeInterval:(NSTimeInterval)interval {
     NSInteger ti = (NSInteger)interval;
@@ -129,7 +129,6 @@
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if(alertView == selectStatus){
-//        NSString *status;
         statusIndex = (int)buttonIndex;
     
         if(buttonIndex != 0){

@@ -54,6 +54,9 @@
     return 2;
 }
 
+/*!
+ We use 2 table sections, oen for confirmed and one for unconfirmed meetings
+ */
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     if(section == 0){
         return @"Unconfirmed by you";
@@ -184,6 +187,7 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+    
     //filter confirmed and unconfirmed propositions
     confirmed = [[UserHolder Propositions] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(not Answer = 0)"]];
     unconfirmed = [[UserHolder Propositions] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(Answer = 0)"]];

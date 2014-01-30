@@ -32,11 +32,6 @@
 		595F00AC1858B70D00E408BC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 595F00AB1858B70D00E408BC /* main.m */; };
 		595F00B01858B70D00E408BC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 595F00AF1858B70D00E408BC /* AppDelegate.m */; };
 		595F00B21858B70D00E408BC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 595F00B11858B70D00E408BC /* Images.xcassets */; };
-		595F00B91858B70D00E408BC /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 595F00B81858B70D00E408BC /* XCTest.framework */; };
-		595F00BA1858B70D00E408BC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 595F009F1858B70D00E408BC /* Foundation.framework */; };
-		595F00BB1858B70D00E408BC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 595F00A31858B70D00E408BC /* UIKit.framework */; };
-		595F00C31858B70D00E408BC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 595F00C11858B70D00E408BC /* InfoPlist.strings */; };
-		595F00C51858B70D00E408BC /* CeMeOiOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 595F00C41858B70D00E408BC /* CeMeOiOSTests.m */; };
 		595F00D01858B89E00E408BC /* iPhoneStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 595F00CF1858B89E00E408BC /* iPhoneStoryboard.storyboard */; };
 		595F00D41858B90C00E408BC /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 595F00D31858B90C00E408BC /* LoginViewController.m */; };
 		595F00DB1859098000E408BC /* loginBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 595F00DA1859098000E408BC /* loginBackground.png */; };
@@ -50,22 +45,13 @@
 		59902AD91861F0B30002F960 /* SummaryContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59902AD81861F0B30002F960 /* SummaryContactCell.m */; };
 		59902ADB18622F120002F960 /* req.png in Resources */ = {isa = PBXBuildFile; fileRef = 59902ADA18622F120002F960 /* req.png */; };
 		59A6851D187AA686003CC111 /* SelectDurationNewMeetingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A6851C187AA686003CC111 /* SelectDurationNewMeetingViewController.m */; };
+		59A7E489189A4711009C4200 /* DraftsSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A7E488189A4711009C4200 /* DraftsSummaryViewController.m */; };
 		59BA468F18992E3D0059CAE6 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BA468E18992E3D0059CAE6 /* KeychainItemWrapper.m */; };
 		59BA4691189947690059CAE6 /* ball_point_pen-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 59BA4690189947690059CAE6 /* ball_point_pen-32.png */; };
 		59BA469518994A950059CAE6 /* DraftsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BA469418994A950059CAE6 /* DraftsTableViewController.m */; };
 		59E5E6E61862F10C00084856 /* IPHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E5E6E51862F10C00084856 /* IPHolder.m */; };
 		59E67305187ED87100ECF188 /* SelectLocationProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E67304187ED87100ECF188 /* SelectLocationProfileTableViewController.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		595F00BC1858B70D00E408BC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 595F00941858B70D00E408BC /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 595F009B1858B70D00E408BC;
-			remoteInfo = CeMeOiOS;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		5905FB6F18980C3300E21D66 /* MeetingSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeetingSummaryViewController.h; sourceTree = "<group>"; };
@@ -108,11 +94,7 @@
 		595F00AE1858B70D00E408BC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		595F00AF1858B70D00E408BC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		595F00B11858B70D00E408BC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		595F00B71858B70D00E408BC /* CeMeOiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CeMeOiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		595F00B81858B70D00E408BC /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		595F00C01858B70D00E408BC /* CeMeOiOSTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CeMeOiOSTests-Info.plist"; sourceTree = "<group>"; };
-		595F00C21858B70D00E408BC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		595F00C41858B70D00E408BC /* CeMeOiOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CeMeOiOSTests.m; sourceTree = "<group>"; };
 		595F00CF1858B89E00E408BC /* iPhoneStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhoneStoryboard.storyboard; sourceTree = "<group>"; };
 		595F00D21858B90C00E408BC /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		595F00D31858B90C00E408BC /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
@@ -134,6 +116,8 @@
 		59902ADA18622F120002F960 /* req.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = req.png; sourceTree = "<group>"; };
 		59A6851B187AA686003CC111 /* SelectDurationNewMeetingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectDurationNewMeetingViewController.h; sourceTree = "<group>"; };
 		59A6851C187AA686003CC111 /* SelectDurationNewMeetingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectDurationNewMeetingViewController.m; sourceTree = "<group>"; };
+		59A7E487189A4711009C4200 /* DraftsSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DraftsSummaryViewController.h; sourceTree = "<group>"; };
+		59A7E488189A4711009C4200 /* DraftsSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DraftsSummaryViewController.m; sourceTree = "<group>"; };
 		59BA468D18992E3D0059CAE6 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
 		59BA468E18992E3D0059CAE6 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
 		59BA4690189947690059CAE6 /* ball_point_pen-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ball_point_pen-32.png"; sourceTree = "<group>"; };
@@ -156,16 +140,6 @@
 				595F00A41858B70D00E408BC /* UIKit.framework in Frameworks */,
 				595F00A01858B70D00E408BC /* Foundation.framework in Frameworks */,
 				1C78D3A439C4450887FDACF6 /* libPods.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		595F00B41858B70D00E408BC /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				595F00B91858B70D00E408BC /* XCTest.framework in Frameworks */,
-				595F00BB1858B70D00E408BC /* UIKit.framework in Frameworks */,
-				595F00BA1858B70D00E408BC /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,7 +206,6 @@
 			isa = PBXGroup;
 			children = (
 				595F00A51858B70D00E408BC /* CeMeOiOS */,
-				595F00BE1858B70D00E408BC /* CeMeOiOSTests */,
 				595F009E1858B70D00E408BC /* Frameworks */,
 				595F009D1858B70D00E408BC /* Products */,
 				AF20E702D4774600A19FAE4E /* Pods.xcconfig */,
@@ -243,7 +216,6 @@
 			isa = PBXGroup;
 			children = (
 				595F009C1858B70D00E408BC /* CeMeO.app */,
-				595F00B71858B70D00E408BC /* CeMeOiOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -281,24 +253,6 @@
 				595F00A81858B70D00E408BC /* InfoPlist.strings */,
 				595F00AB1858B70D00E408BC /* main.m */,
 				595F00AD1858B70D00E408BC /* CeMeOiOS-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		595F00BE1858B70D00E408BC /* CeMeOiOSTests */ = {
-			isa = PBXGroup;
-			children = (
-				595F00C41858B70D00E408BC /* CeMeOiOSTests.m */,
-				595F00BF1858B70D00E408BC /* Supporting Files */,
-			);
-			path = CeMeOiOSTests;
-			sourceTree = "<group>";
-		};
-		595F00BF1858B70D00E408BC /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				595F00C01858B70D00E408BC /* CeMeOiOSTests-Info.plist */,
-				595F00C11858B70D00E408BC /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -391,6 +345,8 @@
 			children = (
 				59BA469318994A950059CAE6 /* DraftsTableViewController.h */,
 				59BA469418994A950059CAE6 /* DraftsTableViewController.m */,
+				59A7E487189A4711009C4200 /* DraftsSummaryViewController.h */,
+				59A7E488189A4711009C4200 /* DraftsSummaryViewController.m */,
 			);
 			name = Drafts;
 			sourceTree = "<group>";
@@ -445,24 +401,6 @@
 			productReference = 595F009C1858B70D00E408BC /* CeMeO.app */;
 			productType = "com.apple.product-type.application";
 		};
-		595F00B61858B70D00E408BC /* CeMeOiOSTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 595F00CB1858B70D00E408BC /* Build configuration list for PBXNativeTarget "CeMeOiOSTests" */;
-			buildPhases = (
-				595F00B31858B70D00E408BC /* Sources */,
-				595F00B41858B70D00E408BC /* Frameworks */,
-				595F00B51858B70D00E408BC /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				595F00BD1858B70D00E408BC /* PBXTargetDependency */,
-			);
-			name = CeMeOiOSTests;
-			productName = CeMeOiOSTests;
-			productReference = 595F00B71858B70D00E408BC /* CeMeOiOSTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -474,9 +412,6 @@
 				TargetAttributes = {
 					595F009B1858B70D00E408BC = {
 						DevelopmentTeam = 853YP5392C;
-					};
-					595F00B61858B70D00E408BC = {
-						TestTargetID = 595F009B1858B70D00E408BC;
 					};
 				};
 			};
@@ -493,7 +428,6 @@
 			projectRoot = "";
 			targets = (
 				595F009B1858B70D00E408BC /* CeMeOiOS */,
-				595F00B61858B70D00E408BC /* CeMeOiOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -516,14 +450,6 @@
 				598513D91891167500F747C9 /* cemeo_logo_medium_trans.png in Resources */,
 				59902ADB18622F120002F960 /* req.png in Resources */,
 				592F603E185EF74400BBFE38 /* 24.png in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		595F00B51858B70D00E408BC /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				595F00C31858B70D00E408BC /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -573,6 +499,7 @@
 				59BA468F18992E3D0059CAE6 /* KeychainItemWrapper.m in Sources */,
 				594796AC187D7ED5008E4E7B /* LocationCell.m in Sources */,
 				59902ACF1861DA5A0002F960 /* SelectTimeViewController.m in Sources */,
+				59A7E489189A4711009C4200 /* DraftsSummaryViewController.m in Sources */,
 				595F00D41858B90C00E408BC /* LoginViewController.m in Sources */,
 				5947969E187D62EB008E4E7B /* UserHolder.m in Sources */,
 				59902AD61861EED40002F960 /* SummaryNewMeetingViewController.m in Sources */,
@@ -596,37 +523,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		595F00B31858B70D00E408BC /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				595F00C51858B70D00E408BC /* CeMeOiOSTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		595F00BD1858B70D00E408BC /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 595F009B1858B70D00E408BC /* CeMeOiOS */;
-			targetProxy = 595F00BC1858B70D00E408BC /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		595F00A81858B70D00E408BC /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				595F00A91858B70D00E408BC /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		595F00C11858B70D00E408BC /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				595F00C21858B70D00E408BC /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -719,7 +622,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CeMeOiOS/CeMeOiOS-Prefix.pch";
 				INFOPLIST_FILE = "CeMeOiOS/CeMeOiOS-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = CeMeO;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -738,53 +641,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CeMeOiOS/CeMeOiOS-Prefix.pch";
 				INFOPLIST_FILE = "CeMeOiOS/CeMeOiOS-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = CeMeO;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
-			};
-			name = Release;
-		};
-		595F00CC1858B70D00E408BC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CeMeOiOS.app/CeMeOiOS";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "CeMeOiOS/CeMeOiOS-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "CeMeOiOSTests/CeMeOiOSTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		595F00CD1858B70D00E408BC /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CeMeOiOS.app/CeMeOiOS";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "CeMeOiOS/CeMeOiOS-Prefix.pch";
-				INFOPLIST_FILE = "CeMeOiOSTests/CeMeOiOSTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
 		};
@@ -805,15 +666,6 @@
 			buildConfigurations = (
 				595F00C91858B70D00E408BC /* Debug */,
 				595F00CA1858B70D00E408BC /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		595F00CB1858B70D00E408BC /* Build configuration list for PBXNativeTarget "CeMeOiOSTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				595F00CC1858B70D00E408BC /* Debug */,
-				595F00CD1858B70D00E408BC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

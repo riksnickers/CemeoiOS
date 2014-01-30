@@ -8,6 +8,7 @@
 
 #import "DraftsTableViewController.h"
 #import "UserHolder.h"
+#import "DraftsSummaryViewController.h"
 
 @interface DraftsTableViewController ()
 
@@ -28,6 +29,7 @@
 {
     [super viewDidLoad];
 
+    //allow table editing
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
@@ -90,33 +92,16 @@
 }
 
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
 // In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"toDraftSummary"]) {
+        DraftsSummaryViewController *dest = segue.destinationViewController;
+        dest.Draft = [[UserHolder Drafts] objectAtIndex:[[self.tableView indexPathForSelectedRow]row]];
+        dest.draftIndex = [[self.tableView indexPathForSelectedRow]row];
+    }
 }
 
- */
 
 -(void)viewDidAppear:(BOOL)animated{
     [self.tableView reloadData];

@@ -102,11 +102,6 @@
     static NSString *simpleTableIdentifier = @"SummaryContactCell";
     
     SummaryContactCell *cell = (SummaryContactCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
-    if (cell == nil)
-    {
-        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"SummaryContactCell" owner:self options:nil];
-        cell = [nib objectAtIndex:0];
-    }
     
     cell.lblName.text = [[NSString alloc] initWithFormat:@"%@ %@", [[Contacts objectAtIndex:[indexPath row]] valueForKey:@"FirstName"], [[Contacts objectAtIndex:[indexPath row]] valueForKey:@"LastName"]];
     

@@ -111,7 +111,7 @@ Sets the user data
  Adds a draft to the drafts
  *\param draft add a draft to the array
  */
-+(void)AddDraft:(NSDictionary *)draft{
++(void)AddDraft:(NSMutableDictionary *)draft{
     if(cDrafts == nil){
         cDrafts = [[NSMutableArray alloc] init];
     }

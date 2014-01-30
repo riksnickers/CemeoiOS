@@ -10,6 +10,11 @@
 
 @implementation NotificationManager
 
+
+/*!
+ Manages the notification for all the meetings in the array 
+ *\param Meetings an array with the Meetings
+ */
 +(void)ScheduleNotificationsWithMeetings:(NSArray *)Meetings{
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
     for(NSDictionary *meeting in Meetings){
@@ -23,6 +28,10 @@
     }
 }
 
+/*!
+ Schedules a notification for the meeting if the meeting is not within the current hour
+ *\param meetingDate the date from the meeting
+ */
 +(void)scheduleNotificationWithDate:(NSDate *)meetingDate{
     UILocalNotification *localNotif = [[UILocalNotification alloc]init];
     

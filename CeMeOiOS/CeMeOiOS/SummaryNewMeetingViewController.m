@@ -20,7 +20,8 @@
 @end
 
 @implementation SummaryNewMeetingViewController{
-    NSArray *options,*originalContacts;
+    NSArray *options;
+    NSMutableArray *originalContacts;
 }
 
 @synthesize Contacts;
@@ -54,8 +55,11 @@
                @"Before a date",
                nil];
     
-    originalContacts = [[NSMutableArray alloc] initWithArray:Contacts copyItems:YES];
+    //originalContacts = [[NSMutableArray alloc] initWithArray:Contacts copyItems:YES];
     
+    originalContacts = [NSKeyedUnarchiver unarchiveObjectWithData:[NSKeyedArchiver archivedDataWithRootObject: Contacts]];
+
+
     //shows wich option is selected from the options array via the DateIndex (from previous viewcontroller)
     if(DateIndex != 5){
         [lblDate setText:[options objectAtIndex:DateIndex]];

@@ -93,7 +93,7 @@
     
     //filter convert the timestring to nsdate
     NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
-    [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SS"];
+    [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
     
     NSDate *date = [formatter dateFromString:[proposition valueForKey:@"BeginTime"]];
     

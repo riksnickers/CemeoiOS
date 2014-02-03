@@ -85,7 +85,7 @@
     [cell.lblLocation setText:location];
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
-    [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SS"];
+    [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
     
     NSDate *date = [formatter dateFromString:[meeting valueForKey:@"BeginTime"]];
     

@@ -21,8 +21,7 @@
     NSString *documentsDirectory = [paths objectAtIndex:0];
     
     NSString *plistPath = [documentsDirectory stringByAppendingPathComponent:@"Drafts.plist"];
-    [UserHolder setDrafts:[[NSArray arrayWithContentsOfFile:plistPath]mutableCopy]];
-
+    [UserHolder setDrafts:[NSMutableArray arrayWithContentsOfFile:plistPath]];
     
     return YES;
 }

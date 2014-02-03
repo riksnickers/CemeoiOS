@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="ezt-ja-Dx5">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="ezt-ja-Dx5">
                                 <rect key="frame" x="0.0" y="-88" width="320" height="656"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
@@ -42,19 +42,19 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uzX-AT-pfR">
-                                        <rect key="frame" x="72" y="248" width="76" height="21"/>
+                                        <rect key="frame" x="72" y="230" width="76" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LjY-nU-dJd">
-                                        <rect key="frame" x="72" y="277" width="177" height="30"/>
+                                        <rect key="frame" x="72" y="259" width="177" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VRi-PN-lbU">
-                                        <rect key="frame" x="72" y="323" width="38" height="30"/>
+                                        <rect key="frame" x="72" y="305" width="38" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Login">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -63,10 +63,6 @@
                                             <action selector="doLogin:" destination="v5H-kk-8Fr" eventType="touchUpInside" id="eao-qV-ZBA"/>
                                         </connections>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cemeo_logo_medium_trans.png" translatesAutoresizingMaskIntoConstraints="NO" id="51c-k6-W0i">
-                                        <rect key="frame" x="45" y="423" width="239" height="213"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="VRi-PN-lbU" firstAttribute="top" secondItem="LjY-nU-dJd" secondAttribute="bottom" constant="16" id="3dz-CZ-Qiz"/>
@@ -77,12 +73,13 @@
                                     <constraint firstItem="KLu-IQ-b5j" firstAttribute="top" secondItem="dEc-n7-5vZ" secondAttribute="bottom" constant="8" symbolic="YES" id="CJH-rZ-cbi"/>
                                     <constraint firstItem="KLu-IQ-b5j" firstAttribute="trailing" secondItem="LjY-nU-dJd" secondAttribute="trailing" id="Otp-h9-u0y"/>
                                     <constraint firstItem="LjY-nU-dJd" firstAttribute="top" secondItem="uzX-AT-pfR" secondAttribute="bottom" constant="8" symbolic="YES" id="RCD-Li-EgX"/>
-                                    <constraint firstItem="uzX-AT-pfR" firstAttribute="top" secondItem="KLu-IQ-b5j" secondAttribute="bottom" constant="26" id="RDx-WX-YnE"/>
+                                    <constraint firstItem="uzX-AT-pfR" firstAttribute="top" secondItem="KLu-IQ-b5j" secondAttribute="bottom" constant="8" id="RDx-WX-YnE"/>
                                     <constraint firstItem="KLu-IQ-b5j" firstAttribute="centerX" secondItem="ezt-ja-Dx5" secondAttribute="centerX" id="S9Q-GG-XsX"/>
                                     <constraint firstItem="q0O-nQ-7yw" firstAttribute="centerX" secondItem="LjY-nU-dJd" secondAttribute="centerX" id="SDS-Ac-mVp"/>
                                     <constraint firstItem="LjY-nU-dJd" firstAttribute="leading" secondItem="VRi-PN-lbU" secondAttribute="leading" id="ZXg-80-r0Q"/>
                                     <constraint firstItem="LjY-nU-dJd" firstAttribute="leading" secondItem="uzX-AT-pfR" secondAttribute="leading" id="g6q-to-7vV"/>
                                     <constraint firstItem="q0O-nQ-7yw" firstAttribute="top" secondItem="ezt-ja-Dx5" secondAttribute="top" constant="103" id="p2H-dB-TGW"/>
+                                    <constraint firstAttribute="bottom" secondItem="q0O-nQ-7yw" secondAttribute="bottom" constant="241" id="tLM-Lo-hD6"/>
                                     <constraint firstItem="q0O-nQ-7yw" firstAttribute="leading" secondItem="ezt-ja-Dx5" secondAttribute="leading" constant="37" id="tSO-K7-50w"/>
                                     <constraint firstItem="dEc-n7-5vZ" firstAttribute="top" secondItem="ezt-ja-Dx5" secondAttribute="top" constant="163" id="y4F-ql-NKm"/>
                                 </constraints>
@@ -198,14 +195,14 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ContactName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ho-6p-fDf">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ContactName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ho-6p-fDf">
                                             <rect key="frame" x="20" y="11" width="223" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="oix-4n-Zbb">
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="oix-4n-Zbb">
                                             <rect key="frame" x="251" y="6" width="51" height="31"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <connections>
@@ -213,6 +210,13 @@
                                             </connections>
                                         </switch>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="oix-4n-Zbb" firstAttribute="leading" secondItem="8Ho-6p-fDf" secondAttribute="trailing" constant="8" symbolic="YES" id="JXt-3I-BEs"/>
+                                        <constraint firstAttribute="trailing" secondItem="oix-4n-Zbb" secondAttribute="trailing" constant="20" symbolic="YES" id="VUd-ue-gNL"/>
+                                        <constraint firstItem="8Ho-6p-fDf" firstAttribute="leading" secondItem="vv5-JZ-igw" secondAttribute="leading" constant="20" symbolic="YES" id="eht-sb-nXl"/>
+                                        <constraint firstItem="oix-4n-Zbb" firstAttribute="centerY" secondItem="vv5-JZ-igw" secondAttribute="centerY" id="vFH-yo-mco"/>
+                                        <constraint firstItem="8Ho-6p-fDf" firstAttribute="centerY" secondItem="oix-4n-Zbb" secondAttribute="centerY" id="vww-XX-AEW"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="contactSwitch" destination="oix-4n-Zbb" id="vgO-Wm-ofK"/>
@@ -321,14 +325,14 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ContactName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TTL-4u-QEq">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ContactName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TTL-4u-QEq">
                                             <rect key="frame" x="20" y="11" width="223" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="CcB-oQ-1D7">
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="CcB-oQ-1D7">
                                             <rect key="frame" x="251" y="6" width="51" height="31"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <connections>
@@ -336,6 +340,13 @@
                                             </connections>
                                         </switch>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="TTL-4u-QEq" firstAttribute="leading" secondItem="SO9-Dg-9Vn" secondAttribute="leading" constant="20" symbolic="YES" id="3Pk-fp-oMO"/>
+                                        <constraint firstAttribute="trailing" secondItem="CcB-oQ-1D7" secondAttribute="trailing" constant="20" symbolic="YES" id="4wn-NU-L5c"/>
+                                        <constraint firstItem="TTL-4u-QEq" firstAttribute="centerY" secondItem="CcB-oQ-1D7" secondAttribute="centerY" id="AUl-Lj-YRO"/>
+                                        <constraint firstItem="TTL-4u-QEq" firstAttribute="centerY" secondItem="SO9-Dg-9Vn" secondAttribute="centerY" id="Wqz-pQ-RcM"/>
+                                        <constraint firstItem="CcB-oQ-1D7" firstAttribute="leading" secondItem="TTL-4u-QEq" secondAttribute="trailing" constant="8" symbolic="YES" id="eys-uB-1ae"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="contactSwitch" destination="CcB-oQ-1D7" id="d7a-tY-WQL"/>
@@ -1523,7 +1534,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
     <resources>
         <image name="ball_point_pen-32.png" width="32" height="32"/>
         <image name="calendar-32.png" width="32" height="32"/>
-        <image name="cemeo_logo_medium_trans.png" width="612" height="602"/>
         <image name="help_filled-32.png" width="32" height="32"/>
         <image name="inbox-32.png" width="32" height="32"/>
         <image name="loginBackground.png" width="280" height="330"/>

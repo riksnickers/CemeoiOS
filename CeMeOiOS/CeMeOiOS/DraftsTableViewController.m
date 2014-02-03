@@ -97,7 +97,7 @@
 {
     if ([segue.identifier isEqualToString:@"toDraftSummary"]) {
         DraftsSummaryViewController *dest = segue.destinationViewController;
-        dest.Draft = [[UserHolder Drafts] objectAtIndex:[[self.tableView indexPathForSelectedRow]row]];
+        dest.Draft = [[[UserHolder Drafts] objectAtIndex:[[self.tableView indexPathForSelectedRow]row]]mutableCopy];
         dest.draftIndex = [[self.tableView indexPathForSelectedRow]row];
     }
 }

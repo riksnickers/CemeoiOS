@@ -45,7 +45,10 @@
                @"Before a date",
                nil];
     
-    Contacts = [Draft objectForKey:@"InvitedParticipants"];
+    //Contacts = [[Draft objectForKey:@"InvitedParticipants"]mutableCopy];
+    //Contacts = [[NSMutableArray alloc] initWithArray:[Draft objectForKey:@"InvitedParticipants"] copyItems:YES];
+    
+    Contacts = [NSKeyedUnarchiver unarchiveObjectWithData:[NSKeyedArchiver archivedDataWithRootObject: [Draft objectForKey:@"InvitedParticipants"]]];
     
     if([[Draft objectForKey:@"Dateindex"] intValue] != 5){
         [lblDate setText:[options objectAtIndex:[[Draft objectForKey:@"Dateindex"] intValue]]];
@@ -103,7 +106,7 @@
     
     
     //names from contacts are not necessary, we remove them
-    for (NSMutableDictionary *dict in [Draft objectForKey:@"InvitedParticipants"]) {
+    for (NSMutableDictionary *dict in Contacts) {
         [dict removeObjectsForKeys:@[@"FirstName", @"LastName"]];
     }
     
@@ -117,7 +120,7 @@
     [manager POST:[IPHolder IPWithPath:@"/api/Meeting/Schedule"] parameters:Draft success:^(AFHTTPRequestOperation *operation, id responseObject) {
         if([operation.response statusCode] == 200){
             //remove the draft after successful send
-            [[UserHolder Drafts] removeObjectAtIndex:draftIndex];
+            [UserHolder RemoveDraft:draftIndex];
             [waitAlert dismissWithClickedButtonIndex:0 animated:YES];
             UIAlertView *alert = [[UIAlertView alloc]initWithTitle: @"Sent"
                                                            message: @"Your meeting has been sent"

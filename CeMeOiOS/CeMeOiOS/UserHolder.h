@@ -25,5 +25,6 @@
 
 +(id)DeviceToken;
 +(void)setDevice:(id)Device;
++(void)RemoveDraft:(NSUInteger)index;
 
 @end

@@ -71,7 +71,7 @@
     NSDictionary *parameters = @{@"grant_type": @"password", @"username":username, @"password":password};
   
     //wait dialog
-    waitAlert = [[UIAlertView alloc] initWithTitle:@"Loging in..."
+    waitAlert = [[UIAlertView alloc] initWithTitle:@"Logging in..."
                                                        message:nil
                                                       delegate:nil
                                              cancelButtonTitle:nil
@@ -129,7 +129,7 @@
 -(void)getUserData{
     
     if(waitAlert == nil){
-        waitAlert = [[UIAlertView alloc] initWithTitle:@"Loging in..."
+        waitAlert = [[UIAlertView alloc] initWithTitle:@"Logging in..."
                                                message:nil
                                               delegate:nil
                                      cancelButtonTitle:nil

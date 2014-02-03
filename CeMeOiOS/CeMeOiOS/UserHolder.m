@@ -36,7 +36,7 @@ Sets the user data
  */
 +(void)setPropositions:(id) Propositions{
     NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
-    [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SS"];
+    [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
     
     cPropositions = [Propositions sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
         NSDate *dateA = [formatter dateFromString:[[obj1 objectForKey:@"Proposition"] objectForKey:@"BeginTime"]];
@@ -59,7 +59,7 @@ Sets the user data
  */
 +(void)setMeetings:(id)Meetings{
     NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
-    [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SS"];
+    [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
     
     cMeetings = [Meetings sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
         NSDate *dateA = [formatter dateFromString:[[obj1 objectForKey:@"Meeting"] objectForKey:@"BeginTime"]];
@@ -116,6 +116,14 @@ Sets the user data
         cDrafts = [[NSMutableArray alloc] init];
     }
     [cDrafts addObject:draft];
+}
+
+/*!
+ Removes a draft from the holder
+ *\param index, the index of the draft that needs to be removed
+ */
++(void)RemoveDraft:(NSUInteger)index{
+    [cDrafts removeObjectAtIndex:index];
 }
 
 

@@ -11,8 +11,8 @@
 @implementation IPHolder
 
 //static NSString* IP = @"http://10.65.134.30:12429";
-static NSString* IP = @"https://cemeo.azurewebsites.net";
-//static NSString* IP = @"http://app.cemeo.be";
+//static NSString* IP = @"https://cemeo.azurewebsites.net";
+static NSString* IP = @"http://app.cemeo.be";
 //static NSString* IP = @"http://193.190.154.242";
 
 +(NSString *) IP{

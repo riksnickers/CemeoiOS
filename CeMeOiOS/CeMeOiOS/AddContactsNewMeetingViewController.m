@@ -152,6 +152,7 @@
     searchResults = [Contacts filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(FirstName contains[c] %@) OR (LastName contains[c] %@)", searchText, searchText]];
 }
 
+
 -(BOOL)searchDisplayController:(UISearchDisplayController *)controller
 shouldReloadTableForSearchString:(NSString *)searchString
 {
@@ -168,6 +169,24 @@ shouldReloadTableForSearchString:(NSString *)searchString
     [super viewWillAppear:animated];
     [self.tableView reloadData];
 }
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    ContactCell *cell = (ContactCell *)[tableView cellForRowAtIndexPath:indexPath];
+    UISwitch *contactSw = [cell contactSwitch];
+    
+    if(contactSw.on){
+        [contactSw setOn:NO animated:YES];
+    }
+    else{
+        [contactSw setOn:YES animated:YES];
+        
+    }
+    
+    [self ContactSwitched:contactSw];
+    
+}
+
 
 /*!
  Fetches the contacts from the external service

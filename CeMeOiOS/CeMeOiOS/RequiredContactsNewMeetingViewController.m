@@ -133,6 +133,24 @@
     return YES;
 }
 
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    ContactCell *cell = (ContactCell *)[tableView cellForRowAtIndexPath:indexPath];
+    UISwitch *contactSw = [cell contactSwitch];
+    
+    if(contactSw.on){
+        [contactSw setOn:NO animated:YES];
+    }
+    else{
+        [contactSw setOn:YES animated:YES];
+        
+    }
+    
+    [self ContactSwitched:contactSw];
+    
+}
+
+
 /*!
  sends the contacts (inc the required tags) to the next viewcontroller
  */

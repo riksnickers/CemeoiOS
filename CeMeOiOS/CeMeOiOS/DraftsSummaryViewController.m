@@ -45,9 +45,7 @@
                @"Before a date",
                nil];
     
-    //Contacts = [[Draft objectForKey:@"InvitedParticipants"]mutableCopy];
-    //Contacts = [[NSMutableArray alloc] initWithArray:[Draft objectForKey:@"InvitedParticipants"] copyItems:YES];
-    
+    //creates a deep mutable copy from the contacts
     Contacts = [NSKeyedUnarchiver unarchiveObjectWithData:[NSKeyedArchiver archivedDataWithRootObject: [Draft objectForKey:@"InvitedParticipants"]]];
     
     if([[Draft objectForKey:@"Dateindex"] intValue] != 5){

@@ -129,17 +129,6 @@
 }
 
 -(void)getPropos{
-    UIAlertView *waitAlert = [[UIAlertView alloc] initWithTitle:@"Getting propositions"
-                                           message:nil
-                                          delegate:nil
-                                 cancelButtonTitle:nil
-                                 otherButtonTitles:nil];
-    UIActivityIndicatorView *loading = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(125, 50, 30, 30)];
-    loading.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
-    [waitAlert addSubview:loading];
-    [loading startAnimating];
-    [waitAlert show];
-    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
     [manager setRequestSerializer:[AFHTTPRequestSerializer serializer]];
@@ -166,7 +155,6 @@
 
         
         [self.refreshControl endRefreshing];
-        [waitAlert dismissWithClickedButtonIndex:0 animated:YES];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [self.refreshControl endRefreshing];
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle: @"Something went wrong"
@@ -175,7 +163,6 @@
                                              cancelButtonTitle:@"Ok"
                                              otherButtonTitles:nil];
         
-        [waitAlert dismissWithClickedButtonIndex:0 animated:YES];
         [alert show];
     }];
     

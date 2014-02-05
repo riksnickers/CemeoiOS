@@ -55,8 +55,7 @@
                @"Before a date",
                nil];
     
-    //originalContacts = [[NSMutableArray alloc] initWithArray:Contacts copyItems:YES];
-    
+    //creates a deep mutable copy from the contacts
     originalContacts = [NSKeyedUnarchiver unarchiveObjectWithData:[NSKeyedArchiver archivedDataWithRootObject: Contacts]];
 
 
@@ -213,6 +212,7 @@
     }];
 }
 
+//makes the NSTimeInterval readable
 - (NSString *)stringFromTimeInterval:(NSTimeInterval)interval {
     NSInteger ti = (NSInteger)interval;
     NSInteger minutes = (ti / 60) % 60;
@@ -220,6 +220,10 @@
     return [NSString stringWithFormat:@"%li Hours %li Minutes", (long)hours, (long)minutes];
 }
 
+/*!
+ Saves the draft in the UserHolder
+ *\param data The draft that will be saved in the UserHolder
+ */
 -(void)saveMeeting:(NSMutableDictionary *)data{
     [data setObject:[NSDate date] forKey:@"failDate"];
     [data setObject:originalContacts forKey:@"InvitedParticipants"];

@@ -20,7 +20,6 @@
 @end
 
 @implementation UpcomingMeetingsTableViewController{
-    UIAlertView *waitAlert;
     NSDictionary *mSelf,*room,*meeting;
     NSArray *sortedMeetings;
 }
@@ -55,7 +54,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
@@ -113,17 +111,6 @@
 }
 
 -(void)getPropos{
-    waitAlert = [[UIAlertView alloc] initWithTitle:@"Refreshing data"
-                                                        message:nil
-                                                       delegate:nil
-                                              cancelButtonTitle:nil
-                                              otherButtonTitles:nil];
-    UIActivityIndicatorView *loading = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(125, 50, 30, 30)];
-    loading.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
-    [waitAlert addSubview:loading];
-    [loading startAnimating];
-    [waitAlert show];
-    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
     [manager setRequestSerializer:[AFHTTPRequestSerializer serializer]];
@@ -153,25 +140,12 @@
                                              cancelButtonTitle:@"Ok"
                                              otherButtonTitles:nil];
         
-        [waitAlert dismissWithClickedButtonIndex:0 animated:YES];
         [alert show];
     }];
     
 }
 
 -(void)getMeetings{
-    if(waitAlert == nil){
-        waitAlert = [[UIAlertView alloc] initWithTitle:@"Refreshing data"
-                                               message:nil
-                                              delegate:nil
-                                     cancelButtonTitle:nil
-                                     otherButtonTitles:nil];
-        UIActivityIndicatorView *loading = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(125, 50, 30, 30)];
-        loading.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
-        [waitAlert addSubview:loading];
-        [loading startAnimating];
-        [waitAlert show];
-    }
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
@@ -185,7 +159,6 @@
         
         [self.tableView reloadData];
         [self.refreshControl endRefreshing];
-        [waitAlert dismissWithClickedButtonIndex:0 animated:YES];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [self.refreshControl endRefreshing];
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle: @"Something went wrong"
@@ -194,7 +167,6 @@
                                              cancelButtonTitle:@"Ok"
                                              otherButtonTitles:nil];
         
-        [waitAlert dismissWithClickedButtonIndex:0 animated:YES];
         [alert show];
     }];
     

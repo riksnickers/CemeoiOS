@@ -21,6 +21,8 @@
     UIAlertView *waitAlert;
 }
 
+@synthesize txtPassword, txtUsername;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -59,14 +61,15 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*! send username and password for authentication using AFNetworking library,
+/*! 
+ send username and password for authentication using AFNetworking library,
  receive token and save it in TokeHolder
  */
 - (IBAction)doLogin:(id)sender{
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
 
-    NSString *password = [self.txtPassword text];
-    NSString *username = [self.txtUsername text];
+    NSString *password = [txtPassword text];
+    NSString *username = [txtUsername text];
     
     NSDictionary *parameters = @{@"grant_type": @"password", @"username":username, @"password":password};
   
@@ -123,7 +126,8 @@
     
 }
 
-/*! fetch the user information,
+/*! 
+ fetch the user information,
  save it in userholder
  */
 -(void)getUserData{
@@ -163,7 +167,8 @@
     
 }
 
-/*! fetch the propositions,
+/*! 
+ fetch the propositions,
  save it in userholder
  */
 -(void)getPropos{
@@ -228,13 +233,27 @@ Send the device token to the server for use in push notifications
     [self Logout];
 }
 
+-(IBAction)nextEdit:(id)sender{
+    [txtPassword becomeFirstResponder];
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    UITouch *touch = [[event allTouches] anyObject];
+    if ([txtUsername isFirstResponder] && [touch view] != txtUsername) {
+        [txtUsername resignFirstResponder];
+    }else  if ([txtPassword isFirstResponder] && [touch view] != txtPassword) {
+        [txtPassword resignFirstResponder];
+    }
+    [super touchesBegan:touches withEvent:event];
+}
 
 /*!
  Clears all user information stored in the userholder and tokenholder
 */
 -(void)Logout{
-    [self.txtUsername setText:nil];
-    [self.txtPassword setText:nil];
+    [txtUsername setText:nil];
+    [txtPassword setText:nil];
     [UserHolder SetUserData:nil];
     [UserHolder setPropositions:nil];
     [UserHolder setMeetings:nil];

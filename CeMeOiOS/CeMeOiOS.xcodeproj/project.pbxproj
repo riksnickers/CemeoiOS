@@ -14,6 +14,9 @@
 		592F603E185EF74400BBFE38 /* 24.png in Resources */ = {isa = PBXBuildFile; fileRef = 592F603D185EF74400BBFE38 /* 24.png */; };
 		592F6044185EFA4000BBFE38 /* AddContactsNewMeetingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 592F6043185EFA4000BBFE38 /* AddContactsNewMeetingViewController.m */; };
 		592F6047185EFE1E00BBFE38 /* ContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 592F6046185EFE1E00BBFE38 /* ContactCell.m */; };
+		5938238318A2453A00899C6B /* 34928_nl_CEGEKA.gif in Resources */ = {isa = PBXBuildFile; fileRef = 5938238218A2453A00899C6B /* 34928_nl_CEGEKA.gif */; };
+		5938238518A2461100899C6B /* PXL.png in Resources */ = {isa = PBXBuildFile; fileRef = 5938238418A2461100899C6B /* PXL.png */; };
+		5938238918A2467700899C6B /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5938238818A2467700899C6B /* AboutViewController.m */; };
 		5947969E187D62EB008E4E7B /* UserHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5947969D187D62EB008E4E7B /* UserHolder.m */; };
 		594796A2187D792A008E4E7B /* ProfileOverViewTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 594796A1187D792A008E4E7B /* ProfileOverViewTableViewController.m */; };
 		594796A5187D7AD6008E4E7B /* NameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 594796A4187D7AD6008E4E7B /* NameCell.m */; };
@@ -64,6 +67,10 @@
 		592F6043185EFA4000BBFE38 /* AddContactsNewMeetingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddContactsNewMeetingViewController.m; sourceTree = "<group>"; };
 		592F6045185EFE1E00BBFE38 /* ContactCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactCell.h; sourceTree = "<group>"; };
 		592F6046185EFE1E00BBFE38 /* ContactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactCell.m; sourceTree = "<group>"; };
+		5938238218A2453A00899C6B /* 34928_nl_CEGEKA.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 34928_nl_CEGEKA.gif; sourceTree = "<group>"; };
+		5938238418A2461100899C6B /* PXL.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PXL.png; sourceTree = "<group>"; };
+		5938238718A2467700899C6B /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		5938238818A2467700899C6B /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		5947969C187D62EB008E4E7B /* UserHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserHolder.h; sourceTree = "<group>"; };
 		5947969D187D62EB008E4E7B /* UserHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserHolder.m; sourceTree = "<group>"; };
 		594796A0187D792A008E4E7B /* ProfileOverViewTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileOverViewTableViewController.h; sourceTree = "<group>"; };
@@ -153,6 +160,15 @@
 				594C2590185CE598009C5390 /* meetingCell.m */,
 			);
 			name = Upcoming;
+			sourceTree = "<group>";
+		};
+		5938238618A2465100899C6B /* About */ = {
+			isa = PBXGroup;
+			children = (
+				5938238718A2467700899C6B /* AboutViewController.h */,
+				5938238818A2467700899C6B /* AboutViewController.m */,
+			);
+			name = About;
 			sourceTree = "<group>";
 		};
 		5947969F187D78E3008E4E7B /* Profile */ = {
@@ -271,6 +287,7 @@
 		595F00D11858B8ED00E408BC /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				5938238618A2465100899C6B /* About */,
 				59BA469218994A850059CAE6 /* Drafts */,
 				598AD052188AD0FB0088F3E8 /* Unconfirmed */,
 				5947969F187D78E3008E4E7B /* Profile */,
@@ -284,6 +301,8 @@
 		595F00D7185905EB00E408BC /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				5938238418A2461100899C6B /* PXL.png */,
+				5938238218A2453A00899C6B /* 34928_nl_CEGEKA.gif */,
 				59BA4690189947690059CAE6 /* ball_point_pen-32.png */,
 				598513DA1891271000F747C9 /* inbox-32.png */,
 				598513D81891167500F747C9 /* cemeo_logo_medium_trans.png */,
@@ -441,10 +460,12 @@
 				594796B4187D9593008E4E7B /* user_male3-32.png in Resources */,
 				595F00B21858B70D00E408BC /* Images.xcassets in Resources */,
 				595F00D01858B89E00E408BC /* iPhoneStoryboard.storyboard in Resources */,
+				5938238318A2453A00899C6B /* 34928_nl_CEGEKA.gif in Resources */,
 				595F00DB1859098000E408BC /* loginBackground.png in Resources */,
 				598513DB1891271000F747C9 /* inbox-32.png in Resources */,
 				590C5B5F18882637009A1AE5 /* help_filled-32.png in Resources */,
 				594796B2187D953A008E4E7B /* calendar-32.png in Resources */,
+				5938238518A2461100899C6B /* PXL.png in Resources */,
 				59BA4691189947690059CAE6 /* ball_point_pen-32.png in Resources */,
 				594796BC187D96A5008E4E7B /* micro-32.png in Resources */,
 				598513D91891167500F747C9 /* cemeo_logo_medium_trans.png in Resources */,
@@ -503,6 +524,7 @@
 				595F00D41858B90C00E408BC /* LoginViewController.m in Sources */,
 				5947969E187D62EB008E4E7B /* UserHolder.m in Sources */,
 				59902AD61861EED40002F960 /* SummaryNewMeetingViewController.m in Sources */,
+				5938238918A2467700899C6B /* AboutViewController.m in Sources */,
 				594C2591185CE598009C5390 /* meetingCell.m in Sources */,
 				594796A2187D792A008E4E7B /* ProfileOverViewTableViewController.m in Sources */,
 				592F6047185EFE1E00BBFE38 /* ContactCell.m in Sources */,

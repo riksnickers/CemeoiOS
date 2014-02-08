@@ -251,7 +251,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="3161" y="-772"/>
+            <point key="canvasLocation" x="3161" y="680"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="gTM-P2-nRd">
@@ -291,7 +291,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GPR-OD-Udf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2671" y="-772"/>
+            <point key="canvasLocation" x="2671" y="680"/>
         </scene>
         <!--Required Contacts New Meeting View Controller - Required Attendees-->
         <scene sceneID="z9C-mS-AAG">
@@ -372,7 +372,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="3633" y="-772"/>
+            <point key="canvasLocation" x="3633" y="680"/>
         </scene>
         <!--Select Time View Controller - Select Time-->
         <scene sceneID="LIr-IX-22d">
@@ -447,7 +447,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hDc-N2-ttw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4081" y="-769"/>
+            <point key="canvasLocation" x="4081" y="683"/>
         </scene>
         <!--Summary New Meeting View Controller - Meeting Summary-->
         <scene sceneID="4B1-Cl-YJ6">
@@ -587,7 +587,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CIf-bf-TJJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="9g0-52-etS" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="5019" y="-769"/>
+            <point key="canvasLocation" x="5019" y="683"/>
         </scene>
         <!--Select Duration New Meeting View Controller - Select Duration-->
         <scene sceneID="xV3-St-2K0">
@@ -650,7 +650,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iXI-wu-UbY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4564" y="-769"/>
+            <point key="canvasLocation" x="4564" y="683"/>
         </scene>
         <!--Profile Over View Table View Controller - Profile-->
         <scene sceneID="npe-8i-XeN">
@@ -782,7 +782,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SNX-iB-jjv" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Mrw-xm-tq1" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2127" y="735"/>
+            <point key="canvasLocation" x="2127" y="2147"/>
         </scene>
         <!--Select Location Profile Table View Controller - Select location-->
         <scene sceneID="3lT-lu-wY8">
@@ -865,7 +865,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="2671" y="735"/>
+            <point key="canvasLocation" x="2671" y="2147"/>
         </scene>
         <!--Unconfirmed Table View Controller - Propositions-->
         <scene sceneID="txg-2W-may">
@@ -924,7 +924,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tro-Yw-QnX" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="8df-oK-cOz" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2127" y="1522"/>
+            <point key="canvasLocation" x="2127" y="1406"/>
         </scene>
         <!--Unconfirmed Summary View Controller - Meeting-->
         <scene sceneID="eWG-Xs-lx3">
@@ -1086,7 +1086,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nb9-05-wMu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2671" y="1522"/>
+            <point key="canvasLocation" x="2671" y="1406"/>
         </scene>
         <!--Navigation Controller - Profile-->
         <scene sceneID="fWG-xb-9cy">
@@ -1105,7 +1105,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KeM-Pr-heT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1559" y="735"/>
+            <point key="canvasLocation" x="1559" y="2147"/>
         </scene>
         <!--Navigation Controller - Upcoming-->
         <scene sceneID="QEA-OB-MEF">
@@ -1210,7 +1210,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bz2-lS-ULS" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="o9e-j3-LbM" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2127" y="3032"/>
+            <point key="canvasLocation" x="2139" y="3640"/>
         </scene>
         <!--Navigation Controller - Propositions-->
         <scene sceneID="pHx-uh-PiV">
@@ -1229,7 +1229,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FYo-zu-buW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1559" y="1522"/>
+            <point key="canvasLocation" x="1559" y="1406"/>
         </scene>
         <!--Drafts Table View Controller - Drafts-->
         <scene sceneID="8KA-AR-Ks0">
@@ -1268,7 +1268,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kvF-n4-KdJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="i9l-L6-1me" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2127" y="2273"/>
+            <point key="canvasLocation" x="2139" y="2881"/>
         </scene>
         <!--Navigation Controller - About-->
         <scene sceneID="hGn-3j-LVh">
@@ -1287,7 +1287,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t4F-5z-WSr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1559" y="3032"/>
+            <point key="canvasLocation" x="1571" y="3640"/>
         </scene>
         <!--Meeting Summary View Controller - Meeting-->
         <scene sceneID="kbl-8V-WXe">
@@ -1447,7 +1447,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RjS-y3-99j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1559" y="2273"/>
+            <point key="canvasLocation" x="1571" y="2881"/>
         </scene>
         <!--Drafts Summary View Controller - Meeting Summary-->
         <scene sceneID="N5w-4V-KHV">
@@ -1586,7 +1586,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1hK-Ar-8Tc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2671" y="2273"/>
+            <point key="canvasLocation" x="2683" y="2881"/>
         </scene>
     </scenes>
     <resources>

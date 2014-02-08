@@ -99,8 +99,8 @@ shouldReloadTableForSearchString:(NSString *)searchString
     
     if(tableView == self.searchDisplayController.searchResultsTableView){
         [cell.lblLocationName setText:[[Results objectAtIndex:indexPath.row]objectForKey:@"Name"]];
-        [cell.lblAddress setText:[NSString stringWithFormat:@"%@ %@", [[Results objectAtIndex:indexPath.row]objectForKey:@"Street"], [[Locations objectAtIndex:indexPath.row]objectForKey:@"Number"]]];
-        [cell.lblCity setText:[NSString stringWithFormat:@"%@ %@", [[Results objectAtIndex:indexPath.row]objectForKey:@"Zip"], [[Locations objectAtIndex:indexPath.row]objectForKey:@"City"]]];
+        [cell.lblAddress setText:[NSString stringWithFormat:@"%@ %@", [[Results objectAtIndex:indexPath.row]objectForKey:@"Street"], [[Results objectAtIndex:indexPath.row]objectForKey:@"Number"]]];
+        [cell.lblCity setText:[NSString stringWithFormat:@"%@ %@", [[Results objectAtIndex:indexPath.row]objectForKey:@"Zip"], [[Results objectAtIndex:indexPath.row]objectForKey:@"City"]]];
         [cell.lblCountry setText:[[Results objectAtIndex:indexPath.row]objectForKey:@"Country"]];
     }else{
         [cell.lblLocationName setText:[[Locations objectAtIndex:indexPath.row]objectForKey:@"Name"]];
